@@ -21,17 +21,36 @@
             </phone:Panorama.Background>
 
             <!--Panorama item one-->
-            <phone:PanoramaItem Header="Menu">
+            <phone:PanoramaItem Header="Vrijdag" Foreground="Black">
+                <phone:LongListSelector Name="listFriday">
+                    <phone:LongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                
+                                <TextBlock Text="{Binding}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" FontSize="48" Padding="6" />
+                            </Grid>
+                        </DataTemplate>
+                    </phone:LongListSelector.ItemTemplate>
+                </phone:LongListSelector>
+            </phone:PanoramaItem>
+
+            <!--Panorama item two-->
+            <phone:PanoramaItem Header="Zaterdag" Foreground="Black">
                 <Grid/>
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
-            <phone:PanoramaItem Header="Programma">
+            <phone:PanoramaItem Header="Zondag" Foreground="Black">
                 <Grid/>
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
-            <phone:PanoramaItem Header="Groepen">
+            <phone:PanoramaItem Header="Maandag" Foreground="Black">
+                <Grid/>
+            </phone:PanoramaItem>
+
+            <!--Panorama item two-->
+            <phone:PanoramaItem Header="Dinsdag" Foreground="Black">
                 <Grid/>
             </phone:PanoramaItem>
         </phone:Panorama>

@@ -15,6 +15,13 @@ namespace VNMC2013
         public Roots()
         {
             InitializeComponent();
+
+            List<string> test = new List<string>
+            {
+                "hoi",
+                "doei"
+            };
+            listFriday.ItemsSource = test;
         }
     }
 }
