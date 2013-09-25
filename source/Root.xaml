@@ -1,0 +1,55 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="VNMC2013.Root"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/background.png" Stretch="UniformToFill">
+                <ImageBrush.RelativeTransform>
+                    <CompositeTransform CenterY="0.5" CenterX="0.5" TranslateX="0.6"/>
+                </ImageBrush.RelativeTransform>
+            </ImageBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" MinHeight="220"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28"/>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid Margin="10,38,0,0" Tap="Programma_Tap">
+                <Rectangle Fill="{StaticResource PhoneAccentBrush}" HorizontalAlignment="Left" Height="204"  Stroke="Black" VerticalAlignment="Top" Width="204" />
+                <TextBlock HorizontalAlignment="Left" Padding="10" TextWrapping="Wrap" Text="Programma" VerticalAlignment="Top" Height="204" Width="204" Foreground="{StaticResource PhoneRadioCheckBoxCheckBrush}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+            </Grid>
+            <Grid Margin="242,38,0,0" Tap="Map_Tap">
+                <Rectangle Fill="{StaticResource PhoneAccentBrush}" HorizontalAlignment="Left" Height="204"  Stroke="Black" VerticalAlignment="Top" Width="204" />
+                <TextBlock HorizontalAlignment="Left" Padding="10" TextWrapping="Wrap" Text="Map" VerticalAlignment="Top" Height="204" Width="204" Foreground="{StaticResource PhoneRadioCheckBoxCheckBrush}" FontFamily="{StaticResource PhoneFontFamilyNormal}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+            </Grid>
+            <Grid Margin="10,260,0,0" Tap="Poi_Tap">
+                <Rectangle Fill="{StaticResource PhoneAccentBrush}" HorizontalAlignment="Left" Height="204"  Stroke="Black" VerticalAlignment="Top" Width="204" />
+                <TextBlock HorizontalAlignment="Left" Padding="10" TextWrapping="Wrap" Text="POI" VerticalAlignment="Top" Height="204" Width="204" Foreground="{StaticResource PhoneRadioCheckBoxCheckBrush}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+            </Grid>
+            <Grid Margin="242,260,0,0" Tap="Rectangle_Tap">
+                <Rectangle Fill="{StaticResource PhoneAccentBrush}" HorizontalAlignment="Left" Height="204"  Stroke="Black" VerticalAlignment="Top" Width="204" />
+                <TextBlock HorizontalAlignment="Left" Padding="10" TextWrapping="Wrap" Text="1337 h4x" VerticalAlignment="Top" Height="204" Width="204" Foreground="{StaticResource PhoneRadioCheckBoxCheckBrush}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+            </Grid>
+
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>
