@@ -21,7 +21,7 @@ namespace VNMC2013
         {
             NavigationService.Navigate(new Uri("/Programma.xaml",UriKind.Relative));
         }
-        private void Map_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        private void Roomies_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             MessageBox.Show("hoi");
         }
@@ -29,9 +29,9 @@ namespace VNMC2013
         {
             MessageBox.Show("hoi");
         }
-        private void Rectangle_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        private void Contact_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            MessageBox.Show("hoi");
+            NavigationService.Navigate(new Uri("/Contact.xaml", UriKind.Relative));
         }
 
     }

@@ -1,0 +1,73 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="VNMC2013.Contact"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <!--Pivot Control-->
+        <phone:Pivot Title="VNMC2013 - Contact gegevens">
+            <!--Pivot item one-->
+            <phone:PivotItem Header="Hotel">
+                <Grid Height="603" VerticalAlignment="Top">
+                    <TextBlock HorizontalAlignment="Center" Height="119" TextWrapping="Wrap" VerticalAlignment="Top" Width="456" FontSize="36">
+                    	<Run Text="Premier Inn"/>
+                    	<LineBreak/>
+                    	<Run Text="Dubai Investments Park"/>
+                    </TextBlock>
+                    <TextBlock HorizontalAlignment="Center" Height="119" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="456">
+                    	<Run Text="Green Community Village"/>
+                    	<LineBreak/>
+                    	<Run Text="Dubai"/>
+                        <LineBreak />
+                        <Run Text="United Arab Emirates"/>
+                    </TextBlock>
+                    <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="456" Tap="TextBlock_Tap" TextDecorations="Underline" Margin="0,0,0,10">
+                    	<Run Text="+971 4 885 0999"/>
+                    </TextBlock>
+                    <Image HorizontalAlignment="Center" Height="360" Margin="0,107,0,0" VerticalAlignment="Top" Width="372" Source="/Assets/hotel.PNG"/>
+                </Grid>
+            </phone:PivotItem>
+            <!--Pivot item two-->
+            <phone:PivotItem Header="Beach Club">
+                <Grid Height="603" VerticalAlignment="Top">
+                    <TextBlock HorizontalAlignment="Center" Height="119" TextWrapping="Wrap" VerticalAlignment="Top" Width="456" FontSize="36">
+                    	<Run Text="Meydan Beach Club"/>
+                    </TextBlock>
+                    <TextBlock HorizontalAlignment="Center" Height="119" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="456">
+                    	<Run Text="Meydan Beach Club"/>
+                    	<LineBreak/>
+                    	<Run Text="Dubai"/>
+                        <LineBreak />
+                        <Run Text="United Arab Emirates"/>
+                    </TextBlock>
+                    <TextBlock x:Name="callBeachClub" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="456" TextDecorations="Underline" Margin="0,0,0,10" Tap="callBeachClub_Tap">
+                    	<Run Text="+971 4 433 3777"/>
+                    </TextBlock>
+                    <Image HorizontalAlignment="Center" Height="360" Margin="0,107,0,0" VerticalAlignment="Top" Width="372" Source="/Assets/beachclub.PNG"/>
+                    <Grid Margin="330,505,56,37" Tap="Image_Tap">
+                        <Grid.Background>
+                            <SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
+                        </Grid.Background>
+                        
+                        <Grid.OpacityMask>
+                            <ImageBrush Stretch="Fill" ImageSource="/Assets/map.png"/>
+                        </Grid.OpacityMask>
+
+                    </Grid>
+                </Grid>
+            </phone:PivotItem>
+        </phone:Pivot>
+    </Grid>
+
+</phone:PhoneApplicationPage>

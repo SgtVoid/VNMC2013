@@ -28,30 +28,29 @@
             </ImageBrush>
         </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" MinHeight="220"/>
+            <RowDefinition Height="Auto" MinHeight="163"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel Grid.Row="0" Margin="12,17,0,28"/>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <Grid Margin="10,38,0,0" Tap="Programma_Tap">
+        <Grid x:Name="ContentPanel" Margin="12,0" Grid.Row="1">
+            <Grid Margin="10,19,0,19" Tap="Programma_Tap">
                 <Rectangle Fill="{StaticResource PhoneAccentBrush}" HorizontalAlignment="Left" Height="204"  Stroke="Black" VerticalAlignment="Top" Width="204" />
-                <TextBlock HorizontalAlignment="Left" Padding="10" TextWrapping="Wrap" Text="Programma" VerticalAlignment="Top" Height="204" Width="204" Foreground="{StaticResource PhoneRadioCheckBoxCheckBrush}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                <TextBlock HorizontalAlignment="Left" Padding="10" TextWrapping="Wrap" Text="Mijn Programma" VerticalAlignment="Top" Height="204" Width="204" Foreground="{StaticResource PhoneRadioCheckBoxCheckBrush}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
             </Grid>
-            <Grid Margin="242,38,0,0" Tap="Map_Tap">
+            <Grid Margin="242,19,0,19" Tap="Roomies_Tap">
                 <Rectangle Fill="{StaticResource PhoneAccentBrush}" HorizontalAlignment="Left" Height="204"  Stroke="Black" VerticalAlignment="Top" Width="204" />
-                <TextBlock HorizontalAlignment="Left" Padding="10" TextWrapping="Wrap" Text="Map" VerticalAlignment="Top" Height="204" Width="204" Foreground="{StaticResource PhoneRadioCheckBoxCheckBrush}" FontFamily="{StaticResource PhoneFontFamilyNormal}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                <TextBlock HorizontalAlignment="Left" Padding="10" TextWrapping="Wrap" Text="Roomies" VerticalAlignment="Top" Height="204" Width="204" Foreground="{StaticResource PhoneRadioCheckBoxCheckBrush}" FontFamily="{StaticResource PhoneFontFamilyNormal}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
             </Grid>
             <Grid Margin="10,260,0,0" Tap="Poi_Tap">
                 <Rectangle Fill="{StaticResource PhoneAccentBrush}" HorizontalAlignment="Left" Height="204"  Stroke="Black" VerticalAlignment="Top" Width="204" />
-                <TextBlock HorizontalAlignment="Left" Padding="10" TextWrapping="Wrap" Text="POI" VerticalAlignment="Top" Height="204" Width="204" Foreground="{StaticResource PhoneRadioCheckBoxCheckBrush}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                <TextBlock HorizontalAlignment="Left" Padding="10" TextWrapping="Wrap" Text="programmas van anderen ?!" VerticalAlignment="Top" Height="204" Width="204" Foreground="{StaticResource PhoneRadioCheckBoxCheckBrush}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
             </Grid>
-            <Grid Margin="242,260,0,0" Tap="Rectangle_Tap">
+            <Grid Margin="242,260,0,0" Tap="Contact_Tap">
                 <Rectangle Fill="{StaticResource PhoneAccentBrush}" HorizontalAlignment="Left" Height="204"  Stroke="Black" VerticalAlignment="Top" Width="204" />
-                <TextBlock HorizontalAlignment="Left" Padding="10" TextWrapping="Wrap" Text="1337 h4x" VerticalAlignment="Top" Height="204" Width="204" Foreground="{StaticResource PhoneRadioCheckBoxCheckBrush}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                <TextBlock HorizontalAlignment="Left" Padding="10" TextWrapping="Wrap" Text="Contact" VerticalAlignment="Top" Height="204" Width="204" Foreground="{StaticResource PhoneRadioCheckBoxCheckBrush}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
             </Grid>
 
         </Grid>
