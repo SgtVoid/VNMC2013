@@ -15,7 +15,7 @@
 
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot">
-        <phone:Panorama Title="  ">
+        <phone:Panorama x:Name="panoramathingy" Title="  ">
             <phone:Panorama.Background>
                 <ImageBrush Stretch="UniformToFill" ImageSource="/Assets/background.png"/>
             </phone:Panorama.Background>
@@ -25,9 +25,9 @@
                 <phone:LongListSelector Name="listFriday">
                     <phone:LongListSelector.ItemTemplate>
                         <DataTemplate>
-                            <Grid>
-                                
-                                <TextBlock Text="{Binding}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" FontSize="48" Padding="6" />
+                            <Grid Tap="Grid_Tap">
+                                <Image Source="{Binding Image}" Width="100" Height="100" HorizontalAlignment="Left" />
+                                <TextBlock Text="{Binding Name}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" HorizontalAlignment="Right" FontSize="22" Padding="6" />
                             </Grid>
                         </DataTemplate>
                     </phone:LongListSelector.ItemTemplate>

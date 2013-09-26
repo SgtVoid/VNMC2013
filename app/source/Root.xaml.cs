@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Microsoft.Phone.UserData;
 
 namespace VNMC2013
 {
@@ -23,8 +24,12 @@ namespace VNMC2013
         }
         private void Roomies_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
+
+
             MessageBox.Show("hoi");
         }
+
+
         private void Poi_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             MessageBox.Show("hoi");

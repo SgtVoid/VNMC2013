@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Diagnostics;
 using System.Resources;
 using System.Windows;
@@ -7,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using VNMC2013.Resources;
+using Microsoft.Phone.UserData;
 
 namespace VNMC2013
 {
@@ -61,6 +63,18 @@ namespace VNMC2013
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            Contacts cons = new Contacts();
+            cons.SearchCompleted += cons_SearchCompleted;
+            cons.SearchAsync("", FilterKind.None, null);
+        }
+
+        void cons_SearchCompleted(object sender, ContactsSearchEventArgs e)
+        {
+
+            var list = (from x in e.Results
+                        where x.EmailAddresses.Where(email => email.EmailAddress.Contains("@macaw.nl")).Count() > 0
+                        select x).ToList();
+            GlobalData.Instance.SetContacts(list.AsReadOnly());
         }
 
         // Code to execute when the application is activated (brought to foreground)
