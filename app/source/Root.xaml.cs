@@ -24,11 +24,8 @@ namespace VNMC2013
         }
         private void Roomies_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-
-
-            MessageBox.Show("hoi");
+            NavigationService.Navigate(new Uri("/Roomies.xaml", UriKind.Relative));
         }
-
 
         private void Poi_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
