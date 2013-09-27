@@ -10,6 +10,9 @@ namespace VNMC2013
 {
     class GlobalData
     {
+        public delegate void ContactsLoadedHandler();
+        public event ContactsLoadedHandler OnContactsLoaded;
+
         private static GlobalData _instance = null;
         public static GlobalData Instance
         {
@@ -39,6 +42,9 @@ namespace VNMC2013
             if (Contacts == null)
             {
                 Contacts = contacts;
+
+                if (OnContactsLoaded != null)
+                    OnContactsLoaded();
             }
         }
     }

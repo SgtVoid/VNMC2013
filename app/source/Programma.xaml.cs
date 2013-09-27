@@ -19,37 +19,11 @@ namespace VNMC2013
         {
             InitializeComponent();
 
-            List<string> test = new List<string>
-            {
-                "hoi",
-                "doei"
-            };
-            listFriday.ItemsSource = (from x in GlobalData.Instance.Contacts
-                                     // where x.DisplayName == "Remco Brilstra"
-                                      select new
-                                      {
-                                          Contact = x,
+            listSunday.ItemsSource = (from x in Person.Me.Activity.People
+                                      select new {
                                           Name = x.DisplayName,
-                                          Image = CreateImageFromStream(x.GetPicture())
+                                          Image = x.Image
                                       }).ToList();
-
-           // ((ImageBrush)panoramathingy.Background).ImageSource = ((dynamic)listFriday.ItemsSource[0]).Image;
-        }
-
-        private BitmapImage CreateImageFromStream(Stream stream)
-        {
-            if (stream != null)
-            {
-                BitmapImage img = new BitmapImage();
-                img.SetSource(stream);
-                return img;
-            }
-            return null;
-        }
-
-        private void Grid_Tap(object sender, System.Windows.Input.GestureEventArgs e)
-        {
-            
         }
     }
 }

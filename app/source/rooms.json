@@ -1,32 +1,12 @@
 [
 	{ 
 		Id: 1,
-		People: [
-			{
-				Id: 1,
-				FirstName: "Wesley",
-				LastName: "Stam"
-			},
-			{
-				Id: 2,
-				FirstName: "Haim",
-				LastName: "Levin"
-			}
-		]
+		Person1Id: 1,
+		Person2Id: 2
 	},
-	{ 
+	{
 		Id: 2,
-		People: [
-			{
-				Id: 3,
-				FirstName: "Remco",
-				LastName: "Brilstra"
-			},
-			{
-				Id: 4,
-				FirstName: "Sjoerd",
-				LastName: "Piepenbrink"
-			}
-		]
+		Person1Id: 3,
+		Person2Id: 4
 	}
 ]

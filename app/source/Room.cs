@@ -14,18 +14,21 @@ namespace VNMC2013
     class Room
     {
         public int Id { get; set; }
+        public Person[] People = new Person[2];
 
-        private Person[] people = new Person[2];
-        public Person[] People
+        public int Person1Id
         {
-            get
-            {
-                return people;
-            }
             set
             {
-                people[0] = value[0];
-                people[1] = value[1];
+                People[0] = Person.All.First(x => x.Id == value);
+            }
+        }
+
+        public int Person2Id
+        {
+            set
+            {
+                People[1] = Person.All.First(x => x.Id == value);
             }
         }
 

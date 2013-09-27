@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -17,9 +18,8 @@
             <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/refresh.png" IsEnabled="False" Text="Sync"/>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
-
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot">
+    <Grid x:Name="LayoutRoot" Margin="-1,0,1,0">
         <Grid.Background>
             <ImageBrush ImageSource="/Assets/background.png" Stretch="UniformToFill">
                 <ImageBrush.RelativeTransform>
@@ -33,6 +33,13 @@
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
+
+        <Popup Name="GetDisplayName" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.ZIndex="1" IsOpen="False">
+            <StackPanel Background="Black" Margin="0,140,0,-321" Width="478" Height="194" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                <toolkit:AutoCompleteBox HorizontalAlignment="Left"  Width="450" x:Name="DisplayName" VerticalAlignment="Top"/>
+                <Button x:Name="Send" Height="88" Content="Submit" Click="Send_Click" />
+            </StackPanel>
+        </Popup>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Margin="12,0" Grid.Row="1">

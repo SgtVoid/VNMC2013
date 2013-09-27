@@ -25,7 +25,7 @@
                 <phone:LongListSelector Name="listFriday">
                     <phone:LongListSelector.ItemTemplate>
                         <DataTemplate>
-                            <Grid Tap="Grid_Tap">
+                            <Grid>
                                 <Image Source="{Binding Image}" Width="100" Height="100" HorizontalAlignment="Left" />
                                 <TextBlock Text="{Binding Name}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" HorizontalAlignment="Right" FontSize="22" Padding="6" />
                             </Grid>
@@ -41,7 +41,16 @@
 
             <!--Panorama item two-->
             <phone:PanoramaItem Header="Zondag" Foreground="Black">
-                <Grid/>
+                <phone:LongListSelector Name="listSunday">
+                    <phone:LongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Image Source="{Binding Image}" Width="100" Height="100" HorizontalAlignment="Left" />
+                                <TextBlock Text="{Binding Name}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" HorizontalAlignment="Right" FontSize="22" Padding="6" />
+                            </Grid>
+                        </DataTemplate>
+                    </phone:LongListSelector.ItemTemplate>
+                </phone:LongListSelector>
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
