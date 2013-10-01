@@ -44,5 +44,7 @@ namespace VNMC2013
                 return people = Person.All.Where(x => x.PrimaryActivity == this.Id).ToArray();
             }
         }
+
+        public DateTime AlarmTime { get; set; }
     }
 }

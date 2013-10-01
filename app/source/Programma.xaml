@@ -5,6 +5,7 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -41,16 +42,19 @@
 
             <!--Panorama item two-->
             <phone:PanoramaItem Header="Zondag" Foreground="Black">
-                <phone:LongListSelector Name="listSunday">
-                    <phone:LongListSelector.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Image Source="{Binding Image}" Width="100" Height="100" HorizontalAlignment="Left" />
-                                <TextBlock Text="{Binding Name}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" HorizontalAlignment="Right" FontSize="22" Padding="6" />
-                            </Grid>
-                        </DataTemplate>
-                    </phone:LongListSelector.ItemTemplate>
-                </phone:LongListSelector>
+                <Grid>
+                    <toolkit:ToggleSwitch Name="AlarmToggle" Content="Zet Alarm" Checked="AlarmToggle_Checked" Unchecked="AlarmToggle_Unchecked" />
+                    <phone:LongListSelector Name="listSunday" Margin="0,57,0,0">
+                        <phone:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding Image}" Width="100" Height="100" HorizontalAlignment="Left" />
+                                    <TextBlock Text="{Binding Name}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" HorizontalAlignment="Right" FontSize="22" Padding="6" />
+                                </Grid>
+                            </DataTemplate>
+                        </phone:LongListSelector.ItemTemplate>
+                    </phone:LongListSelector>
+                </Grid>
             </phone:PanoramaItem>
 
             <!--Panorama item two-->

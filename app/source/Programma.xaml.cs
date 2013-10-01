@@ -10,6 +10,7 @@ using Microsoft.Phone.Shell;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.IO;
+using Microsoft.Phone.Scheduler;
 
 namespace VNMC2013
 {
@@ -19,11 +20,31 @@ namespace VNMC2013
         {
             InitializeComponent();
 
-            listSunday.ItemsSource = (from x in Person.Me.Activity.People
+            listSunday.ItemsSource = (from x in Person.CurrentUser.Activity.People
                                       select new {
                                           Name = x.DisplayName,
                                           Image = x.Image
                                       }).ToList();
+
+            if (ScheduledActionService.Find("VNMC2013") == null)
+                AlarmToggle.IsChecked = false;
+            else
+                AlarmToggle.IsChecked = true;
+        }
+
+        private void AlarmToggle_Checked(object sender, RoutedEventArgs e)
+        {
+            Alarm alarm = new Alarm("VNMC2013");
+
+            alarm.Content = "Wake up!!!! It is time for " + Person.CurrentUser.Activity.Name;
+            alarm.BeginTime = DateTime.Now.AddMinutes(1); //Person.CurrentUser.Activity.AlarmTime;
+            alarm.ExpirationTime = Person.CurrentUser.Activity.AlarmTime.AddHours(1);
+            ScheduledActionService.Add(alarm);
+        }
+
+        private void AlarmToggle_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ScheduledActionService.Remove("VNMC2013");
         }
     }
 }

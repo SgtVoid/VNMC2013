@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Phone.UserData;
+using System.IO.IsolatedStorage;
 
 namespace VNMC2013
 {
