@@ -30,14 +30,18 @@ namespace VNMC2013
                 AlarmToggle.IsChecked = false;
             else
                 AlarmToggle.IsChecked = true;
+
+            TextBlockActivity.Text = Person.CurrentUser.Activity.Description;
         }
 
         private void AlarmToggle_Checked(object sender, RoutedEventArgs e)
         {
+            if (ScheduledActionService.Find("VNMC2013") != null) return;
+
             Alarm alarm = new Alarm("VNMC2013");
 
             alarm.Content = "Wake up!!!! It is time for " + Person.CurrentUser.Activity.Name;
-            alarm.BeginTime = DateTime.Now.AddMinutes(1); //Person.CurrentUser.Activity.AlarmTime;
+            alarm.BeginTime = Person.CurrentUser.Activity.AlarmTime;
             alarm.ExpirationTime = Person.CurrentUser.Activity.AlarmTime.AddHours(1);
             ScheduledActionService.Add(alarm);
         }
@@ -45,6 +49,14 @@ namespace VNMC2013
         private void AlarmToggle_Unchecked(object sender, RoutedEventArgs e)
         {
             ScheduledActionService.Remove("VNMC2013");
+        }
+
+        private void Image_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            Image image = e.OriginalSource as Image;
+            BitmapImage img = new BitmapImage();
+            img.UriSource = new Uri("/Assets/explosion-64.png", UriKind.Relative);
+            image.Source = img;
         }
     }
 }

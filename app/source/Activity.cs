@@ -22,7 +22,7 @@ namespace VNMC2013
 
                 string json = string.Empty;
                 IsolatedStorageFile file = IsolatedStorageFile.GetUserStoreForApplication();
-                StreamResourceInfo resource = Application.GetResourceStream(new Uri("/VNMC2013;component/programs.json", UriKind.Relative));
+                StreamResourceInfo resource = Application.GetResourceStream(new Uri("/VNMC2013;component/activities.json", UriKind.Relative));
 
                 using (StreamReader reader = new StreamReader(resource.Stream))
                 {
@@ -34,6 +34,7 @@ namespace VNMC2013
 
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
 
         private Person[] people;
         public Person[] People

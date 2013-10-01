@@ -141,7 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Resource Include="programs.json" />
+    <Resource Include="Activities.json" />
     <Resource Include="people.json" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
@@ -150,6 +150,8 @@
     <Resource Include="rooms.json" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\airplane_landing-64.png" />
+    <Content Include="Assets\airplane_takeoff-64.png" />
     <Content Include="Assets\AlignmentGrid.png" />
     <Content Include="Assets\AppBar\refresh.png" />
     <Content Include="Assets\ApplicationIcon.png">
@@ -157,8 +159,11 @@
     </Content>
     <Content Include="Assets\background.png" />
     <Content Include="Assets\beachclub.png" />
+    <Content Include="Assets\bus-64.png" />
+    <Content Include="Assets\coctail-64.png" />
     <Content Include="Assets\hotel.PNG" />
     <Content Include="Assets\map.png" />
+    <Content Include="Assets\taxi-64.png" />
     <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -174,6 +179,8 @@
     <Content Include="Assets\Tiles\IconicTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\explosion-64.png" />
+    <Content Include="Assets\trolleybus-64.png" />
     <Content Include="README_FIRST.txt" />
     <Content Include="SplashScreenImage.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

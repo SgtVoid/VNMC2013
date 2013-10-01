@@ -16,55 +16,194 @@
 
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot">
-        <phone:Panorama x:Name="panoramathingy" Title="  ">
+        <phone:Panorama x:Name="panoramathingy" Title=" ">
             <phone:Panorama.Background>
                 <ImageBrush Stretch="UniformToFill" ImageSource="/Assets/background.png"/>
             </phone:Panorama.Background>
 
             <!--Panorama item one-->
-            <phone:PanoramaItem Header="Vrijdag" Foreground="Black">
-                <phone:LongListSelector Name="listFriday">
-                    <phone:LongListSelector.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Image Source="{Binding Image}" Width="100" Height="100" HorizontalAlignment="Left" />
-                                <TextBlock Text="{Binding Name}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" HorizontalAlignment="Right" FontSize="22" Padding="6" />
-                            </Grid>
-                        </DataTemplate>
-                    </phone:LongListSelector.ItemTemplate>
-                </phone:LongListSelector>
+            <phone:PanoramaItem Header="Vrijdag" UseLayoutRounding="True" Foreground="Black">
+                <ScrollViewer>
+                    <Grid x:Name="ListFriday">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="210" />
+                            <ColumnDefinition Width="210" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="200" />
+                            <RowDefinition Height="200" />
+                            <RowDefinition Height="200" />
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Column="0" Grid.Row="0" Background="{StaticResource PhoneAccentBrush}" Margin="0,0,10,15" />
+                        <Grid Grid.Column="1" Grid.Row="0" Background="{StaticResource PhoneAccentBrush}" Margin="10,0,0,15" />
+                        <Grid Grid.Column="0" Grid.Row="1" Background="{StaticResource PhoneAccentBrush}" Margin="0,0,10,15" />
+                        <Grid Grid.Column="1" Grid.Row="1" Background="{StaticResource PhoneAccentBrush}" Margin="10,0,0,15" />
+                        <Grid Grid.Column="0" Grid.Row="2" Background="{StaticResource PhoneAccentBrush}" Margin="0,0,10,15" />
+
+                        <TextBlock Text="11.30" Grid.Row="0" Grid.Column="0" Margin="10,20,0,0" Foreground="White" />
+                        <TextBlock Text="Verzamelen Macaw HQ (broodjeslunch)" Grid.Row="0" Grid.Column="0" Margin="10,50,10,0" TextWrapping="Wrap" Foreground="White" />
+
+                        <TextBlock Text="12.15" Grid.Row="0" Grid.Column="1" Margin="20,20,0,0" Foreground="White" />
+                        <TextBlock Text="Vertrek naar Schiphol" Grid.Row="0"  Grid.Column="1" Margin="20,50,10,0" TextWrapping="Wrap" Foreground="White" />
+<Image Source="/Assets/bus-64.png" Width="64" VerticalAlignment="Bottom" Margin="10,0,0,15" Grid.Row="0" Grid.Column="1" />
+
+                        <TextBlock Text="12.40" Grid.Row="1" Grid.Column="0" Padding="10,20,0,0" Foreground="White" />
+                        <TextBlock Text="Check-in" Grid.Row="1"  Grid.Column="0" Margin="10,50,0,0" Foreground="White" />
+
+                        <TextBlock Text="Vertrek - Aankomst" Grid.Row="1" Grid.Column="1" Margin="20,20,0,0" Foreground="White" />
+                        <TextBlock Text="14.40 - 00.10  " Grid.Row="1" Grid.Column="1" Margin="20,50,0,0" Foreground="White" />
+                        <Image Source="/Assets/airplane_takeoff-64.png" Width="64" VerticalAlignment="Bottom" Margin="-64,0,0,15" Grid.Row="1" Grid.Column="1" />
+                        <Image Source="/Assets/airplane_landing-64.png" Width="64" VerticalAlignment="Bottom" Margin="64,0,0,15" Grid.Row="1" Grid.Column="1" />
+
+                        <TextBlock Text="Check-in Hotel and welcome party" Grid.Row="2" Grid.Column="0" Margin="10,20,0,0" TextWrapping="Wrap" Foreground="White" />
+                    </Grid>
+                </ScrollViewer>
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
             <phone:PanoramaItem Header="Zaterdag" Foreground="Black">
-                <Grid/>
+                <ScrollViewer>
+                    <Grid x:Name="ListThursday">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="210" />
+                            <ColumnDefinition Width="210" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="200" />
+                            <RowDefinition Height="200" />
+                            <RowDefinition Height="200" />
+                            <RowDefinition Height="200" />
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Column="0" Grid.Row="0" Background="{StaticResource PhoneAccentBrush}" Margin="0,0,10,15" />
+                        <Grid Grid.Column="1" Grid.Row="0" Background="{StaticResource PhoneAccentBrush}" Margin="10,0,0,15" />
+                        <Grid Grid.Column="0" Grid.Row="1" Background="{StaticResource PhoneAccentBrush}" Margin="0,0,10,15" />
+                        <Grid Grid.Column="1" Grid.Row="1" Background="{StaticResource PhoneAccentBrush}" Margin="10,0,0,15" />
+                        <Grid Grid.Column="0" Grid.Row="2" Background="{StaticResource PhoneAccentBrush}" Margin="0,0,10,15" />
+                        <Grid Grid.Column="1" Grid.Row="2" Background="{StaticResource PhoneAccentBrush}" Margin="10,0,0,15" />
+                        <Grid Grid.Column="0" Grid.Row="3" Background="{StaticResource PhoneAccentBrush}" Margin="0,0,10,15" />
+                        <Grid Grid.Column="1" Grid.Row="3" Background="{StaticResource PhoneAccentBrush}" Margin="10,0,0,15" />
+
+                        <TextBlock Text="07.30" Grid.Row="0" Grid.Column="0" Margin="10,20,0,0" Foreground="White" />
+                        <TextBlock Text="Ontbijt" Grid.Row="0" Grid.Column="0" Margin="10,50,10,0" TextWrapping="Wrap" Foreground="White" />
+
+                        <TextBlock Text="10.30" Grid.Row="0" Grid.Column="1" Margin="20,20,0,0" Foreground="White" />
+                        <TextBlock Text="Vertrek" Grid.Row="0" Grid.Column="1" Margin="20,50,10,0" TextWrapping="Wrap" Foreground="White" />
+                        <Image Source="/Assets/Bus-64.png" Width="64" VerticalAlignment="Bottom" Margin="10,0,0,15" Grid.Row="0" Grid.Column="1" />
+
+                        <TextBlock Text="11.00" Grid.Row="1" Grid.Column="0" Margin="10,20,0,0" Foreground="White" />
+                        <TextBlock Text="Aankomst" Grid.Row="1" Grid.Column="0" Margin="10,50,10,0" TextWrapping="Wrap" Foreground="White" />
+
+                        <TextBlock Text="18.00" Grid.Row="1" Grid.Column="1" Margin="20,20,0,0" Foreground="White" />
+                        <TextBlock Text="Sunset drinks" Grid.Row="1" Grid.Column="1" Margin="20,50,10,0" TextWrapping="Wrap" Foreground="White" />
+                        <Image Source="/Assets/coctail-64.png" Width="64" VerticalAlignment="Bottom" Margin="10,0,0,15" Grid.Row="1" Grid.Column="1" />
+
+                        <TextBlock Text="19.00" Grid.Row="2" Grid.Column="0" Margin="10,20,0,0" Foreground="White" />
+                        <TextBlock Text="Diner" Grid.Row="2" Grid.Column="0" Margin="10,50,10,0" TextWrapping="Wrap" Foreground="White" />
+
+                        <TextBlock Text="21.00" Grid.Row="2" Grid.Column="1" Margin="20,20,0,0" Foreground="White" />
+                        <TextBlock Text="Lounge party" Grid.Row="2" Grid.Column="1" Margin="20,50,10,0" TextWrapping="Wrap" Foreground="White" />
+
+                        <TextBlock Text="21.00-00.00" Grid.Row="3" Grid.Column="0" Margin="10,20,0,0" Foreground="White" />
+                        <TextBlock Text="Shuttle" Grid.Row="3" Grid.Column="0" Margin="10,50,10,0" TextWrapping="Wrap" Foreground="White" />
+                        <Image Source="/Assets/trolleybus-64.png" Width="64" VerticalAlignment="Bottom" Margin="0,0,0,15" Grid.Row="3" Grid.Column="0" />
+
+                        <TextBlock Text="Na 00.00" Grid.Row="3" Grid.Column="1" Margin="20,20,0,0" Foreground="White" />
+                        <TextBlock Text="Taxi" Grid.Row="3" Grid.Column="1" Margin="20,50,10,0" TextWrapping="Wrap" Foreground="White" />
+                        <Image Source="/Assets/taxi-64.png" Width="64" VerticalAlignment="Bottom" Margin="10,0,0,15" Grid.Row="3" Grid.Column="1" />
+                    </Grid>
+                </ScrollViewer>
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
             <phone:PanoramaItem Header="Zondag" Foreground="Black">
-                <Grid>
-                    <toolkit:ToggleSwitch Name="AlarmToggle" Content="Zet Alarm" Checked="AlarmToggle_Checked" Unchecked="AlarmToggle_Unchecked" />
-                    <phone:LongListSelector Name="listSunday" Margin="0,57,0,0">
-                        <phone:LongListSelector.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Image Source="{Binding Image}" Width="100" Height="100" HorizontalAlignment="Left" />
-                                    <TextBlock Text="{Binding Name}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" HorizontalAlignment="Right" FontSize="22" Padding="6" />
-                                </Grid>
-                            </DataTemplate>
-                        </phone:LongListSelector.ItemTemplate>
-                    </phone:LongListSelector>
-                </Grid>
+                <ScrollViewer>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Name="TextBlockActivity" Grid.Row="0" />
+
+                        <toolkit:ToggleSwitch Name="AlarmToggle" Content="Zet Alarm" Checked="AlarmToggle_Checked" Unchecked="AlarmToggle_Unchecked" VerticalAlignment="Top" Grid.Row="1" Foreground="Black" SwitchForeground="Green" Background="Red" />
+
+                        <phone:LongListSelector Name="listSunday" Margin="0,80,0,0" Grid.Row="2">
+                            <phone:LongListSelector.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Background="#B2FFFFFF" Margin="0,0,0,10">
+                                        <Image Source="{Binding Image}" Width="100" Height="100" HorizontalAlignment="Left" />
+                                        <TextBlock Text="{Binding Name}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" HorizontalAlignment="Right" FontSize="22" Padding="6" Foreground="Black" VerticalAlignment="Center" />
+                                    </Grid>
+                                </DataTemplate>
+                            </phone:LongListSelector.ItemTemplate>
+                        </phone:LongListSelector>
+                    </Grid>
+                </ScrollViewer>
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
             <phone:PanoramaItem Header="Maandag" Foreground="Black">
-                <Grid/>
+                <Grid x:Name="ListMonday">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="210" />
+                        <ColumnDefinition Width="210" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="200" />
+                        <RowDefinition Height="200" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Column="0" Grid.Row="0" Background="{StaticResource PhoneAccentBrush}" Margin="0,0,10,15" />
+                    <Grid Grid.Column="1" Grid.Row="0" Background="{StaticResource PhoneAccentBrush}" Margin="10,0,0,15" />
+                    <Grid Grid.Column="0" Grid.Row="1" Background="{StaticResource PhoneAccentBrush}" Margin="0,0,10,15" />
+
+                    <TextBlock Text="Tot 13.30" Grid.Row="0" Grid.Column="0" Margin="10,20,0,0" Foreground="White" />
+                    <TextBlock Text="Eigen invullen" Grid.Row="0" Grid.Column="0" Margin="10,50,10,0" TextWrapping="Wrap" Foreground="White" />
+
+                    <TextBlock Text="15.30" Grid.Row="0" Grid.Column="1" Margin="20,20,0,0" Foreground="White" />
+                    <TextBlock Text="Vetrek naar Desert Dinner Safari" Grid.Row="0" Grid.Column="1" Margin="20,50,10,0" TextWrapping="Wrap" Foreground="White" />
+
+                    <TextBlock Text="22.30" Grid.Row="1" Grid.Column="0" Margin="10,20,0,0" Foreground="White" />
+                    <TextBlock Text="Terug in Hotel" Grid.Row="1" Grid.Column="0" Margin="10,50,10,0" TextWrapping="Wrap" Foreground="White" />
+                </Grid>
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
             <phone:PanoramaItem Header="Dinsdag" Foreground="Black">
-                <Grid/>
+                <Grid x:Name="ListThuesday">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="210" />
+                        <ColumnDefinition Width="210" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="200" />
+                        <RowDefinition Height="200" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Column="0" Grid.Row="0" Background="{StaticResource PhoneAccentBrush}" Margin="0,0,10,15" />
+                    <Grid Grid.Column="1" Grid.Row="0" Background="{StaticResource PhoneAccentBrush}" Margin="10,0,0,15" />
+                    <Grid Grid.Column="0" Grid.Row="1" Background="{StaticResource PhoneAccentBrush}" Margin="0,0,10,15" />
+                    <Grid Grid.Column="1" Grid.Row="1" Background="{StaticResource PhoneAccentBrush}" Margin="10,0,0,15" />
+                    <Grid Grid.Column="0" Grid.Row="2" Background="{StaticResource PhoneAccentBrush}" Margin="0,0,10,15" />
+
+                    <TextBlock Text="05.00" Grid.Row="0" Grid.Column="0" Margin="10,20,0,0" Foreground="White" />
+                    <TextBlock Text="Ontbijt" Grid.Row="0" Grid.Column="0" Margin="10,50,10,0" TextWrapping="Wrap" Foreground="White" />
+
+                    <TextBlock Text="05.30" Grid.Row="0" Grid.Column="1" Margin="20,20,0,0" Foreground="White" />
+                    <TextBlock Text="Vertrek naar Dubai International Airport" Grid.Row="0"  Grid.Column="1" Margin="20,50,10,0" TextWrapping="Wrap" Foreground="White" />
+                    <Image Source="/Assets/Bus-64.png" Width="64" VerticalAlignment="Bottom" Margin="10,0,0,15" Grid.Row="0" Grid.Column="1" />
+
+                    <TextBlock Text="06.20" Grid.Row="1" Grid.Column="0" Padding="10,20,0,0" Foreground="White" />
+                    <TextBlock Text="Check-in" Grid.Row="1"  Grid.Column="0" Margin="10,50,0,0" Foreground="White" />
+                    <Image Source="/Assets/airplane_takeoff-64.png" Width="64" VerticalAlignment="Bottom" Margin="0,0,0,15" Grid.Row="1" Grid.Column="0" />
+
+                    <TextBlock Text="Vertrek - Aankomst" Grid.Row="1" Grid.Column="1" Margin="20,20,0,0" Foreground="White" />
+                    <TextBlock Text="08.20 - 12.40  " Grid.Row="1" Grid.Column="1" Margin="20,50,0,0" Foreground="White" />
+                    <Image Source="/Assets/airplane_landing-64.png" Width="64" VerticalAlignment="Bottom" Margin="10,0,0,15" Grid.Row="1" Grid.Column="1" Tap="Image_Tap" />
+                </Grid>
             </phone:PanoramaItem>
         </phone:Panorama>
     </Grid>
