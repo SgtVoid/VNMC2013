@@ -61,6 +61,5 @@ namespace VNMC2013
             localSettings["DisplayName"] = DisplayName.Text;
             GetDisplayName.IsOpen = false;
         }
-
     }
 }
