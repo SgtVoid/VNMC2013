@@ -126,11 +126,15 @@
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
 
-                        <TextBlock Name="TextBlockActivity" Grid.Row="0" />
+                        <Border Background="#B2FFFFFF" Grid.Row="0">
+                            <TextBlock Name="TextBlockActivity" TextWrapping="Wrap" Foreground="Black" Padding="5" />
+                        </Border>
 
-                        <toolkit:ToggleSwitch Name="AlarmToggle" Content="Zet Alarm" Checked="AlarmToggle_Checked" Unchecked="AlarmToggle_Unchecked" VerticalAlignment="Top" Grid.Row="1" Foreground="Black" SwitchForeground="Green" Background="Red" />
+                        <Border Background="#B2FFFFFF" Grid.Row="1">
+                            <toolkit:ToggleSwitch Name="AlarmToggle" Content="Zet Alarm" Checked="AlarmToggle_Checked" Unchecked="AlarmToggle_Unchecked" VerticalAlignment="Top" Foreground="Black" SwitchForeground="Green" Background="Red" />
+                        </Border>
 
-                        <phone:LongListSelector Name="listSunday" Margin="0,80,0,0" Grid.Row="2">
+                        <phone:LongListSelector Name="listSunday" Margin="0,40,0,0" Grid.Row="2">
                             <phone:LongListSelector.ItemTemplate>
                                 <DataTemplate>
                                     <Grid Background="#B2FFFFFF" Margin="0,0,0,10">
