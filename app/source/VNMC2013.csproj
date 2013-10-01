@@ -181,7 +181,6 @@
     </Content>
     <Content Include="Assets\explosion-64.png" />
     <Content Include="Assets\trolleybus-64.png" />
-    <Content Include="README_FIRST.txt" />
     <Content Include="SplashScreenImage.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
