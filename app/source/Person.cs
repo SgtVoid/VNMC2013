@@ -14,13 +14,13 @@ namespace VNMC2013
 {
     class Person
     {
-        private static Person me;
-        public static Person Me
+        private static Person currentUser;
+        public static Person CurrentUser
         {
             get
             {
-                if (me != null) return me;
-                return me = Person.All.First(x => x.DisplayName == IsolatedStorageSettings.ApplicationSettings["DisplayName"].ToString());
+                if (currentUser != null) return currentUser;
+                return currentUser = Person.All.First(x => x.DisplayName == IsolatedStorageSettings.ApplicationSettings["DisplayName"].ToString());
             }
         }
 
