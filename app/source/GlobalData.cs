@@ -120,7 +120,7 @@ namespace VNMC2013
                                          {
                                              Id = x.Id,
                                              Name = x.Name,
-                                             Description = x.Description
+                                             Description = System.Text.RegularExpressions.Regex.Replace(x.Description, "<[^>]*>", "")
                                          }).ToArray();
 
 
