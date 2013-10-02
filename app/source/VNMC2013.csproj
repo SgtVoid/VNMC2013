@@ -167,13 +167,10 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="ServiceReferences.ClientConfig" />
-    <Resource Include="Activities.json" />
-    <Resource Include="people.json" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
-    <Resource Include="rooms.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\airplane_landing-64.png" />
