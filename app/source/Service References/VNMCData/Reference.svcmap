@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0ae022f5-d496-4e90-8864-d2a3af5a4665" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://vnmc2013.cloudapp.net/VNMCData.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="795ff7f7-92bb-44b3-9899-db39acc2a2cf" SourceId="1" SourceUrl="http://vnmc2013.cloudapp.net/VNMCData.svc?wsdl" />
+    <MetadataFile FileName="VNMCData.xsd" MetadataType="Schema" ID="18cb6c63-91be-4038-89b2-57b83248f09a" SourceId="1" SourceUrl="http://vnmc2013.cloudapp.net/VNMCData.svc?xsd=xsd0" />
+    <MetadataFile FileName="VNMCData1.xsd" MetadataType="Schema" ID="fe3b4e2a-ffe5-44e1-ac38-0d14cfae4962" SourceId="1" SourceUrl="http://vnmc2013.cloudapp.net/VNMCData.svc?xsd=xsd1" />
+    <MetadataFile FileName="VNMCData2.xsd" MetadataType="Schema" ID="8a09183c-62eb-4dec-a8c7-579eb8d38f45" SourceId="1" SourceUrl="http://vnmc2013.cloudapp.net/VNMCData.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -21,6 +21,20 @@ namespace VNMC2013
             InitializeComponent();
             IsolatedStorageSettings localSettings = IsolatedStorageSettings.ApplicationSettings;
 
+
+            if (!GlobalData.Instance.IsLoaded)
+            {
+                if (!GlobalData.Instance.Load())
+                {
+                    if (MessageBox.Show("It seems you haven't synced up yet :O, let go and do that") == MessageBoxResult.OK)
+                    {
+                        Sync();
+                    }
+                }
+            }
+
+
+
             if (!localSettings.Contains("DisplayName"))
             {
                 GetDisplayName.IsOpen = true;
@@ -60,6 +74,21 @@ namespace VNMC2013
             IsolatedStorageSettings localSettings = IsolatedStorageSettings.ApplicationSettings;
             localSettings["DisplayName"] = DisplayName.Text;
             GetDisplayName.IsOpen = false;
+        }
+
+
+        private bool Sync()
+        {
+            return GlobalData.Instance.Sync();
+
+        }
+
+        private void ApplicationBarIconButton_Click(object sender, EventArgs e)
+        {
+            if (Sync())
+            {
+                MessageBox.Show("Sync Completed!");
+            }
         }
     }
 }

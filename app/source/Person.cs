@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,14 +12,16 @@ using System.Windows.Resources;
 
 namespace VNMC2013
 {
-    class Person
+    public class Person
     {
+
         private static Person currentUser;
         public static Person CurrentUser
         {
             get
             {
                 if (currentUser != null) return currentUser;
+
                 return currentUser = Person.All.First(x => x.DisplayName == IsolatedStorageSettings.ApplicationSettings["DisplayName"].ToString());
             }
         }
@@ -29,17 +31,7 @@ namespace VNMC2013
         {
             get
             {
-                if (all != null) return all;
-
-                string json = string.Empty;
-                IsolatedStorageFile file = IsolatedStorageFile.GetUserStoreForApplication();
-                StreamResourceInfo resource = Application.GetResourceStream(new Uri("/VNMC2013;component/people.json", UriKind.Relative));
-
-                using (StreamReader reader = new StreamReader(resource.Stream))
-                {
-                    json += reader.ReadToEnd();
-                }
-                return all = JsonConvert.DeserializeObject<Person[]>(json);
+                return GlobalData.Instance.People;
             }
         }
 
@@ -61,11 +53,18 @@ namespace VNMC2013
             {
                 if (image != null) return image;
 
-                return image = CreateImageFromStream(
-                    GlobalData.Instance.Contacts.First(
-                        x => x.CompleteName.FirstName + x.CompleteName.MiddleName + x.CompleteName.LastName == this.DisplayName.Replace(" ", "")
-                    ).GetPicture()
-                );
+                try
+                {
+                    return image = CreateImageFromStream(
+                        GlobalData.Instance.Contacts.First(
+                            x => string.Equals((x.CompleteName.FirstName + x.CompleteName.MiddleName + x.CompleteName.LastName).Replace(" ", ""), this.DisplayName.Replace(" ", ""), StringComparison.OrdinalIgnoreCase)
+                        ).GetPicture()
+                    );
+                }
+                catch
+                {
+                    return null;
+                }
             }
         }
 

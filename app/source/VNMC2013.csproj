@@ -97,6 +97,7 @@
     <Compile Include="Contact.xaml.cs">
       <DependentUpon>Contact.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Extensions.cs" />
     <Compile Include="GlobalData.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Person.cs" />
@@ -115,6 +116,11 @@
     </Compile>
     <Compile Include="Programma.xaml.cs">
       <DependentUpon>Programma.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\VNMCData\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -141,6 +147,26 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Service References\VNMCData\Service1.wsdl" />
+    <None Include="Service References\VNMCData\VNMC2013.VNMCData.Activity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\VNMCData\VNMC2013.VNMCData.Person.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\VNMCData\VNMC2013.VNMCData.Room.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\VNMCData\VNMCData.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\VNMCData\VNMCData1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\VNMCData\VNMCData2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="ServiceReferences.ClientConfig" />
     <Resource Include="Activities.json" />
     <Resource Include="people.json" />
     <None Include="Properties\AppManifest.xml" />
@@ -181,6 +207,12 @@
     </Content>
     <Content Include="Assets\explosion-64.png" />
     <Content Include="Assets\trolleybus-64.png" />
+    <None Include="Service References\VNMCData\configuration91.svcinfo" />
+    <None Include="Service References\VNMCData\configuration.svcinfo" />
+    <None Include="Service References\VNMCData\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="SplashScreenImage.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -204,6 +236,12 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>packages\Newtonsoft.Json.5.0.6\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\VNMCData\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

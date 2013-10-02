@@ -6,11 +6,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Phone.UserData;
 using System.IO.IsolatedStorage;
+using System.Xml.Serialization;
+using System.IO;
+using VNMC2013;
+
 
 namespace VNMC2013
 {
     class GlobalData
     {
+        Person[] _people;
+        Room[] _rooms;
+        Activity[] _activities;
+
         public delegate void ContactsLoadedHandler();
         public event ContactsLoadedHandler OnContactsLoaded;
 
@@ -26,6 +34,14 @@ namespace VNMC2013
             }
         }
 
+        bool _isloaded = false;
+        public bool IsLoaded
+        {
+            get
+            {
+                return _isloaded;
+            }
+        }
 
         public ReadOnlyCollection<Microsoft.Phone.UserData.Contact> Contacts
         {
@@ -48,5 +64,163 @@ namespace VNMC2013
                     OnContactsLoaded();
             }
         }
+
+
+        public bool Load()
+        {
+            try
+            {
+                IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForApplication();
+
+                /// Get Activities
+                XmlSerializer serializer = new XmlSerializer(typeof(Activity[]));
+                FileStream stream = storage.OpenFile("Activities.xml", FileMode.Open);
+                _activities = (Activity[])serializer.Deserialize(stream);
+
+                /// Get Rooms
+                serializer = new XmlSerializer(typeof(Room[]));
+                stream = storage.OpenFile("Rooms.xml", FileMode.Open);
+                _rooms = (Room[])serializer.Deserialize(stream);
+
+                /// Get People
+                serializer = new XmlSerializer(typeof(Person[]));
+                stream = storage.OpenFile("People.xml", FileMode.Open);
+                _people = (Person[])serializer.Deserialize(stream);
+
+
+                _isloaded = true;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+        public bool Sync()
+        {
+            try
+            {
+                IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForApplication();
+
+                XmlSerializer serializer;
+                FileStream stream;
+
+                VNMCData.Service1Client service = new VNMCData.Service1Client();
+
+
+                service.GetActivitiesCompleted += (object o, VNMC2013.VNMCData.GetActivitiesCompletedEventArgs args) =>
+                {
+                    var activities = args.Result;
+
+                    var appactivities = (from x in activities
+                                         select new Activity()
+                                         {
+                                             Id = x.Id,
+                                             Name = x.Name,
+                                             Description = x.Description
+                                         }).ToArray();
+
+
+                    serializer = new XmlSerializer(typeof(Activity[]));
+                    stream = storage.OpenFile("Activities.xml", FileMode.OpenOrCreate);
+                    serializer.Serialize(stream, appactivities);
+                    _activities = appactivities;
+                    stream.Close();
+                };
+                service.GetActivitiesAsync();
+
+                service.GetPeopleCompleted += (object o, VNMC2013.VNMCData.GetPeopleCompletedEventArgs args) =>
+                {
+                    var peeps = args.Result.ToArray();
+
+                    var applicationPeople = (from x in peeps
+                                             select new Person()
+                                             {
+                                                 Id = x.Id,
+                                                 FirstName = x.FirstName.titelize(),
+                                                 LastName = x.LastName.titelize(),
+                                                 PrimaryActivity = x.PrimaryActivity
+                                             }).ToArray();
+
+                    serializer = new XmlSerializer(typeof(Person[]));
+                    stream = storage.OpenFile("People.xml", FileMode.OpenOrCreate);
+                    serializer.Serialize(stream, applicationPeople);
+                    _people = applicationPeople;
+                    stream.Close();
+
+                    GetRoomies();
+                };
+                service.GetPeopleAsync();
+
+
+                _isloaded = true;
+                return true;
+            }
+            catch
+            {
+
+                return false;
+            }
+        }
+
+
+        private void GetRoomies()
+        {
+            IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForApplication();
+
+            XmlSerializer serializer;
+            FileStream stream;
+
+            VNMCData.Service1Client service = new VNMCData.Service1Client();
+
+             service.GetRoomiesCompleted += (object o, VNMC2013.VNMCData.GetRoomiesCompletedEventArgs args) =>
+                {
+                    var roomies = args.Result.ToArray();
+
+                    var approomies = (from x in roomies
+                                      select new Room()
+                                      {
+                                          Id = x.Id,
+                                          Person1Id = (int)(x.Person1Id == null ? -1 : x.Person1Id),
+                                          Person2Id = (int)(x.Person2Id == null ? -1 : x.Person2Id),
+                                      }).ToArray();
+
+                    serializer = new XmlSerializer(typeof(Room[]));
+                    stream = storage.OpenFile("Rooms.xml", FileMode.OpenOrCreate);
+                    serializer.Serialize(stream, approomies);
+                    _rooms = approomies;
+                    stream.Close();
+                };
+                service.GetRoomiesAsync();
+        }
+
+
+        public Person[] People
+        {
+            get
+            {
+                return _people;
+            }
+        }
+
+        public Activity[] Activities
+        {
+            get
+            {
+                return _activities;
+            }
+        }
+
+        public Room[] Rooms
+        {
+            get
+            {
+                return _rooms;
+            }
+        }
+
+
     }
 }

@@ -11,16 +11,16 @@ using System.Windows.Resources;
 
 namespace VNMC2013
 {
-    class Room
+    public class Room
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public Person[] People = new Person[2];
 
         public int Person1Id
         {
             set
             {
-                People[0] = Person.All.First(x => x.Id == value);
+                People[0] = Person.All.FirstOrDefault(x => x.Id == value);
             }
         }
 
@@ -28,21 +28,13 @@ namespace VNMC2013
         {
             set
             {
-                People[1] = Person.All.First(x => x.Id == value);
+                People[1] = Person.All.FirstOrDefault(x => x.Id == value);
             }
         }
 
         public static Room[] All()
         {
-            string json = string.Empty;
-            IsolatedStorageFile file = IsolatedStorageFile.GetUserStoreForApplication();
-            StreamResourceInfo resource = Application.GetResourceStream(new Uri("/VNMC2013;component/rooms.json", UriKind.Relative));
-
-            using (StreamReader reader = new StreamReader(resource.Stream))
-            {
-                json += reader.ReadToEnd();
-            }
-            return JsonConvert.DeserializeObject<Room[]>(json);
+            return GlobalData.Instance.Rooms;
         }
     }
 }

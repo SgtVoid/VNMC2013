@@ -11,24 +11,14 @@ using System.Windows.Resources;
 
 namespace VNMC2013
 {
-    class Activity
+    public class Activity
     {
         private static Activity[] all;
         public static Activity[] All
         {
             get
             {
-                if (all != null) return all;
-
-                string json = string.Empty;
-                IsolatedStorageFile file = IsolatedStorageFile.GetUserStoreForApplication();
-                StreamResourceInfo resource = Application.GetResourceStream(new Uri("/VNMC2013;component/activities.json", UriKind.Relative));
-
-                using (StreamReader reader = new StreamReader(resource.Stream))
-                {
-                    json += reader.ReadToEnd();
-                }
-                return all = JsonConvert.DeserializeObject<Activity[]>(json);
+                return GlobalData.Instance.Activities;
             }
         }
 

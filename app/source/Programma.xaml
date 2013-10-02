@@ -46,7 +46,7 @@
 
                         <TextBlock Text="12.15" Grid.Row="0" Grid.Column="1" Margin="20,20,0,0" Foreground="White" />
                         <TextBlock Text="Vertrek naar Schiphol" Grid.Row="0"  Grid.Column="1" Margin="20,50,10,0" TextWrapping="Wrap" Foreground="White" />
-<Image Source="/Assets/bus-64.png" Width="64" VerticalAlignment="Bottom" Margin="10,0,0,15" Grid.Row="0" Grid.Column="1" />
+                        <Image Source="/Assets/bus-64.png" Width="64" VerticalAlignment="Bottom" Margin="10,0,0,15" Grid.Row="0" Grid.Column="1" />
 
                         <TextBlock Text="12.40" Grid.Row="1" Grid.Column="0" Padding="10,20,0,0" Foreground="White" />
                         <TextBlock Text="Check-in" Grid.Row="1"  Grid.Column="0" Margin="10,50,0,0" Foreground="White" />
@@ -127,7 +127,14 @@
                         </Grid.RowDefinitions>
 
                         <Border Background="#B2FFFFFF" Grid.Row="0">
-                            <TextBlock Name="TextBlockActivity" TextWrapping="Wrap" Foreground="Black" Padding="5" />
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="31*"/>
+                                    <RowDefinition Height="33*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="titl" Name="TextTitle" TextWrapping="Wrap" Foreground="Black" Padding="5" VerticalAlignment="Top" FontWeight="Bold" FontSize="36" />
+                                <TextBlock Text="desciprdfgdfgdfgdfgdfgdfgdfgdfgdfgdfgdfgiton" Name="TextBlockActivity" TextWrapping="Wrap" Foreground="Black" Padding="5" VerticalAlignment="Bottom" Margin="0,0,0,-1" Grid.Row="1" />
+                            </Grid>
                         </Border>
 
                         <Border Background="#B2FFFFFF" Grid.Row="1">

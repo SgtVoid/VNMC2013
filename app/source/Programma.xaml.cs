@@ -32,6 +32,7 @@ namespace VNMC2013
                 AlarmToggle.IsChecked = true;
 
             TextBlockActivity.Text = Person.CurrentUser.Activity.Description;
+            TextTitle.Text = Person.CurrentUser.Activity.Name;
         }
 
         private void AlarmToggle_Checked(object sender, RoutedEventArgs e)
