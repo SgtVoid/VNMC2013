@@ -59,7 +59,7 @@ namespace VNMC2013
 
         private void Poi_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            MessageBox.Show("hoi");
+            NavigationService.Navigate(new Uri("/Activities.xaml",UriKind.Relative));
         }
         private void POI_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
