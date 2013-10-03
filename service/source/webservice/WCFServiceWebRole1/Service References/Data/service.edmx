@@ -1,0 +1,955 @@
+﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="1.0">
+    <Schema Namespace="Microsoft.SharePoint.DataService" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2007/05/edm">
+      <EntityType Name="ActivitiesItem">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="ContentTypeID" Type="Edm.String" Nullable="true" />
+        <Property Name="Title" Type="Edm.String" Nullable="true" m:FC_TargetPath="SyndicationTitle" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+        <Property Name="Description" Type="Edm.String" Nullable="true" />
+        <Property Name="Date" Type="Edm.DateTime" Nullable="true" />
+        <Property Name="Max" Type="Edm.Double" Nullable="true" />
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ContentType" Type="Edm.String" Nullable="true" />
+        <Property Name="Modified" Type="Edm.DateTime" Nullable="true" m:FC_TargetPath="SyndicationUpdated" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+        <Property Name="Created" Type="Edm.DateTime" Nullable="true" />
+        <NavigationProperty Name="CreatedBy" Relationship="Microsoft.SharePoint.DataService.ActivitiesItem_CreatedBy" FromRole="ActivitiesItem" ToRole="CreatedBy" />
+        <Property Name="CreatedById" Type="Edm.Int32" Nullable="true" />
+        <NavigationProperty Name="ModifiedBy" Relationship="Microsoft.SharePoint.DataService.ActivitiesItem_ModifiedBy" FromRole="ActivitiesItem" ToRole="ModifiedBy" />
+        <Property Name="ModifiedById" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Owshiddenversion" Type="Edm.Int32" Nullable="true" ConcurrencyMode="Fixed" />
+        <Property Name="Version" Type="Edm.String" Nullable="true" />
+        <Property Name="Path" Type="Edm.String" Nullable="true" />
+      </EntityType>
+      <EntityType Name="ActivitiesDay2Item">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="ContentTypeID" Type="Edm.String" Nullable="true" />
+        <Property Name="Title" Type="Edm.String" Nullable="true" m:FC_TargetPath="SyndicationTitle" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+        <Property Name="Description" Type="Edm.String" Nullable="true" />
+        <Property Name="Date" Type="Edm.DateTime" Nullable="true" />
+        <Property Name="Max" Type="Edm.Double" Nullable="true" />
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ContentType" Type="Edm.String" Nullable="true" />
+        <Property Name="Modified" Type="Edm.DateTime" Nullable="true" m:FC_TargetPath="SyndicationUpdated" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+        <Property Name="Created" Type="Edm.DateTime" Nullable="true" />
+        <NavigationProperty Name="CreatedBy" Relationship="Microsoft.SharePoint.DataService.ActivitiesDay2Item_CreatedBy" FromRole="ActivitiesDay2Item" ToRole="CreatedBy" />
+        <Property Name="CreatedById" Type="Edm.Int32" Nullable="true" />
+        <NavigationProperty Name="ModifiedBy" Relationship="Microsoft.SharePoint.DataService.ActivitiesDay2Item_ModifiedBy" FromRole="ActivitiesDay2Item" ToRole="ModifiedBy" />
+        <Property Name="ModifiedById" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Owshiddenversion" Type="Edm.Int32" Nullable="true" ConcurrencyMode="Fixed" />
+        <Property Name="Version" Type="Edm.String" Nullable="true" />
+        <NavigationProperty Name="Attachments" Relationship="Microsoft.SharePoint.DataService.ActivitiesDay2Item_Attachments" FromRole="ActivitiesDay2Item" ToRole="Attachments" />
+        <Property Name="Path" Type="Edm.String" Nullable="true" />
+      </EntityType>
+      <EntityType Name="AttachmentsItem" m:HasStream="true">
+        <Key>
+          <PropertyRef Name="EntitySet" />
+          <PropertyRef Name="ItemId" />
+          <PropertyRef Name="Name" />
+        </Key>
+        <Property Name="EntitySet" Type="Edm.String" Nullable="false" />
+        <Property Name="ItemId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" Nullable="false" m:FC_TargetPath="SyndicationTitle" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+      </EntityType>
+      <EntityType Name="DocumentsItem" m:HasStream="true">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="ContentTypeID" Type="Edm.String" Nullable="true" />
+        <Property Name="Name" Type="Edm.String" Nullable="true" />
+        <Property Name="Title" Type="Edm.String" Nullable="true" m:FC_TargetPath="SyndicationTitle" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ContentType" Type="Edm.String" Nullable="true" />
+        <Property Name="Created" Type="Edm.DateTime" Nullable="true" />
+        <NavigationProperty Name="CreatedBy" Relationship="Microsoft.SharePoint.DataService.DocumentsItem_CreatedBy" FromRole="DocumentsItem" ToRole="CreatedBy" />
+        <Property Name="CreatedById" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Modified" Type="Edm.DateTime" Nullable="true" m:FC_TargetPath="SyndicationUpdated" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+        <NavigationProperty Name="ModifiedBy" Relationship="Microsoft.SharePoint.DataService.DocumentsItem_ModifiedBy" FromRole="DocumentsItem" ToRole="ModifiedBy" />
+        <Property Name="ModifiedById" Type="Edm.Int32" Nullable="true" />
+        <Property Name="CopySource" Type="Edm.String" Nullable="true" />
+        <Property Name="ApprovalStatus" Type="Edm.String" Nullable="true" />
+        <Property Name="Path" Type="Edm.String" Nullable="true" />
+        <NavigationProperty Name="CheckedOutTo" Relationship="Microsoft.SharePoint.DataService.DocumentsItem_CheckedOutTo" FromRole="DocumentsItem" ToRole="CheckedOutTo" />
+        <Property Name="CheckedOutToId" Type="Edm.Int32" Nullable="true" />
+        <Property Name="VirusStatus" Type="Edm.String" Nullable="true" />
+        <Property Name="IsCurrentVersion" Type="Edm.Boolean" Nullable="true" />
+        <Property Name="Owshiddenversion" Type="Edm.Int32" Nullable="true" ConcurrencyMode="Fixed" />
+        <Property Name="Version" Type="Edm.String" Nullable="true" />
+      </EntityType>
+      <EntityType Name="FpdatasourcesItem" m:HasStream="true">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ContentTypeID" Type="Edm.String" Nullable="true" />
+        <Property Name="ContentType" Type="Edm.String" Nullable="true" />
+        <Property Name="Created" Type="Edm.DateTime" Nullable="true" />
+        <NavigationProperty Name="CreatedBy" Relationship="Microsoft.SharePoint.DataService.FpdatasourcesItem_CreatedBy" FromRole="FpdatasourcesItem" ToRole="CreatedBy" />
+        <Property Name="CreatedById" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Modified" Type="Edm.DateTime" Nullable="true" m:FC_TargetPath="SyndicationUpdated" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+        <NavigationProperty Name="ModifiedBy" Relationship="Microsoft.SharePoint.DataService.FpdatasourcesItem_ModifiedBy" FromRole="FpdatasourcesItem" ToRole="ModifiedBy" />
+        <Property Name="ModifiedById" Type="Edm.Int32" Nullable="true" />
+        <Property Name="CopySource" Type="Edm.String" Nullable="true" />
+        <Property Name="ApprovalStatus" Type="Edm.String" Nullable="true" />
+        <Property Name="Path" Type="Edm.String" Nullable="true" />
+        <NavigationProperty Name="CheckedOutTo" Relationship="Microsoft.SharePoint.DataService.FpdatasourcesItem_CheckedOutTo" FromRole="FpdatasourcesItem" ToRole="CheckedOutTo" />
+        <Property Name="CheckedOutToId" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Name" Type="Edm.String" Nullable="true" />
+        <Property Name="VirusStatus" Type="Edm.String" Nullable="true" />
+        <Property Name="IsCurrentVersion" Type="Edm.Boolean" Nullable="true" />
+        <Property Name="Owshiddenversion" Type="Edm.Int32" Nullable="true" ConcurrencyMode="Fixed" />
+        <Property Name="Version" Type="Edm.String" Nullable="true" />
+      </EntityType>
+      <EntityType Name="ImagesItem" m:HasStream="true">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="ContentTypeID" Type="Edm.String" Nullable="true" />
+        <Property Name="Name" Type="Edm.String" Nullable="true" />
+        <Property Name="Author" Type="Edm.String" Nullable="true" />
+        <Property Name="Title" Type="Edm.String" Nullable="true" m:FC_TargetPath="SyndicationTitle" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+        <Property Name="Width" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Height" Type="Edm.Int32" Nullable="true" />
+        <Property Name="DatePictureTaken" Type="Edm.DateTime" Nullable="true" />
+        <Property Name="Comments" Type="Edm.String" Nullable="true" />
+        <Property Name="Keywords" Type="Edm.String" Nullable="true" />
+        <Property Name="Copyright" Type="Edm.String" Nullable="true" />
+        <Property Name="PreviewImageURL" Type="Edm.String" Nullable="true" />
+        <Property Name="LengthSeconds" Type="Edm.Int32" Nullable="true" />
+        <Property Name="FrameWidth" Type="Edm.Int32" Nullable="true" />
+        <Property Name="FrameHeight" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ContentType" Type="Edm.String" Nullable="true" />
+        <Property Name="Created" Type="Edm.DateTime" Nullable="true" />
+        <NavigationProperty Name="CreatedBy" Relationship="Microsoft.SharePoint.DataService.ImagesItem_CreatedBy" FromRole="ImagesItem" ToRole="CreatedBy" />
+        <Property Name="CreatedById" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Modified" Type="Edm.DateTime" Nullable="true" m:FC_TargetPath="SyndicationUpdated" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+        <NavigationProperty Name="ModifiedBy" Relationship="Microsoft.SharePoint.DataService.ImagesItem_ModifiedBy" FromRole="ImagesItem" ToRole="ModifiedBy" />
+        <Property Name="ModifiedById" Type="Edm.Int32" Nullable="true" />
+        <Property Name="CopySource" Type="Edm.String" Nullable="true" />
+        <Property Name="ApprovalStatus" Type="Edm.String" Nullable="true" />
+        <Property Name="Path" Type="Edm.String" Nullable="true" />
+        <NavigationProperty Name="CheckedOutTo" Relationship="Microsoft.SharePoint.DataService.ImagesItem_CheckedOutTo" FromRole="ImagesItem" ToRole="CheckedOutTo" />
+        <Property Name="CheckedOutToId" Type="Edm.Int32" Nullable="true" />
+        <Property Name="VirusStatus" Type="Edm.String" Nullable="true" />
+        <Property Name="IsCurrentVersion" Type="Edm.Boolean" Nullable="true" />
+        <Property Name="Owshiddenversion" Type="Edm.Int32" Nullable="true" ConcurrencyMode="Fixed" />
+        <Property Name="Version" Type="Edm.String" Nullable="true" />
+      </EntityType>
+      <EntityType Name="MasterPageGalleryItem" m:HasStream="true">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ContentTypeID" Type="Edm.String" Nullable="true" />
+        <Property Name="ContentType" Type="Edm.String" Nullable="true" />
+        <Property Name="Created" Type="Edm.DateTime" Nullable="true" />
+        <NavigationProperty Name="CreatedBy" Relationship="Microsoft.SharePoint.DataService.MasterPageGalleryItem_CreatedBy" FromRole="MasterPageGalleryItem" ToRole="CreatedBy" />
+        <Property Name="CreatedById" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Modified" Type="Edm.DateTime" Nullable="true" m:FC_TargetPath="SyndicationUpdated" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+        <NavigationProperty Name="ModifiedBy" Relationship="Microsoft.SharePoint.DataService.MasterPageGalleryItem_ModifiedBy" FromRole="MasterPageGalleryItem" ToRole="ModifiedBy" />
+        <Property Name="ModifiedById" Type="Edm.Int32" Nullable="true" />
+        <Property Name="CopySource" Type="Edm.String" Nullable="true" />
+        <Property Name="ApprovalStatus" Type="Edm.String" Nullable="true" />
+        <Property Name="Path" Type="Edm.String" Nullable="true" />
+        <NavigationProperty Name="CheckedOutTo" Relationship="Microsoft.SharePoint.DataService.MasterPageGalleryItem_CheckedOutTo" FromRole="MasterPageGalleryItem" ToRole="CheckedOutTo" />
+        <Property Name="CheckedOutToId" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Name" Type="Edm.String" Nullable="true" />
+        <Property Name="VirusStatus" Type="Edm.String" Nullable="true" />
+        <Property Name="IsCurrentVersion" Type="Edm.Boolean" Nullable="true" />
+        <Property Name="Owshiddenversion" Type="Edm.Int32" Nullable="true" ConcurrencyMode="Fixed" />
+        <Property Name="Version" Type="Edm.String" Nullable="true" />
+        <Property Name="Description" Type="Edm.String" Nullable="true" />
+        <NavigationProperty Name="CompatibleUIVersionS" Relationship="Microsoft.SharePoint.DataService.MasterPageGalleryItem_CompatibleUIVersionS" FromRole="MasterPageGalleryItem" ToRole="CompatibleUIVersionS" />
+      </EntityType>
+      <EntityType Name="MasterPageGalleryCompatibleUIVersionSValue">
+        <Key>
+          <PropertyRef Name="Value" />
+        </Key>
+        <Property Name="Value" Type="Edm.String" Nullable="false" m:FC_TargetPath="SyndicationTitle" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+      </EntityType>
+      <EntityType Name="PagesItem" m:HasStream="true">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="ContentTypeID" Type="Edm.String" Nullable="true" />
+        <Property Name="Name" Type="Edm.String" Nullable="true" />
+        <Property Name="Title" Type="Edm.String" Nullable="true" m:FC_TargetPath="SyndicationTitle" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+        <Property Name="Comments" Type="Edm.String" Nullable="true" />
+        <NavigationProperty Name="Contact" Relationship="Microsoft.SharePoint.DataService.PagesItem_Contact" FromRole="PagesItem" ToRole="Contact" />
+        <Property Name="ContactId" Type="Edm.Int32" Nullable="true" />
+        <Property Name="ContactEMailAddress" Type="Edm.String" Nullable="true" />
+        <Property Name="ContactName" Type="Edm.String" Nullable="true" />
+        <Property Name="ContactPicture" Type="Edm.String" Nullable="true" />
+        <Property Name="PageLayout" Type="Edm.String" Nullable="true" />
+        <Property Name="Byline" Type="Edm.String" Nullable="true" />
+        <Property Name="ArticleDate" Type="Edm.DateTime" Nullable="true" />
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ContentType" Type="Edm.String" Nullable="true" />
+        <Property Name="Created" Type="Edm.DateTime" Nullable="true" />
+        <NavigationProperty Name="CreatedBy" Relationship="Microsoft.SharePoint.DataService.PagesItem_CreatedBy" FromRole="PagesItem" ToRole="CreatedBy" />
+        <Property Name="CreatedById" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Modified" Type="Edm.DateTime" Nullable="true" m:FC_TargetPath="SyndicationUpdated" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+        <NavigationProperty Name="ModifiedBy" Relationship="Microsoft.SharePoint.DataService.PagesItem_ModifiedBy" FromRole="PagesItem" ToRole="ModifiedBy" />
+        <Property Name="ModifiedById" Type="Edm.Int32" Nullable="true" />
+        <Property Name="CopySource" Type="Edm.String" Nullable="true" />
+        <Property Name="ApprovalStatus" Type="Edm.String" Nullable="true" />
+        <Property Name="Path" Type="Edm.String" Nullable="true" />
+        <NavigationProperty Name="CheckedOutTo" Relationship="Microsoft.SharePoint.DataService.PagesItem_CheckedOutTo" FromRole="PagesItem" ToRole="CheckedOutTo" />
+        <Property Name="CheckedOutToId" Type="Edm.Int32" Nullable="true" />
+        <Property Name="VirusStatus" Type="Edm.String" Nullable="true" />
+        <Property Name="IsCurrentVersion" Type="Edm.Boolean" Nullable="true" />
+        <Property Name="Owshiddenversion" Type="Edm.Int32" Nullable="true" ConcurrencyMode="Fixed" />
+        <Property Name="Version" Type="Edm.String" Nullable="true" />
+      </EntityType>
+      <EntityType Name="RegistrationItem">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <NavigationProperty Name="IkGaMeeOpHetVNMC" Relationship="Microsoft.SharePoint.DataService.RegistrationItem_IkGaMeeOpHetVNMC" FromRole="RegistrationItem" ToRole="IkGaMeeOpHetVNMC" />
+        <Property Name="IkGaMeeOpHetVNMCValue" Type="Edm.String" Nullable="true" />
+        <NavigationProperty Name="JeHebtAangegevenDatJeNietMeeKanOfWilOpHetVNMCGeefAJBAanWatJeTijdensHetVNMCZalDoenHouErRekeningMeeDatJeEventueleVakantieTijdigBij" Relationship="Microsoft.SharePoint.DataService.RegistrationItem_JeHebtAangegevenDatJeNietMeeKanOfWilOpHetVNMCGeefAJBAanWatJeTijdensHetVNMCZalDoenHouErRekeningMeeDatJeEventueleVakantieTijdigBij" FromRole="RegistrationItem" ToRole="JeHebtAangegevenDatJeNietMeeKanOfWilOpHetVNMCGeefAJBAanWatJeTijdensHetVNMCZalDoenHouErRekeningMeeDatJeEventueleVakantieTijdigBij" />
+        <Property Name="JeHebtAangegevenDatJeNietMeeKanOfWilOpHetVNMCGeefAJBAanWatJeTijdensHetVNMCZalDoenHouErRekeningMeeDatJeEventueleVakantieTijdigBijValue" Type="Edm.String" Nullable="true" />
+        <Property Name="JeHebtAangegevenDatJeNogNietWeetOfJeMeeGaatMetHetVNMCWijMoetenBeginJuliHetAantalTicketsDefinitiefInkopenEnZullenDanDusEenInschat" Type="Edm.String" Nullable="true" />
+        <NavigationProperty Name="TijdensHetVNMCHebJeEenPASPOORTNodigDatOp12NovemberNog6MaandenGeldigIsJeMoetDatPaspoortOp1OktoberHebbenWatVoorPaspoortHebJe" Relationship="Microsoft.SharePoint.DataService.RegistrationItem_TijdensHetVNMCHebJeEenPASPOORTNodigDatOp12NovemberNog6MaandenGeldigIsJeMoetDatPaspoortOp1OktoberHebbenWatVoorPaspoortHebJe" FromRole="RegistrationItem" ToRole="TijdensHetVNMCHebJeEenPASPOORTNodigDatOp12NovemberNog6MaandenGeldigIsJeMoetDatPaspoortOp1OktoberHebbenWatVoorPaspoortHebJe" />
+        <Property Name="TijdensHetVNMCHebJeEenPASPOORTNodigDatOp12NovemberNog6MaandenGeldigIsJeMoetDatPaspoortOp1OktoberHebbenWatVoorPaspoortHebJeValue" Type="Edm.String" Nullable="true" />
+        <Property Name="GeefExactAanHoeJeVOLLEDIGEACHTERNAAMInJePaspoortGespeldStaatAlsJeNogEenNieuwPaspoortGaatAanvragenVulDanVoorNuDeHuidigeGegevensIn" Type="Edm.String" Nullable="true" />
+        <Property Name="GeefExactAanHoeJeEERSTEVOORNAAMInJePaspoortGespeldStaatAlsJeNogEenNieuwPaspoortGaatAanvragenVulDanVoorNuDeHuidigeGegevensInEnWij" Type="Edm.String" Nullable="true" />
+        <NavigationProperty Name="GeefAanWelkGESLACHTMVInJePaspoortVermeldStaat" Relationship="Microsoft.SharePoint.DataService.RegistrationItem_GeefAanWelkGESLACHTMVInJePaspoortVermeldStaat" FromRole="RegistrationItem" ToRole="GeefAanWelkGESLACHTMVInJePaspoortVermeldStaat" />
+        <Property Name="GeefAanWelkGESLACHTMVInJePaspoortVermeldStaatValue" Type="Edm.String" Nullable="true" />
+        <Property Name="VulHierJePASPOORTNUMMERInAlsJeNogEenNieuwPaspoortGaatAanvragenVulDanVoorNuDeHuidigeGegevensInEnWijzigDeGewijzigdeVeldenZodraJeHe" Type="Edm.String" Nullable="true" />
+        <Property Name="GeefHierDeDATUMAanTotWanneerJePaspoortGeldigIsAlsJeNogEenNieuwPaspoortGaatAanvragenVulDanVoorNuDeHuidigeGegevensInEnWijzigDeGewi" Type="Edm.DateTime" Nullable="true" />
+        <Property Name="GeefHierAanWelkeNATIONALITEITInJePaspoortVermeldStaatAlsJeNogEenNieuwPaspoortGaatAanvragenVulDanVoorNuDeHuidigeGegevensInEnWijzi" Type="Edm.String" Nullable="true" />
+        <Property Name="GeefHierAanWelkeGEBOORTEDATUMInJePaspoortVermeldStaatAlsJeNogEenNieuwPaspoortGaatAanvragenVulDanVoorNuDeHuidigeGegevensInEnWijzi" Type="Edm.DateTime" Nullable="true" />
+        <Property Name="GeefHierAanWelkeGEBOORTEPLAATSInJePaspoortVermeldStaatWanneerDezePlaatsNietInNederlandLigtGeefDanOokHetLANDAanAlsJeNogEenNieuwPa" Type="Edm.String" Nullable="true" />
+        <Property Name="GeefHierAanDoorWelkLANDJePaspoortIsUitgegevenAlsJeNogEenNieuwPaspoortGaatAanvragenVulDanVoorNuDeHuidigeGegevensInEnWijzigDeGewij" Type="Edm.String" Nullable="true" />
+        <NavigationProperty Name="EersteKeuzeActiviteitOpZondagWijzigenVanJeUiteindelijkeKeuzeIsMogelijkTotBeginOktober" Relationship="Microsoft.SharePoint.DataService.RegistrationItem_EersteKeuzeActiviteitOpZondagWijzigenVanJeUiteindelijkeKeuzeIsMogelijkTotBeginOktober" FromRole="RegistrationItem" ToRole="EersteKeuzeActiviteitOpZondagWijzigenVanJeUiteindelijkeKeuzeIsMogelijkTotBeginOktober" />
+        <Property Name="EersteKeuzeActiviteitOpZondagWijzigenVanJeUiteindelijkeKeuzeIsMogelijkTotBeginOktoberId" Type="Edm.Int32" Nullable="true" />
+        <NavigationProperty Name="ReserveKeuzeActiviteitOpZondagWijzigenVanJeUiteindelijkeKeuzeIsMogelijkTotBeginOktober" Relationship="Microsoft.SharePoint.DataService.RegistrationItem_ReserveKeuzeActiviteitOpZondagWijzigenVanJeUiteindelijkeKeuzeIsMogelijkTotBeginOktober" FromRole="RegistrationItem" ToRole="ReserveKeuzeActiviteitOpZondagWijzigenVanJeUiteindelijkeKeuzeIsMogelijkTotBeginOktober" />
+        <Property Name="ReserveKeuzeActiviteitOpZondagWijzigenVanJeUiteindelijkeKeuzeIsMogelijkTotBeginOktoberId" Type="Edm.Int32" Nullable="true" />
+        <NavigationProperty Name="VolgJeEenSpeciaalDieetOfMoetRekeningGehoudenWordenMetSpecifiekeAllergieën" Relationship="Microsoft.SharePoint.DataService.RegistrationItem_VolgJeEenSpeciaalDieetOfMoetRekeningGehoudenWordenMetSpecifiekeAllergieën" FromRole="RegistrationItem" ToRole="VolgJeEenSpeciaalDieetOfMoetRekeningGehoudenWordenMetSpecifiekeAllergieën" />
+        <Property Name="VolgJeEenSpeciaalDieetOfMoetRekeningGehoudenWordenMetSpecifiekeAllergieënValue" Type="Edm.String" Nullable="true" />
+        <Property Name="JeHebtAangegevenDatJeEenSpeciaalDieetVolgtOfAllergieInformatieHebtGeefHieronderAanWatDatIs" Type="Edm.String" Nullable="true" />
+        <NavigationProperty Name="GebruikJeMedicijnenOfHebJeEenMedischeIndicatieWaarvanDeOrganisatieOpDeHoogteMoetZijn" Relationship="Microsoft.SharePoint.DataService.RegistrationItem_GebruikJeMedicijnenOfHebJeEenMedischeIndicatieWaarvanDeOrganisatieOpDeHoogteMoetZijn" FromRole="RegistrationItem" ToRole="GebruikJeMedicijnenOfHebJeEenMedischeIndicatieWaarvanDeOrganisatieOpDeHoogteMoetZijn" />
+        <Property Name="GebruikJeMedicijnenOfHebJeEenMedischeIndicatieWaarvanDeOrganisatieOpDeHoogteMoetZijnValue" Type="Edm.String" Nullable="true" />
+        <Property Name="JeHebtAangegevenDatJeMedicijnenGebruiktOfEenMedischeIndicatieHebtWaarvanDeOrganisatieOpDeHoogteMoetZijnGeefHieronderAanWatDatIs" Type="Edm.String" Nullable="true" />
+        <Property Name="HoeLangBenJeInCm" Type="Edm.Double" Nullable="true" />
+        <Property Name="WatIsJeGewichtInHeleKg" Type="Edm.Double" Nullable="true" />
+        <NavigationProperty Name="WatIsJeShirtmaat" Relationship="Microsoft.SharePoint.DataService.RegistrationItem_WatIsJeShirtmaat" FromRole="RegistrationItem" ToRole="WatIsJeShirtmaat" />
+        <Property Name="WatIsJeShirtmaatValue" Type="Edm.String" Nullable="true" />
+        <Property Name="BedanktVoorHetInvullenVanDeVragenlijstHebJeNogOpmerkingenPlaatsDieDanHieronderOpmerkingenZijnNietAnoniemEnKunnenWordenGepublicee" Type="Edm.String" Nullable="true" />
+        <Property Name="ContentTypeID" Type="Edm.String" Nullable="true" />
+        <NavigationProperty Name="CreatedBy" Relationship="Microsoft.SharePoint.DataService.RegistrationItem_CreatedBy" FromRole="RegistrationItem" ToRole="CreatedBy" />
+        <Property Name="CreatedById" Type="Edm.Int32" Nullable="true" />
+        <NavigationProperty Name="ModifiedBy" Relationship="Microsoft.SharePoint.DataService.RegistrationItem_ModifiedBy" FromRole="RegistrationItem" ToRole="ModifiedBy" />
+        <Property Name="ModifiedById" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ContentType" Type="Edm.String" Nullable="true" />
+        <Property Name="Modified" Type="Edm.DateTime" Nullable="true" m:FC_TargetPath="SyndicationUpdated" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+        <Property Name="Created" Type="Edm.DateTime" Nullable="true" />
+        <Property Name="Owshiddenversion" Type="Edm.Int32" Nullable="true" ConcurrencyMode="Fixed" />
+        <Property Name="Version" Type="Edm.String" Nullable="true" />
+        <Property Name="Path" Type="Edm.String" Nullable="true" />
+      </EntityType>
+      <EntityType Name="RegistrationGebruikJeMedicijnenOfHebJeEenMedischeIndicatieWaarvanDeOrganisatieOpDeHoogteMoetZijnValue">
+        <Key>
+          <PropertyRef Name="Value" />
+        </Key>
+        <Property Name="Value" Type="Edm.String" Nullable="false" m:FC_TargetPath="SyndicationTitle" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+      </EntityType>
+      <EntityType Name="RegistrationGeefAanWelkGESLACHTMVInJePaspoortVermeldStaatValue">
+        <Key>
+          <PropertyRef Name="Value" />
+        </Key>
+        <Property Name="Value" Type="Edm.String" Nullable="false" m:FC_TargetPath="SyndicationTitle" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+      </EntityType>
+      <EntityType Name="RegistrationIkGaMeeOpHetVNMCValue">
+        <Key>
+          <PropertyRef Name="Value" />
+        </Key>
+        <Property Name="Value" Type="Edm.String" Nullable="false" m:FC_TargetPath="SyndicationTitle" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+      </EntityType>
+      <EntityType Name="RegistrationJeHebtAangegevenDatJeNietMeeKanOfWilOpHetVNMCGeefAJBAanWatJeTijdensHetVNMCZalDoenHouErRekeningMeeDatJeEventueleVakan">
+        <Key>
+          <PropertyRef Name="Value" />
+        </Key>
+        <Property Name="Value" Type="Edm.String" Nullable="false" m:FC_TargetPath="SyndicationTitle" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+      </EntityType>
+      <EntityType Name="RegistrationTijdensHetVNMCHebJeEenPASPOORTNodigDatOp12NovemberNog6MaandenGeldigIsJeMoetDatPaspoortOp1OktoberHebbenWatVoorPaspoor">
+        <Key>
+          <PropertyRef Name="Value" />
+        </Key>
+        <Property Name="Value" Type="Edm.String" Nullable="false" m:FC_TargetPath="SyndicationTitle" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+      </EntityType>
+      <EntityType Name="RegistrationVolgJeEenSpeciaalDieetOfMoetRekeningGehoudenWordenMetSpecifiekeAllergieënValue">
+        <Key>
+          <PropertyRef Name="Value" />
+        </Key>
+        <Property Name="Value" Type="Edm.String" Nullable="false" m:FC_TargetPath="SyndicationTitle" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+      </EntityType>
+      <EntityType Name="RegistrationWatIsJeShirtmaatValue">
+        <Key>
+          <PropertyRef Name="Value" />
+        </Key>
+        <Property Name="Value" Type="Edm.String" Nullable="false" m:FC_TargetPath="SyndicationTitle" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+      </EntityType>
+      <EntityType Name="RoomiesItem">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="ContentTypeID" Type="Edm.String" Nullable="true" />
+        <Property Name="Kamer" Type="Edm.String" Nullable="true" m:FC_TargetPath="SyndicationTitle" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+        <NavigationProperty Name="Wie" Relationship="Microsoft.SharePoint.DataService.RoomiesItem_Wie" FromRole="RoomiesItem" ToRole="Wie" />
+        <Property Name="WieId" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Opmerking" Type="Edm.String" Nullable="true" />
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ContentType" Type="Edm.String" Nullable="true" />
+        <Property Name="Modified" Type="Edm.DateTime" Nullable="true" m:FC_TargetPath="SyndicationUpdated" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+        <Property Name="Created" Type="Edm.DateTime" Nullable="true" />
+        <NavigationProperty Name="CreatedBy" Relationship="Microsoft.SharePoint.DataService.RoomiesItem_CreatedBy" FromRole="RoomiesItem" ToRole="CreatedBy" />
+        <Property Name="CreatedById" Type="Edm.Int32" Nullable="true" />
+        <NavigationProperty Name="ModifiedBy" Relationship="Microsoft.SharePoint.DataService.RoomiesItem_ModifiedBy" FromRole="RoomiesItem" ToRole="ModifiedBy" />
+        <Property Name="ModifiedById" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Owshiddenversion" Type="Edm.Int32" Nullable="true" ConcurrencyMode="Fixed" />
+        <Property Name="Version" Type="Edm.String" Nullable="true" />
+        <Property Name="Path" Type="Edm.String" Nullable="true" />
+      </EntityType>
+      <EntityType Name="SharedDocumentsItem" m:HasStream="true">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ContentTypeID" Type="Edm.String" Nullable="true" />
+        <Property Name="ContentType" Type="Edm.String" Nullable="true" />
+        <Property Name="Created" Type="Edm.DateTime" Nullable="true" />
+        <NavigationProperty Name="CreatedBy" Relationship="Microsoft.SharePoint.DataService.SharedDocumentsItem_CreatedBy" FromRole="SharedDocumentsItem" ToRole="CreatedBy" />
+        <Property Name="CreatedById" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Modified" Type="Edm.DateTime" Nullable="true" m:FC_TargetPath="SyndicationUpdated" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+        <NavigationProperty Name="ModifiedBy" Relationship="Microsoft.SharePoint.DataService.SharedDocumentsItem_ModifiedBy" FromRole="SharedDocumentsItem" ToRole="ModifiedBy" />
+        <Property Name="ModifiedById" Type="Edm.Int32" Nullable="true" />
+        <Property Name="CopySource" Type="Edm.String" Nullable="true" />
+        <Property Name="ApprovalStatus" Type="Edm.String" Nullable="true" />
+        <Property Name="Path" Type="Edm.String" Nullable="true" />
+        <NavigationProperty Name="CheckedOutTo" Relationship="Microsoft.SharePoint.DataService.SharedDocumentsItem_CheckedOutTo" FromRole="SharedDocumentsItem" ToRole="CheckedOutTo" />
+        <Property Name="CheckedOutToId" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Name" Type="Edm.String" Nullable="true" />
+        <Property Name="VirusStatus" Type="Edm.String" Nullable="true" />
+        <Property Name="IsCurrentVersion" Type="Edm.Boolean" Nullable="true" />
+        <Property Name="Owshiddenversion" Type="Edm.Int32" Nullable="true" ConcurrencyMode="Fixed" />
+        <Property Name="Version" Type="Edm.String" Nullable="true" />
+        <Property Name="Title" Type="Edm.String" Nullable="true" m:FC_TargetPath="SyndicationTitle" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+      </EntityType>
+      <EntityType Name="SiteAssetsItem" m:HasStream="true">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ContentTypeID" Type="Edm.String" Nullable="true" />
+        <Property Name="ContentType" Type="Edm.String" Nullable="true" />
+        <Property Name="Created" Type="Edm.DateTime" Nullable="true" />
+        <NavigationProperty Name="CreatedBy" Relationship="Microsoft.SharePoint.DataService.SiteAssetsItem_CreatedBy" FromRole="SiteAssetsItem" ToRole="CreatedBy" />
+        <Property Name="CreatedById" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Modified" Type="Edm.DateTime" Nullable="true" m:FC_TargetPath="SyndicationUpdated" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+        <NavigationProperty Name="ModifiedBy" Relationship="Microsoft.SharePoint.DataService.SiteAssetsItem_ModifiedBy" FromRole="SiteAssetsItem" ToRole="ModifiedBy" />
+        <Property Name="ModifiedById" Type="Edm.Int32" Nullable="true" />
+        <Property Name="CopySource" Type="Edm.String" Nullable="true" />
+        <Property Name="ApprovalStatus" Type="Edm.String" Nullable="true" />
+        <Property Name="Path" Type="Edm.String" Nullable="true" />
+        <NavigationProperty Name="CheckedOutTo" Relationship="Microsoft.SharePoint.DataService.SiteAssetsItem_CheckedOutTo" FromRole="SiteAssetsItem" ToRole="CheckedOutTo" />
+        <Property Name="CheckedOutToId" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Name" Type="Edm.String" Nullable="true" />
+        <Property Name="VirusStatus" Type="Edm.String" Nullable="true" />
+        <Property Name="IsCurrentVersion" Type="Edm.Boolean" Nullable="true" />
+        <Property Name="Owshiddenversion" Type="Edm.Int32" Nullable="true" ConcurrencyMode="Fixed" />
+        <Property Name="Version" Type="Edm.String" Nullable="true" />
+        <Property Name="Title" Type="Edm.String" Nullable="true" m:FC_TargetPath="SyndicationTitle" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+      </EntityType>
+      <EntityType Name="SitePagesItem" m:HasStream="true">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ContentTypeID" Type="Edm.String" Nullable="true" />
+        <Property Name="ContentType" Type="Edm.String" Nullable="true" />
+        <Property Name="Created" Type="Edm.DateTime" Nullable="true" />
+        <NavigationProperty Name="CreatedBy" Relationship="Microsoft.SharePoint.DataService.SitePagesItem_CreatedBy" FromRole="SitePagesItem" ToRole="CreatedBy" />
+        <Property Name="CreatedById" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Modified" Type="Edm.DateTime" Nullable="true" m:FC_TargetPath="SyndicationUpdated" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+        <NavigationProperty Name="ModifiedBy" Relationship="Microsoft.SharePoint.DataService.SitePagesItem_ModifiedBy" FromRole="SitePagesItem" ToRole="ModifiedBy" />
+        <Property Name="ModifiedById" Type="Edm.Int32" Nullable="true" />
+        <Property Name="CopySource" Type="Edm.String" Nullable="true" />
+        <Property Name="ApprovalStatus" Type="Edm.String" Nullable="true" />
+        <Property Name="Path" Type="Edm.String" Nullable="true" />
+        <NavigationProperty Name="CheckedOutTo" Relationship="Microsoft.SharePoint.DataService.SitePagesItem_CheckedOutTo" FromRole="SitePagesItem" ToRole="CheckedOutTo" />
+        <Property Name="CheckedOutToId" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Name" Type="Edm.String" Nullable="true" />
+        <Property Name="VirusStatus" Type="Edm.String" Nullable="true" />
+        <Property Name="IsCurrentVersion" Type="Edm.Boolean" Nullable="true" />
+        <Property Name="Owshiddenversion" Type="Edm.Int32" Nullable="true" ConcurrencyMode="Fixed" />
+        <Property Name="Version" Type="Edm.String" Nullable="true" />
+        <Property Name="WikiContent" Type="Edm.String" Nullable="true" />
+      </EntityType>
+      <EntityType Name="UserInformationListItem">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="ContentTypeID" Type="Edm.String" Nullable="true" />
+        <Property Name="Name" Type="Edm.String" Nullable="true" m:FC_TargetPath="SyndicationTitle" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+        <Property Name="Account" Type="Edm.String" Nullable="true" />
+        <Property Name="WorkEMail" Type="Edm.String" Nullable="true" />
+        <Property Name="MobilePhone" Type="Edm.String" Nullable="true" />
+        <Property Name="AboutMe" Type="Edm.String" Nullable="true" />
+        <Property Name="SIPAddress" Type="Edm.String" Nullable="true" />
+        <Property Name="IsSiteAdmin" Type="Edm.Boolean" Nullable="true" />
+        <Property Name="Deleted" Type="Edm.Boolean" Nullable="true" />
+        <Property Name="Picture" Type="Edm.String" Nullable="true" />
+        <Property Name="Department" Type="Edm.String" Nullable="true" />
+        <Property Name="Title" Type="Edm.String" Nullable="true" />
+        <Property Name="FirstName" Type="Edm.String" Nullable="true" />
+        <Property Name="LastName" Type="Edm.String" Nullable="true" />
+        <Property Name="WorkPhone" Type="Edm.String" Nullable="true" />
+        <Property Name="UserName" Type="Edm.String" Nullable="true" />
+        <Property Name="WebSite" Type="Edm.String" Nullable="true" />
+        <Property Name="AskMeAbout" Type="Edm.String" Nullable="true" />
+        <Property Name="Office" Type="Edm.String" Nullable="true" />
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ContentType" Type="Edm.String" Nullable="true" />
+        <Property Name="Modified" Type="Edm.DateTime" Nullable="true" m:FC_TargetPath="SyndicationUpdated" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+        <Property Name="Created" Type="Edm.DateTime" Nullable="true" />
+        <NavigationProperty Name="CreatedBy" Relationship="Microsoft.SharePoint.DataService.UserInformationListItem_CreatedBy" FromRole="UserInformationListItem" ToRole="CreatedBy" />
+        <Property Name="CreatedById" Type="Edm.Int32" Nullable="true" />
+        <NavigationProperty Name="ModifiedBy" Relationship="Microsoft.SharePoint.DataService.UserInformationListItem_ModifiedBy" FromRole="UserInformationListItem" ToRole="ModifiedBy" />
+        <Property Name="ModifiedById" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Owshiddenversion" Type="Edm.Int32" Nullable="true" ConcurrencyMode="Fixed" />
+        <Property Name="Version" Type="Edm.String" Nullable="true" />
+        <NavigationProperty Name="Attachments" Relationship="Microsoft.SharePoint.DataService.UserInformationListItem_Attachments" FromRole="UserInformationListItem" ToRole="Attachments" />
+        <Property Name="Path" Type="Edm.String" Nullable="true" />
+      </EntityType>
+      <EntityType Name="WorkflowTasksItem">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ContentTypeID" Type="Edm.String" Nullable="true" />
+        <Property Name="ContentType" Type="Edm.String" Nullable="true" />
+        <Property Name="Title" Type="Edm.String" Nullable="true" m:FC_TargetPath="SyndicationTitle" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+        <Property Name="Modified" Type="Edm.DateTime" Nullable="true" m:FC_TargetPath="SyndicationUpdated" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+        <Property Name="Created" Type="Edm.DateTime" Nullable="true" />
+        <NavigationProperty Name="CreatedBy" Relationship="Microsoft.SharePoint.DataService.WorkflowTasksItem_CreatedBy" FromRole="WorkflowTasksItem" ToRole="CreatedBy" />
+        <Property Name="CreatedById" Type="Edm.Int32" Nullable="true" />
+        <NavigationProperty Name="ModifiedBy" Relationship="Microsoft.SharePoint.DataService.WorkflowTasksItem_ModifiedBy" FromRole="WorkflowTasksItem" ToRole="ModifiedBy" />
+        <Property Name="ModifiedById" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Owshiddenversion" Type="Edm.Int32" Nullable="true" ConcurrencyMode="Fixed" />
+        <Property Name="Version" Type="Edm.String" Nullable="true" />
+        <NavigationProperty Name="Attachments" Relationship="Microsoft.SharePoint.DataService.WorkflowTasksItem_Attachments" FromRole="WorkflowTasksItem" ToRole="Attachments" />
+        <Property Name="Path" Type="Edm.String" Nullable="true" />
+        <NavigationProperty Name="Predecessors" Relationship="Microsoft.SharePoint.DataService.WorkflowTasksItem_Predecessors" FromRole="WorkflowTasksItem" ToRole="Predecessors" />
+        <NavigationProperty Name="Priority" Relationship="Microsoft.SharePoint.DataService.WorkflowTasksItem_Priority" FromRole="WorkflowTasksItem" ToRole="Priority" />
+        <Property Name="PriorityValue" Type="Edm.String" Nullable="true" />
+        <NavigationProperty Name="Status" Relationship="Microsoft.SharePoint.DataService.WorkflowTasksItem_Status" FromRole="WorkflowTasksItem" ToRole="Status" />
+        <Property Name="StatusValue" Type="Edm.String" Nullable="true" />
+        <Property Name="Complete" Type="Edm.Double" Nullable="true" />
+        <NavigationProperty Name="AssignedTo" Relationship="Microsoft.SharePoint.DataService.WorkflowTasksItem_AssignedTo" FromRole="WorkflowTasksItem" ToRole="AssignedTo" />
+        <Property Name="AssignedToId" Type="Edm.Int32" Nullable="true" />
+        <NavigationProperty Name="TaskGroup" Relationship="Microsoft.SharePoint.DataService.WorkflowTasksItem_TaskGroup" FromRole="WorkflowTasksItem" ToRole="TaskGroup" />
+        <Property Name="TaskGroupId" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Description" Type="Edm.String" Nullable="true" />
+        <Property Name="StartDate" Type="Edm.DateTime" Nullable="true" />
+        <Property Name="DueDate" Type="Edm.DateTime" Nullable="true" />
+      </EntityType>
+      <EntityType Name="WorkflowTasksPriorityValue">
+        <Key>
+          <PropertyRef Name="Value" />
+        </Key>
+        <Property Name="Value" Type="Edm.String" Nullable="false" m:FC_TargetPath="SyndicationTitle" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+      </EntityType>
+      <EntityType Name="WorkflowTasksStatusValue">
+        <Key>
+          <PropertyRef Name="Value" />
+        </Key>
+        <Property Name="Value" Type="Edm.String" Nullable="false" m:FC_TargetPath="SyndicationTitle" m:FC_ContentKind="text" m:FC_KeepInContent="true" />
+      </EntityType>
+      <Association Name="ActivitiesItem_CreatedBy">
+        <End Role="ActivitiesItem" Type="Microsoft.SharePoint.DataService.ActivitiesItem" Multiplicity="*" />
+        <End Role="CreatedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="ActivitiesItem_ModifiedBy">
+        <End Role="ActivitiesItem" Type="Microsoft.SharePoint.DataService.ActivitiesItem" Multiplicity="*" />
+        <End Role="ModifiedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="ActivitiesDay2Item_CreatedBy">
+        <End Role="ActivitiesDay2Item" Type="Microsoft.SharePoint.DataService.ActivitiesDay2Item" Multiplicity="*" />
+        <End Role="CreatedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="ActivitiesDay2Item_ModifiedBy">
+        <End Role="ActivitiesDay2Item" Type="Microsoft.SharePoint.DataService.ActivitiesDay2Item" Multiplicity="*" />
+        <End Role="ModifiedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="ActivitiesDay2Item_Attachments">
+        <End Role="ActivitiesDay2Item" Type="Microsoft.SharePoint.DataService.ActivitiesDay2Item" Multiplicity="*" />
+        <End Role="Attachments" Type="Microsoft.SharePoint.DataService.AttachmentsItem" Multiplicity="*" />
+      </Association>
+      <Association Name="DocumentsItem_CreatedBy">
+        <End Role="DocumentsItem" Type="Microsoft.SharePoint.DataService.DocumentsItem" Multiplicity="*" />
+        <End Role="CreatedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="DocumentsItem_ModifiedBy">
+        <End Role="DocumentsItem" Type="Microsoft.SharePoint.DataService.DocumentsItem" Multiplicity="*" />
+        <End Role="ModifiedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="DocumentsItem_CheckedOutTo">
+        <End Role="DocumentsItem" Type="Microsoft.SharePoint.DataService.DocumentsItem" Multiplicity="*" />
+        <End Role="CheckedOutTo" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="FpdatasourcesItem_CreatedBy">
+        <End Role="FpdatasourcesItem" Type="Microsoft.SharePoint.DataService.FpdatasourcesItem" Multiplicity="*" />
+        <End Role="CreatedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="FpdatasourcesItem_ModifiedBy">
+        <End Role="FpdatasourcesItem" Type="Microsoft.SharePoint.DataService.FpdatasourcesItem" Multiplicity="*" />
+        <End Role="ModifiedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="FpdatasourcesItem_CheckedOutTo">
+        <End Role="FpdatasourcesItem" Type="Microsoft.SharePoint.DataService.FpdatasourcesItem" Multiplicity="*" />
+        <End Role="CheckedOutTo" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="ImagesItem_CreatedBy">
+        <End Role="ImagesItem" Type="Microsoft.SharePoint.DataService.ImagesItem" Multiplicity="*" />
+        <End Role="CreatedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="ImagesItem_ModifiedBy">
+        <End Role="ImagesItem" Type="Microsoft.SharePoint.DataService.ImagesItem" Multiplicity="*" />
+        <End Role="ModifiedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="ImagesItem_CheckedOutTo">
+        <End Role="ImagesItem" Type="Microsoft.SharePoint.DataService.ImagesItem" Multiplicity="*" />
+        <End Role="CheckedOutTo" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="MasterPageGalleryItem_CreatedBy">
+        <End Role="MasterPageGalleryItem" Type="Microsoft.SharePoint.DataService.MasterPageGalleryItem" Multiplicity="*" />
+        <End Role="CreatedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="MasterPageGalleryItem_ModifiedBy">
+        <End Role="MasterPageGalleryItem" Type="Microsoft.SharePoint.DataService.MasterPageGalleryItem" Multiplicity="*" />
+        <End Role="ModifiedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="MasterPageGalleryItem_CheckedOutTo">
+        <End Role="MasterPageGalleryItem" Type="Microsoft.SharePoint.DataService.MasterPageGalleryItem" Multiplicity="*" />
+        <End Role="CheckedOutTo" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="MasterPageGalleryItem_CompatibleUIVersionS">
+        <End Role="MasterPageGalleryItem" Type="Microsoft.SharePoint.DataService.MasterPageGalleryItem" Multiplicity="*" />
+        <End Role="CompatibleUIVersionS" Type="Microsoft.SharePoint.DataService.MasterPageGalleryCompatibleUIVersionSValue" Multiplicity="*" />
+      </Association>
+      <Association Name="PagesItem_Contact">
+        <End Role="PagesItem" Type="Microsoft.SharePoint.DataService.PagesItem" Multiplicity="*" />
+        <End Role="Contact" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="PagesItem_CreatedBy">
+        <End Role="PagesItem" Type="Microsoft.SharePoint.DataService.PagesItem" Multiplicity="*" />
+        <End Role="CreatedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="PagesItem_ModifiedBy">
+        <End Role="PagesItem" Type="Microsoft.SharePoint.DataService.PagesItem" Multiplicity="*" />
+        <End Role="ModifiedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="PagesItem_CheckedOutTo">
+        <End Role="PagesItem" Type="Microsoft.SharePoint.DataService.PagesItem" Multiplicity="*" />
+        <End Role="CheckedOutTo" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="RegistrationItem_IkGaMeeOpHetVNMC">
+        <End Role="RegistrationItem" Type="Microsoft.SharePoint.DataService.RegistrationItem" Multiplicity="*" />
+        <End Role="IkGaMeeOpHetVNMC" Type="Microsoft.SharePoint.DataService.RegistrationIkGaMeeOpHetVNMCValue" Multiplicity="0..1" />
+      </Association>
+      <Association Name="RegistrationItem_JeHebtAangegevenDatJeNietMeeKanOfWilOpHetVNMCGeefAJBAanWatJeTijdensHetVNMCZalDoenHouErRekeningMeeDatJeEventueleVakantieTijdigBij">
+        <End Role="RegistrationItem" Type="Microsoft.SharePoint.DataService.RegistrationItem" Multiplicity="*" />
+        <End Role="JeHebtAangegevenDatJeNietMeeKanOfWilOpHetVNMCGeefAJBAanWatJeTijdensHetVNMCZalDoenHouErRekeningMeeDatJeEventueleVakantieTijdigBij" Type="Microsoft.SharePoint.DataService.RegistrationJeHebtAangegevenDatJeNietMeeKanOfWilOpHetVNMCGeefAJBAanWatJeTijdensHetVNMCZalDoenHouErRekeningMeeDatJeEventueleVakan" Multiplicity="0..1" />
+      </Association>
+      <Association Name="RegistrationItem_TijdensHetVNMCHebJeEenPASPOORTNodigDatOp12NovemberNog6MaandenGeldigIsJeMoetDatPaspoortOp1OktoberHebbenWatVoorPaspoortHebJe">
+        <End Role="RegistrationItem" Type="Microsoft.SharePoint.DataService.RegistrationItem" Multiplicity="*" />
+        <End Role="TijdensHetVNMCHebJeEenPASPOORTNodigDatOp12NovemberNog6MaandenGeldigIsJeMoetDatPaspoortOp1OktoberHebbenWatVoorPaspoortHebJe" Type="Microsoft.SharePoint.DataService.RegistrationTijdensHetVNMCHebJeEenPASPOORTNodigDatOp12NovemberNog6MaandenGeldigIsJeMoetDatPaspoortOp1OktoberHebbenWatVoorPaspoor" Multiplicity="0..1" />
+      </Association>
+      <Association Name="RegistrationItem_GeefAanWelkGESLACHTMVInJePaspoortVermeldStaat">
+        <End Role="RegistrationItem" Type="Microsoft.SharePoint.DataService.RegistrationItem" Multiplicity="*" />
+        <End Role="GeefAanWelkGESLACHTMVInJePaspoortVermeldStaat" Type="Microsoft.SharePoint.DataService.RegistrationGeefAanWelkGESLACHTMVInJePaspoortVermeldStaatValue" Multiplicity="0..1" />
+      </Association>
+      <Association Name="RegistrationItem_EersteKeuzeActiviteitOpZondagWijzigenVanJeUiteindelijkeKeuzeIsMogelijkTotBeginOktober">
+        <End Role="RegistrationItem" Type="Microsoft.SharePoint.DataService.RegistrationItem" Multiplicity="*" />
+        <End Role="EersteKeuzeActiviteitOpZondagWijzigenVanJeUiteindelijkeKeuzeIsMogelijkTotBeginOktober" Type="Microsoft.SharePoint.DataService.ActivitiesItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="RegistrationItem_ReserveKeuzeActiviteitOpZondagWijzigenVanJeUiteindelijkeKeuzeIsMogelijkTotBeginOktober">
+        <End Role="RegistrationItem" Type="Microsoft.SharePoint.DataService.RegistrationItem" Multiplicity="*" />
+        <End Role="ReserveKeuzeActiviteitOpZondagWijzigenVanJeUiteindelijkeKeuzeIsMogelijkTotBeginOktober" Type="Microsoft.SharePoint.DataService.ActivitiesItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="RegistrationItem_VolgJeEenSpeciaalDieetOfMoetRekeningGehoudenWordenMetSpecifiekeAllergieën">
+        <End Role="RegistrationItem" Type="Microsoft.SharePoint.DataService.RegistrationItem" Multiplicity="*" />
+        <End Role="VolgJeEenSpeciaalDieetOfMoetRekeningGehoudenWordenMetSpecifiekeAllergieën" Type="Microsoft.SharePoint.DataService.RegistrationVolgJeEenSpeciaalDieetOfMoetRekeningGehoudenWordenMetSpecifiekeAllergieënValue" Multiplicity="0..1" />
+      </Association>
+      <Association Name="RegistrationItem_GebruikJeMedicijnenOfHebJeEenMedischeIndicatieWaarvanDeOrganisatieOpDeHoogteMoetZijn">
+        <End Role="RegistrationItem" Type="Microsoft.SharePoint.DataService.RegistrationItem" Multiplicity="*" />
+        <End Role="GebruikJeMedicijnenOfHebJeEenMedischeIndicatieWaarvanDeOrganisatieOpDeHoogteMoetZijn" Type="Microsoft.SharePoint.DataService.RegistrationGebruikJeMedicijnenOfHebJeEenMedischeIndicatieWaarvanDeOrganisatieOpDeHoogteMoetZijnValue" Multiplicity="0..1" />
+      </Association>
+      <Association Name="RegistrationItem_WatIsJeShirtmaat">
+        <End Role="RegistrationItem" Type="Microsoft.SharePoint.DataService.RegistrationItem" Multiplicity="*" />
+        <End Role="WatIsJeShirtmaat" Type="Microsoft.SharePoint.DataService.RegistrationWatIsJeShirtmaatValue" Multiplicity="0..1" />
+      </Association>
+      <Association Name="RegistrationItem_CreatedBy">
+        <End Role="RegistrationItem" Type="Microsoft.SharePoint.DataService.RegistrationItem" Multiplicity="*" />
+        <End Role="CreatedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="RegistrationItem_ModifiedBy">
+        <End Role="RegistrationItem" Type="Microsoft.SharePoint.DataService.RegistrationItem" Multiplicity="*" />
+        <End Role="ModifiedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="RoomiesItem_Wie">
+        <End Role="RoomiesItem" Type="Microsoft.SharePoint.DataService.RoomiesItem" Multiplicity="*" />
+        <End Role="Wie" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="RoomiesItem_CreatedBy">
+        <End Role="RoomiesItem" Type="Microsoft.SharePoint.DataService.RoomiesItem" Multiplicity="*" />
+        <End Role="CreatedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="RoomiesItem_ModifiedBy">
+        <End Role="RoomiesItem" Type="Microsoft.SharePoint.DataService.RoomiesItem" Multiplicity="*" />
+        <End Role="ModifiedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="SharedDocumentsItem_CreatedBy">
+        <End Role="SharedDocumentsItem" Type="Microsoft.SharePoint.DataService.SharedDocumentsItem" Multiplicity="*" />
+        <End Role="CreatedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="SharedDocumentsItem_ModifiedBy">
+        <End Role="SharedDocumentsItem" Type="Microsoft.SharePoint.DataService.SharedDocumentsItem" Multiplicity="*" />
+        <End Role="ModifiedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="SharedDocumentsItem_CheckedOutTo">
+        <End Role="SharedDocumentsItem" Type="Microsoft.SharePoint.DataService.SharedDocumentsItem" Multiplicity="*" />
+        <End Role="CheckedOutTo" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="SiteAssetsItem_CreatedBy">
+        <End Role="SiteAssetsItem" Type="Microsoft.SharePoint.DataService.SiteAssetsItem" Multiplicity="*" />
+        <End Role="CreatedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="SiteAssetsItem_ModifiedBy">
+        <End Role="SiteAssetsItem" Type="Microsoft.SharePoint.DataService.SiteAssetsItem" Multiplicity="*" />
+        <End Role="ModifiedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="SiteAssetsItem_CheckedOutTo">
+        <End Role="SiteAssetsItem" Type="Microsoft.SharePoint.DataService.SiteAssetsItem" Multiplicity="*" />
+        <End Role="CheckedOutTo" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="SitePagesItem_CreatedBy">
+        <End Role="SitePagesItem" Type="Microsoft.SharePoint.DataService.SitePagesItem" Multiplicity="*" />
+        <End Role="CreatedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="SitePagesItem_ModifiedBy">
+        <End Role="SitePagesItem" Type="Microsoft.SharePoint.DataService.SitePagesItem" Multiplicity="*" />
+        <End Role="ModifiedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="SitePagesItem_CheckedOutTo">
+        <End Role="SitePagesItem" Type="Microsoft.SharePoint.DataService.SitePagesItem" Multiplicity="*" />
+        <End Role="CheckedOutTo" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="UserInformationListItem_CreatedBy">
+        <End Role="UserInformationListItem" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="*" />
+        <End Role="CreatedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="UserInformationListItem_ModifiedBy">
+        <End Role="UserInformationListItem" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="*" />
+        <End Role="ModifiedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="UserInformationListItem_Attachments">
+        <End Role="UserInformationListItem" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="*" />
+        <End Role="Attachments" Type="Microsoft.SharePoint.DataService.AttachmentsItem" Multiplicity="*" />
+      </Association>
+      <Association Name="WorkflowTasksItem_CreatedBy">
+        <End Role="WorkflowTasksItem" Type="Microsoft.SharePoint.DataService.WorkflowTasksItem" Multiplicity="*" />
+        <End Role="CreatedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="WorkflowTasksItem_ModifiedBy">
+        <End Role="WorkflowTasksItem" Type="Microsoft.SharePoint.DataService.WorkflowTasksItem" Multiplicity="*" />
+        <End Role="ModifiedBy" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="WorkflowTasksItem_Attachments">
+        <End Role="WorkflowTasksItem" Type="Microsoft.SharePoint.DataService.WorkflowTasksItem" Multiplicity="*" />
+        <End Role="Attachments" Type="Microsoft.SharePoint.DataService.AttachmentsItem" Multiplicity="*" />
+      </Association>
+      <Association Name="WorkflowTasksItem_Predecessors">
+        <End Role="WorkflowTasksItem" Type="Microsoft.SharePoint.DataService.WorkflowTasksItem" Multiplicity="*" />
+        <End Role="Predecessors" Type="Microsoft.SharePoint.DataService.WorkflowTasksItem" Multiplicity="*" />
+      </Association>
+      <Association Name="WorkflowTasksItem_Priority">
+        <End Role="WorkflowTasksItem" Type="Microsoft.SharePoint.DataService.WorkflowTasksItem" Multiplicity="*" />
+        <End Role="Priority" Type="Microsoft.SharePoint.DataService.WorkflowTasksPriorityValue" Multiplicity="0..1" />
+      </Association>
+      <Association Name="WorkflowTasksItem_Status">
+        <End Role="WorkflowTasksItem" Type="Microsoft.SharePoint.DataService.WorkflowTasksItem" Multiplicity="*" />
+        <End Role="Status" Type="Microsoft.SharePoint.DataService.WorkflowTasksStatusValue" Multiplicity="0..1" />
+      </Association>
+      <Association Name="WorkflowTasksItem_AssignedTo">
+        <End Role="WorkflowTasksItem" Type="Microsoft.SharePoint.DataService.WorkflowTasksItem" Multiplicity="*" />
+        <End Role="AssignedTo" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <Association Name="WorkflowTasksItem_TaskGroup">
+        <End Role="WorkflowTasksItem" Type="Microsoft.SharePoint.DataService.WorkflowTasksItem" Multiplicity="*" />
+        <End Role="TaskGroup" Type="Microsoft.SharePoint.DataService.UserInformationListItem" Multiplicity="0..1" />
+      </Association>
+      <EntityContainer Name="VNMC2013DataContext" m:IsDefaultEntityContainer="true">
+        <EntitySet Name="Activities" EntityType="Microsoft.SharePoint.DataService.ActivitiesItem" />
+        <EntitySet Name="ActivitiesDay2" EntityType="Microsoft.SharePoint.DataService.ActivitiesDay2Item" />
+        <EntitySet Name="Attachments" EntityType="Microsoft.SharePoint.DataService.AttachmentsItem" />
+        <EntitySet Name="Documents" EntityType="Microsoft.SharePoint.DataService.DocumentsItem" />
+        <EntitySet Name="Fpdatasources" EntityType="Microsoft.SharePoint.DataService.FpdatasourcesItem" />
+        <EntitySet Name="Images" EntityType="Microsoft.SharePoint.DataService.ImagesItem" />
+        <EntitySet Name="MasterPageGallery" EntityType="Microsoft.SharePoint.DataService.MasterPageGalleryItem" />
+        <EntitySet Name="MasterPageGalleryCompatibleUIVersionS" EntityType="Microsoft.SharePoint.DataService.MasterPageGalleryCompatibleUIVersionSValue" />
+        <EntitySet Name="Pages" EntityType="Microsoft.SharePoint.DataService.PagesItem" />
+        <EntitySet Name="Registration" EntityType="Microsoft.SharePoint.DataService.RegistrationItem" />
+        <EntitySet Name="RegistrationGebruikJeMedicijnenOfHebJeEenMedischeIndicatieWaarvanDeOrganisatieOpDeHoogteMoetZijn" EntityType="Microsoft.SharePoint.DataService.RegistrationGebruikJeMedicijnenOfHebJeEenMedischeIndicatieWaarvanDeOrganisatieOpDeHoogteMoetZijnValue" />
+        <EntitySet Name="RegistrationGeefAanWelkGESLACHTMVInJePaspoortVermeldStaat" EntityType="Microsoft.SharePoint.DataService.RegistrationGeefAanWelkGESLACHTMVInJePaspoortVermeldStaatValue" />
+        <EntitySet Name="RegistrationIkGaMeeOpHetVNMC" EntityType="Microsoft.SharePoint.DataService.RegistrationIkGaMeeOpHetVNMCValue" />
+        <EntitySet Name="RegistrationJeHebtAangegevenDatJeNietMeeKanOfWilOpHetVNMCGeefAJBAanWatJeTijdensHetVNMCZalDoenHouErRekeningMeeDatJeEventueleVakan" EntityType="Microsoft.SharePoint.DataService.RegistrationJeHebtAangegevenDatJeNietMeeKanOfWilOpHetVNMCGeefAJBAanWatJeTijdensHetVNMCZalDoenHouErRekeningMeeDatJeEventueleVakan" />
+        <EntitySet Name="RegistrationTijdensHetVNMCHebJeEenPASPOORTNodigDatOp12NovemberNog6MaandenGeldigIsJeMoetDatPaspoortOp1OktoberHebbenWatVoorPaspoor" EntityType="Microsoft.SharePoint.DataService.RegistrationTijdensHetVNMCHebJeEenPASPOORTNodigDatOp12NovemberNog6MaandenGeldigIsJeMoetDatPaspoortOp1OktoberHebbenWatVoorPaspoor" />
+        <EntitySet Name="RegistrationVolgJeEenSpeciaalDieetOfMoetRekeningGehoudenWordenMetSpecifiekeAllergieën" EntityType="Microsoft.SharePoint.DataService.RegistrationVolgJeEenSpeciaalDieetOfMoetRekeningGehoudenWordenMetSpecifiekeAllergieënValue" />
+        <EntitySet Name="RegistrationWatIsJeShirtmaat" EntityType="Microsoft.SharePoint.DataService.RegistrationWatIsJeShirtmaatValue" />
+        <EntitySet Name="Roomies" EntityType="Microsoft.SharePoint.DataService.RoomiesItem" />
+        <EntitySet Name="SharedDocuments" EntityType="Microsoft.SharePoint.DataService.SharedDocumentsItem" />
+        <EntitySet Name="SiteAssets" EntityType="Microsoft.SharePoint.DataService.SiteAssetsItem" />
+        <EntitySet Name="SitePages" EntityType="Microsoft.SharePoint.DataService.SitePagesItem" />
+        <EntitySet Name="UserInformationList" EntityType="Microsoft.SharePoint.DataService.UserInformationListItem" />
+        <EntitySet Name="WorkflowTasks" EntityType="Microsoft.SharePoint.DataService.WorkflowTasksItem" />
+        <EntitySet Name="WorkflowTasksPriority" EntityType="Microsoft.SharePoint.DataService.WorkflowTasksPriorityValue" />
+        <EntitySet Name="WorkflowTasksStatus" EntityType="Microsoft.SharePoint.DataService.WorkflowTasksStatusValue" />
+        <AssociationSet Name="ActivitiesItem_CreatedBy" Association="Microsoft.SharePoint.DataService.ActivitiesItem_CreatedBy">
+          <End Role="ActivitiesItem" EntitySet="Activities" />
+          <End Role="CreatedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="ActivitiesItem_ModifiedBy" Association="Microsoft.SharePoint.DataService.ActivitiesItem_ModifiedBy">
+          <End Role="ActivitiesItem" EntitySet="Activities" />
+          <End Role="ModifiedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="ActivitiesDay2Item_CreatedBy" Association="Microsoft.SharePoint.DataService.ActivitiesDay2Item_CreatedBy">
+          <End Role="ActivitiesDay2Item" EntitySet="ActivitiesDay2" />
+          <End Role="CreatedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="ActivitiesDay2Item_ModifiedBy" Association="Microsoft.SharePoint.DataService.ActivitiesDay2Item_ModifiedBy">
+          <End Role="ActivitiesDay2Item" EntitySet="ActivitiesDay2" />
+          <End Role="ModifiedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="ActivitiesDay2Item_Attachments" Association="Microsoft.SharePoint.DataService.ActivitiesDay2Item_Attachments">
+          <End Role="ActivitiesDay2Item" EntitySet="ActivitiesDay2" />
+          <End Role="Attachments" EntitySet="Attachments" />
+        </AssociationSet>
+        <AssociationSet Name="DocumentsItem_CreatedBy" Association="Microsoft.SharePoint.DataService.DocumentsItem_CreatedBy">
+          <End Role="DocumentsItem" EntitySet="Documents" />
+          <End Role="CreatedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="DocumentsItem_ModifiedBy" Association="Microsoft.SharePoint.DataService.DocumentsItem_ModifiedBy">
+          <End Role="DocumentsItem" EntitySet="Documents" />
+          <End Role="ModifiedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="DocumentsItem_CheckedOutTo" Association="Microsoft.SharePoint.DataService.DocumentsItem_CheckedOutTo">
+          <End Role="DocumentsItem" EntitySet="Documents" />
+          <End Role="CheckedOutTo" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="FpdatasourcesItem_CreatedBy" Association="Microsoft.SharePoint.DataService.FpdatasourcesItem_CreatedBy">
+          <End Role="FpdatasourcesItem" EntitySet="Fpdatasources" />
+          <End Role="CreatedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="FpdatasourcesItem_ModifiedBy" Association="Microsoft.SharePoint.DataService.FpdatasourcesItem_ModifiedBy">
+          <End Role="FpdatasourcesItem" EntitySet="Fpdatasources" />
+          <End Role="ModifiedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="FpdatasourcesItem_CheckedOutTo" Association="Microsoft.SharePoint.DataService.FpdatasourcesItem_CheckedOutTo">
+          <End Role="FpdatasourcesItem" EntitySet="Fpdatasources" />
+          <End Role="CheckedOutTo" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="ImagesItem_CreatedBy" Association="Microsoft.SharePoint.DataService.ImagesItem_CreatedBy">
+          <End Role="ImagesItem" EntitySet="Images" />
+          <End Role="CreatedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="ImagesItem_ModifiedBy" Association="Microsoft.SharePoint.DataService.ImagesItem_ModifiedBy">
+          <End Role="ImagesItem" EntitySet="Images" />
+          <End Role="ModifiedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="ImagesItem_CheckedOutTo" Association="Microsoft.SharePoint.DataService.ImagesItem_CheckedOutTo">
+          <End Role="ImagesItem" EntitySet="Images" />
+          <End Role="CheckedOutTo" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="MasterPageGalleryItem_CreatedBy" Association="Microsoft.SharePoint.DataService.MasterPageGalleryItem_CreatedBy">
+          <End Role="MasterPageGalleryItem" EntitySet="MasterPageGallery" />
+          <End Role="CreatedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="MasterPageGalleryItem_ModifiedBy" Association="Microsoft.SharePoint.DataService.MasterPageGalleryItem_ModifiedBy">
+          <End Role="MasterPageGalleryItem" EntitySet="MasterPageGallery" />
+          <End Role="ModifiedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="MasterPageGalleryItem_CheckedOutTo" Association="Microsoft.SharePoint.DataService.MasterPageGalleryItem_CheckedOutTo">
+          <End Role="MasterPageGalleryItem" EntitySet="MasterPageGallery" />
+          <End Role="CheckedOutTo" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="MasterPageGalleryItem_CompatibleUIVersionS" Association="Microsoft.SharePoint.DataService.MasterPageGalleryItem_CompatibleUIVersionS">
+          <End Role="MasterPageGalleryItem" EntitySet="MasterPageGallery" />
+          <End Role="CompatibleUIVersionS" EntitySet="MasterPageGalleryCompatibleUIVersionS" />
+        </AssociationSet>
+        <AssociationSet Name="PagesItem_Contact" Association="Microsoft.SharePoint.DataService.PagesItem_Contact">
+          <End Role="PagesItem" EntitySet="Pages" />
+          <End Role="Contact" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="PagesItem_CreatedBy" Association="Microsoft.SharePoint.DataService.PagesItem_CreatedBy">
+          <End Role="PagesItem" EntitySet="Pages" />
+          <End Role="CreatedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="PagesItem_ModifiedBy" Association="Microsoft.SharePoint.DataService.PagesItem_ModifiedBy">
+          <End Role="PagesItem" EntitySet="Pages" />
+          <End Role="ModifiedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="PagesItem_CheckedOutTo" Association="Microsoft.SharePoint.DataService.PagesItem_CheckedOutTo">
+          <End Role="PagesItem" EntitySet="Pages" />
+          <End Role="CheckedOutTo" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="RegistrationItem_IkGaMeeOpHetVNMC" Association="Microsoft.SharePoint.DataService.RegistrationItem_IkGaMeeOpHetVNMC">
+          <End Role="RegistrationItem" EntitySet="Registration" />
+          <End Role="IkGaMeeOpHetVNMC" EntitySet="RegistrationIkGaMeeOpHetVNMC" />
+        </AssociationSet>
+        <AssociationSet Name="RegistrationItem_JeHebtAangegevenDatJeNietMeeKanOfWilOpHetVNMCGeefAJBAanWatJeTijdensHetVNMCZalDoenHouErRekeningMeeDatJeEventueleVakantieTijdigBij" Association="Microsoft.SharePoint.DataService.RegistrationItem_JeHebtAangegevenDatJeNietMeeKanOfWilOpHetVNMCGeefAJBAanWatJeTijdensHetVNMCZalDoenHouErRekeningMeeDatJeEventueleVakantieTijdigBij">
+          <End Role="RegistrationItem" EntitySet="Registration" />
+          <End Role="JeHebtAangegevenDatJeNietMeeKanOfWilOpHetVNMCGeefAJBAanWatJeTijdensHetVNMCZalDoenHouErRekeningMeeDatJeEventueleVakantieTijdigBij" EntitySet="RegistrationJeHebtAangegevenDatJeNietMeeKanOfWilOpHetVNMCGeefAJBAanWatJeTijdensHetVNMCZalDoenHouErRekeningMeeDatJeEventueleVakan" />
+        </AssociationSet>
+        <AssociationSet Name="RegistrationItem_TijdensHetVNMCHebJeEenPASPOORTNodigDatOp12NovemberNog6MaandenGeldigIsJeMoetDatPaspoortOp1OktoberHebbenWatVoorPaspoortHebJe" Association="Microsoft.SharePoint.DataService.RegistrationItem_TijdensHetVNMCHebJeEenPASPOORTNodigDatOp12NovemberNog6MaandenGeldigIsJeMoetDatPaspoortOp1OktoberHebbenWatVoorPaspoortHebJe">
+          <End Role="RegistrationItem" EntitySet="Registration" />
+          <End Role="TijdensHetVNMCHebJeEenPASPOORTNodigDatOp12NovemberNog6MaandenGeldigIsJeMoetDatPaspoortOp1OktoberHebbenWatVoorPaspoortHebJe" EntitySet="RegistrationTijdensHetVNMCHebJeEenPASPOORTNodigDatOp12NovemberNog6MaandenGeldigIsJeMoetDatPaspoortOp1OktoberHebbenWatVoorPaspoor" />
+        </AssociationSet>
+        <AssociationSet Name="RegistrationItem_GeefAanWelkGESLACHTMVInJePaspoortVermeldStaat" Association="Microsoft.SharePoint.DataService.RegistrationItem_GeefAanWelkGESLACHTMVInJePaspoortVermeldStaat">
+          <End Role="RegistrationItem" EntitySet="Registration" />
+          <End Role="GeefAanWelkGESLACHTMVInJePaspoortVermeldStaat" EntitySet="RegistrationGeefAanWelkGESLACHTMVInJePaspoortVermeldStaat" />
+        </AssociationSet>
+        <AssociationSet Name="RegistrationItem_EersteKeuzeActiviteitOpZondagWijzigenVanJeUiteindelijkeKeuzeIsMogelijkTotBeginOktober" Association="Microsoft.SharePoint.DataService.RegistrationItem_EersteKeuzeActiviteitOpZondagWijzigenVanJeUiteindelijkeKeuzeIsMogelijkTotBeginOktober">
+          <End Role="RegistrationItem" EntitySet="Registration" />
+          <End Role="EersteKeuzeActiviteitOpZondagWijzigenVanJeUiteindelijkeKeuzeIsMogelijkTotBeginOktober" EntitySet="Activities" />
+        </AssociationSet>
+        <AssociationSet Name="RegistrationItem_ReserveKeuzeActiviteitOpZondagWijzigenVanJeUiteindelijkeKeuzeIsMogelijkTotBeginOktober" Association="Microsoft.SharePoint.DataService.RegistrationItem_ReserveKeuzeActiviteitOpZondagWijzigenVanJeUiteindelijkeKeuzeIsMogelijkTotBeginOktober">
+          <End Role="RegistrationItem" EntitySet="Registration" />
+          <End Role="ReserveKeuzeActiviteitOpZondagWijzigenVanJeUiteindelijkeKeuzeIsMogelijkTotBeginOktober" EntitySet="Activities" />
+        </AssociationSet>
+        <AssociationSet Name="RegistrationItem_VolgJeEenSpeciaalDieetOfMoetRekeningGehoudenWordenMetSpecifiekeAllergieën" Association="Microsoft.SharePoint.DataService.RegistrationItem_VolgJeEenSpeciaalDieetOfMoetRekeningGehoudenWordenMetSpecifiekeAllergieën">
+          <End Role="RegistrationItem" EntitySet="Registration" />
+          <End Role="VolgJeEenSpeciaalDieetOfMoetRekeningGehoudenWordenMetSpecifiekeAllergieën" EntitySet="RegistrationVolgJeEenSpeciaalDieetOfMoetRekeningGehoudenWordenMetSpecifiekeAllergieën" />
+        </AssociationSet>
+        <AssociationSet Name="RegistrationItem_GebruikJeMedicijnenOfHebJeEenMedischeIndicatieWaarvanDeOrganisatieOpDeHoogteMoetZijn" Association="Microsoft.SharePoint.DataService.RegistrationItem_GebruikJeMedicijnenOfHebJeEenMedischeIndicatieWaarvanDeOrganisatieOpDeHoogteMoetZijn">
+          <End Role="RegistrationItem" EntitySet="Registration" />
+          <End Role="GebruikJeMedicijnenOfHebJeEenMedischeIndicatieWaarvanDeOrganisatieOpDeHoogteMoetZijn" EntitySet="RegistrationGebruikJeMedicijnenOfHebJeEenMedischeIndicatieWaarvanDeOrganisatieOpDeHoogteMoetZijn" />
+        </AssociationSet>
+        <AssociationSet Name="RegistrationItem_WatIsJeShirtmaat" Association="Microsoft.SharePoint.DataService.RegistrationItem_WatIsJeShirtmaat">
+          <End Role="RegistrationItem" EntitySet="Registration" />
+          <End Role="WatIsJeShirtmaat" EntitySet="RegistrationWatIsJeShirtmaat" />
+        </AssociationSet>
+        <AssociationSet Name="RegistrationItem_CreatedBy" Association="Microsoft.SharePoint.DataService.RegistrationItem_CreatedBy">
+          <End Role="RegistrationItem" EntitySet="Registration" />
+          <End Role="CreatedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="RegistrationItem_ModifiedBy" Association="Microsoft.SharePoint.DataService.RegistrationItem_ModifiedBy">
+          <End Role="RegistrationItem" EntitySet="Registration" />
+          <End Role="ModifiedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="RoomiesItem_Wie" Association="Microsoft.SharePoint.DataService.RoomiesItem_Wie">
+          <End Role="RoomiesItem" EntitySet="Roomies" />
+          <End Role="Wie" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="RoomiesItem_CreatedBy" Association="Microsoft.SharePoint.DataService.RoomiesItem_CreatedBy">
+          <End Role="RoomiesItem" EntitySet="Roomies" />
+          <End Role="CreatedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="RoomiesItem_ModifiedBy" Association="Microsoft.SharePoint.DataService.RoomiesItem_ModifiedBy">
+          <End Role="RoomiesItem" EntitySet="Roomies" />
+          <End Role="ModifiedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="SharedDocumentsItem_CreatedBy" Association="Microsoft.SharePoint.DataService.SharedDocumentsItem_CreatedBy">
+          <End Role="SharedDocumentsItem" EntitySet="SharedDocuments" />
+          <End Role="CreatedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="SharedDocumentsItem_ModifiedBy" Association="Microsoft.SharePoint.DataService.SharedDocumentsItem_ModifiedBy">
+          <End Role="SharedDocumentsItem" EntitySet="SharedDocuments" />
+          <End Role="ModifiedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="SharedDocumentsItem_CheckedOutTo" Association="Microsoft.SharePoint.DataService.SharedDocumentsItem_CheckedOutTo">
+          <End Role="SharedDocumentsItem" EntitySet="SharedDocuments" />
+          <End Role="CheckedOutTo" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="SiteAssetsItem_CreatedBy" Association="Microsoft.SharePoint.DataService.SiteAssetsItem_CreatedBy">
+          <End Role="SiteAssetsItem" EntitySet="SiteAssets" />
+          <End Role="CreatedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="SiteAssetsItem_ModifiedBy" Association="Microsoft.SharePoint.DataService.SiteAssetsItem_ModifiedBy">
+          <End Role="SiteAssetsItem" EntitySet="SiteAssets" />
+          <End Role="ModifiedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="SiteAssetsItem_CheckedOutTo" Association="Microsoft.SharePoint.DataService.SiteAssetsItem_CheckedOutTo">
+          <End Role="SiteAssetsItem" EntitySet="SiteAssets" />
+          <End Role="CheckedOutTo" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="SitePagesItem_CreatedBy" Association="Microsoft.SharePoint.DataService.SitePagesItem_CreatedBy">
+          <End Role="SitePagesItem" EntitySet="SitePages" />
+          <End Role="CreatedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="SitePagesItem_ModifiedBy" Association="Microsoft.SharePoint.DataService.SitePagesItem_ModifiedBy">
+          <End Role="SitePagesItem" EntitySet="SitePages" />
+          <End Role="ModifiedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="SitePagesItem_CheckedOutTo" Association="Microsoft.SharePoint.DataService.SitePagesItem_CheckedOutTo">
+          <End Role="SitePagesItem" EntitySet="SitePages" />
+          <End Role="CheckedOutTo" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="UserInformationListItem_CreatedBy" Association="Microsoft.SharePoint.DataService.UserInformationListItem_CreatedBy">
+          <End Role="UserInformationListItem" EntitySet="UserInformationList" />
+          <End Role="CreatedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="UserInformationListItem_ModifiedBy" Association="Microsoft.SharePoint.DataService.UserInformationListItem_ModifiedBy">
+          <End Role="UserInformationListItem" EntitySet="UserInformationList" />
+          <End Role="ModifiedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="UserInformationListItem_Attachments" Association="Microsoft.SharePoint.DataService.UserInformationListItem_Attachments">
+          <End Role="UserInformationListItem" EntitySet="UserInformationList" />
+          <End Role="Attachments" EntitySet="Attachments" />
+        </AssociationSet>
+        <AssociationSet Name="WorkflowTasksItem_CreatedBy" Association="Microsoft.SharePoint.DataService.WorkflowTasksItem_CreatedBy">
+          <End Role="WorkflowTasksItem" EntitySet="WorkflowTasks" />
+          <End Role="CreatedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="WorkflowTasksItem_ModifiedBy" Association="Microsoft.SharePoint.DataService.WorkflowTasksItem_ModifiedBy">
+          <End Role="WorkflowTasksItem" EntitySet="WorkflowTasks" />
+          <End Role="ModifiedBy" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="WorkflowTasksItem_Attachments" Association="Microsoft.SharePoint.DataService.WorkflowTasksItem_Attachments">
+          <End Role="WorkflowTasksItem" EntitySet="WorkflowTasks" />
+          <End Role="Attachments" EntitySet="Attachments" />
+        </AssociationSet>
+        <AssociationSet Name="WorkflowTasksItem_Predecessors" Association="Microsoft.SharePoint.DataService.WorkflowTasksItem_Predecessors">
+          <End Role="WorkflowTasksItem" EntitySet="WorkflowTasks" />
+          <End Role="Predecessors" EntitySet="WorkflowTasks" />
+        </AssociationSet>
+        <AssociationSet Name="WorkflowTasksItem_Priority" Association="Microsoft.SharePoint.DataService.WorkflowTasksItem_Priority">
+          <End Role="WorkflowTasksItem" EntitySet="WorkflowTasks" />
+          <End Role="Priority" EntitySet="WorkflowTasksPriority" />
+        </AssociationSet>
+        <AssociationSet Name="WorkflowTasksItem_Status" Association="Microsoft.SharePoint.DataService.WorkflowTasksItem_Status">
+          <End Role="WorkflowTasksItem" EntitySet="WorkflowTasks" />
+          <End Role="Status" EntitySet="WorkflowTasksStatus" />
+        </AssociationSet>
+        <AssociationSet Name="WorkflowTasksItem_AssignedTo" Association="Microsoft.SharePoint.DataService.WorkflowTasksItem_AssignedTo">
+          <End Role="WorkflowTasksItem" EntitySet="WorkflowTasks" />
+          <End Role="AssignedTo" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <AssociationSet Name="WorkflowTasksItem_TaskGroup" Association="Microsoft.SharePoint.DataService.WorkflowTasksItem_TaskGroup">
+          <End Role="WorkflowTasksItem" EntitySet="WorkflowTasks" />
+          <End Role="TaskGroup" EntitySet="UserInformationList" />
+        </AssociationSet>
+        <FunctionImport Name="ConvertListTitleToEntitySetName" ReturnType="Edm.String" m:HttpMethod="GET">
+          <Parameter Name="listTitle" Type="Edm.String" Mode="In" />
+        </FunctionImport>
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

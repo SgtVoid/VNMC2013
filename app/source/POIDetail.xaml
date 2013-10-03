@@ -44,7 +44,7 @@
                 <TextBlock x:Name="callBeachClub" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="456" TextDecorations="Underline" Padding="25,0,0,00" Tap="callBeachClub_Tap" Foreground="Black" FontSize="24">
                     	<Run Text="{Binding Phone}"/>
                 </TextBlock>
-                <Grid HorizontalAlignment="Right" Width="119" Tap="Grid_Tap" >
+                <Grid HorizontalAlignment="Right" Width="130" Tap="Grid_Tap" >
                     <Grid.Background>
                         <SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
                     </Grid.Background>

@@ -241,7 +241,7 @@ namespace VNMC2013
                                                 AddressLine1 = "Green Community Village",
                                                 AddressLine2 = "Dubai",
                                                 AddressLine3 = "United Arab Emirates",
-                                                ImagePath = "/Assets/hotel.PNG",
+                                                ImagePath = "/Assets/POIs/hotel.PNG",
                                                 Website = "",
                                                 GeoLat = 25.008165,
                                                 GeoLong = 55.156748,
@@ -254,7 +254,7 @@ namespace VNMC2013
                                                 AddressLine1 = "Meydan Beach Club",
                                                 AddressLine2 = "Dubai",
                                                 AddressLine3 = "United Arab Emirates",
-                                                ImagePath = "/Assets/beachclub.PNG",
+                                                ImagePath = "/Assets/POIs/beachclub.PNG",
                                                 Website = "",
                                                 GeoLat = 25.081153,
                                                 GeoLong = 55.136013,
@@ -282,11 +282,25 @@ namespace VNMC2013
                                                 AddressLine3 = "United Arab Emirates",
 
                                                 ImagePath = "https://lh4.googleusercontent.com/-CYz-RSoXP_w/UUDk9W9eq8I/AAAAAAAAAA8/UagXiJSEJfk/w816-h612-no/Montgomerie+Golf+Club",
-                                                Website = "http://www.themontgomerie.com/",
+                                                Website = "http://www.themontgomerie.com",
 
                                                 GeoLat = 25.008165,
                                                 GeoLong = 55.156748,
                                                 Phone = "+971 4 390 5600"
+                                            } , 
+                                            new POI() 
+                                            { 
+                                                Name = "Burj Al Arab",
+                                                AddressLine1 = "Burj Al Arab",
+                                                AddressLine2 = "Dubai",
+                                                AddressLine3 = "United Arab Emirates",
+
+                                                ImagePath = "/Assets/POIs/Burj-Al-Arab.jpg",
+                                                Website = "http://www.burjalarab.com‎",
+
+                                                GeoLat = 25.140963,
+                                                GeoLong = 55.185018,
+                                                Phone = "+971 4 301 7777"
                                             } 
                                         };
                 }

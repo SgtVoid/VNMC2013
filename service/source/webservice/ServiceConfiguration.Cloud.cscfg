@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="webservice" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="2" osVersion="*" schemaVersion="2012-10.1.8">
+  <Role name="WCFServiceWebRole1">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=devheinekenservices;AccountKey=4cCYqfMDs3TfVAYqgS3aTYbgamdqTMMB607JgNBUCR04jRk6326vxYKRh0zIab49WmBPs6J0ucdBfuoc454Wyw==" />
+      <Setting name="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=devheinekenservices;AccountKey=4cCYqfMDs3TfVAYqgS3aTYbgamdqTMMB607JgNBUCR04jRk6326vxYKRh0zIab49WmBPs6J0ucdBfuoc454Wyw==" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>
