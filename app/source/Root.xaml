@@ -62,9 +62,9 @@
                 <Rectangle Fill="{StaticResource PhoneAccentBrush}" HorizontalAlignment="Left" Height="204"   VerticalAlignment="Top" Width="204" />
                 <TextBlock HorizontalAlignment="Left" Padding="10" TextWrapping="Wrap" Text="programmas van anderen ?!" VerticalAlignment="Top" Height="204" Width="204" Foreground="{StaticResource PhoneRadioCheckBoxCheckBrush}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
             </Grid>
-            <Grid Margin="242,260,0,0" Tap="Contact_Tap">
+            <Grid Margin="242,260,0,0" Tap="POI_Tap">
                 <Rectangle Fill="{StaticResource PhoneAccentBrush}" HorizontalAlignment="Left" Height="204"   VerticalAlignment="Top" Width="204" />
-                <TextBlock HorizontalAlignment="Left" Padding="10" TextWrapping="Wrap" Text="Contact" VerticalAlignment="Top" Height="204" Width="204" Foreground="{StaticResource PhoneRadioCheckBoxCheckBrush}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                <TextBlock HorizontalAlignment="Left" Padding="10" TextWrapping="Wrap" Text="Points Of Interest" VerticalAlignment="Top" Height="204" Width="204" Foreground="{StaticResource PhoneRadioCheckBoxCheckBrush}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
             </Grid>
 
         </Grid>

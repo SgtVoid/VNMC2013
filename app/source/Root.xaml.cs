@@ -64,9 +64,9 @@ namespace VNMC2013
         {
             MessageBox.Show("hoi");
         }
-        private void Contact_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        private void POI_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Contact.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/POIList.xaml", UriKind.Relative));
         }
 
         private void Send_Click(object sender, RoutedEventArgs e)

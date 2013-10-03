@@ -9,6 +9,7 @@ using System.IO.IsolatedStorage;
 using System.Xml.Serialization;
 using System.IO;
 using VNMC2013;
+using VNMC2013.Data;
 
 
 namespace VNMC2013
@@ -218,6 +219,78 @@ namespace VNMC2013
             get
             {
                 return _rooms;
+            }
+        }
+
+
+
+
+        ///TEST!
+        ///
+        private POI[] _PointsOfInterest = null;
+        public POI[] PointsOfInterest
+        {
+            get
+            {
+                if (_PointsOfInterest == null)
+                {
+                    _PointsOfInterest = new POI[] { 
+                                            new POI() 
+                                            { 
+                                                Name = "Premier Inn Dubai Investments Park",
+                                                AddressLine1 = "Green Community Village",
+                                                AddressLine2 = "Dubai",
+                                                AddressLine3 = "United Arab Emirates",
+                                                ImagePath = "/Assets/hotel.PNG",
+                                                Website = "",
+                                                GeoLat = 25.008165,
+                                                GeoLong = 55.156748,
+                                                Phone = "+971 4 885 0999"
+
+                                            }, 
+                                            new POI() 
+                                            { 
+                                                Name = "Meydan Beach Club",
+                                                AddressLine1 = "Meydan Beach Club",
+                                                AddressLine2 = "Dubai",
+                                                AddressLine3 = "United Arab Emirates",
+                                                ImagePath = "/Assets/beachclub.PNG",
+                                                Website = "",
+                                                GeoLat = 25.081153,
+                                                GeoLong = 55.136013,
+                                                Phone = "+971 4 433 3777"
+                                            }, 
+                                            new POI() 
+                                            { 
+                                                Name = "Aquaventure Waterpark",
+                                                AddressLine1 = "Atlantis The Palm",
+                                                AddressLine2 = "Crescent Road",
+                                                AddressLine3 = "Palm Island - Dubai",
+
+                                                ImagePath = "http://www.bestourism.com/img/items/big/104/United-Arab-Emirates_Aquaventure-Dubai_338.jpg67",
+                                                Website = "",
+
+                                                GeoLat = 25.13346,
+                                                GeoLong = 55.120012,
+                                                Phone = "+971 4 426 0000"
+                                            } , 
+                                            new POI() 
+                                            { 
+                                                Name = "Montgomerie Golf Club",
+                                                AddressLine1 = "Emirates Hills 3",
+                                                AddressLine2 = "Dubai",
+                                                AddressLine3 = "United Arab Emirates",
+
+                                                ImagePath = "https://lh4.googleusercontent.com/-CYz-RSoXP_w/UUDk9W9eq8I/AAAAAAAAAA8/UagXiJSEJfk/w816-h612-no/Montgomerie+Golf+Club",
+                                                Website = "http://www.themontgomerie.com/",
+
+                                                GeoLat = 25.008165,
+                                                GeoLong = 55.156748,
+                                                Phone = "+971 4 390 5600"
+                                            } 
+                                        };
+                }
+                return _PointsOfInterest;
             }
         }
 

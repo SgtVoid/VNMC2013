@@ -97,6 +97,13 @@
     <Compile Include="Contact.xaml.cs">
       <DependentUpon>Contact.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\POI.cs" />
+    <Compile Include="POIDetail.xaml.cs">
+      <DependentUpon>POIDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="POIList.xaml.cs">
+      <DependentUpon>POIList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Extensions.cs" />
     <Compile Include="GlobalData.cs" />
     <Compile Include="LocalizedStrings.cs" />
@@ -131,6 +138,14 @@
     <Page Include="Contact.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="POIDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="POIList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Roomies.xaml">
       <SubType>Designer</SubType>
