@@ -26,7 +26,6 @@ namespace VNMC2013
             }
         }
 
-        private static Person[] all;
         public static Person[] All
         {
             get

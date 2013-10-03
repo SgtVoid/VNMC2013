@@ -1,0 +1,40 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="VNMC2013.Activiteits"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sharecontrols="clr-namespace:VNMC2013"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <Grid x:Name="LayoutRoot" Margin="-1,0,1,0">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/background.png" Stretch="UniformToFill">
+                <ImageBrush.RelativeTransform>
+                    <CompositeTransform CenterY="0.5" CenterX="0.5" TranslateX="0.6"/>
+                </ImageBrush.RelativeTransform>
+            </ImageBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" MinHeight="184"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <phone:LongListSelector x:Name="ListActiviteits" Grid.Row="1" Margin="0" SelectionChanged="ListBox_SelectionChanged">
+            <phone:LongListSelector.ItemTemplate>
+                <DataTemplate>
+                    <Grid Background="#B2FFFFFF" Margin="0,0,0,10">
+                        <TextBlock Text="{Binding Name}" FontFamily="{StaticResource PhoneFontFamilySemiBold}"  FontSize="22" Padding="6" Foreground="Black" VerticalAlignment="Center" />
+                    </Grid>
+                </DataTemplate>
+            </phone:LongListSelector.ItemTemplate>
+        </phone:LongListSelector>
+
+    </Grid>
+</phone:PhoneApplicationPage>
