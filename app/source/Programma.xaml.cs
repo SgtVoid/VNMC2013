@@ -9,7 +9,6 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.IO;
 using Microsoft.Phone.Scheduler;
 
 namespace VNMC2013
@@ -20,11 +19,7 @@ namespace VNMC2013
         {
             InitializeComponent();
 
-            listSunday.ItemsSource = (from x in Person.CurrentUser.Activity.People
-                                      select new {
-                                          Name = x.DisplayName,
-                                          Image = x.Image
-                                      }).ToList();
+            acitivityUserControl.DataContext = Person.CurrentUser.Activity.People;
 
             if (ScheduledActionService.Find("VNMC2013") == null)
                 AlarmToggle.IsChecked = false;

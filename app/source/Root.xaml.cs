@@ -21,7 +21,6 @@ namespace VNMC2013
             InitializeComponent();
             IsolatedStorageSettings localSettings = IsolatedStorageSettings.ApplicationSettings;
 
-
             if (!GlobalData.Instance.IsLoaded)
             {
                 if (!GlobalData.Instance.Load())
@@ -32,8 +31,6 @@ namespace VNMC2013
                     }
                 }
             }
-
-
 
             if (!localSettings.Contains("DisplayName"))
             {
@@ -75,7 +72,6 @@ namespace VNMC2013
             localSettings["DisplayName"] = DisplayName.Text;
             GetDisplayName.IsOpen = false;
         }
-
 
         private bool Sync()
         {

@@ -7,6 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sharecontrols="clr-namespace:VNMC2013"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -132,26 +133,17 @@
                                     <RowDefinition Height="31*"/>
                                     <RowDefinition Height="33*"/>
                                 </Grid.RowDefinitions>
-                                <TextBlock Text="titl" Name="TextTitle" TextWrapping="Wrap" Foreground="Black" Padding="5" VerticalAlignment="Top" FontWeight="Bold" FontSize="36" />
-                                <TextBlock Text="desciprdfgdfgdfgdfgdfgdfgdfgdfgdfgdfgdfgiton" Name="TextBlockActivity" TextWrapping="Wrap" Foreground="Black" Padding="5" VerticalAlignment="Bottom" Margin="0,0,0,-1" Grid.Row="1" />
+                                <TextBlock Name="TextTitle" TextWrapping="Wrap" Foreground="Black" Padding="5" VerticalAlignment="Top" FontWeight="Bold" FontSize="36" />
+                                <TextBlock Name="TextBlockActivity" TextWrapping="Wrap" Foreground="Black" Padding="5" VerticalAlignment="Bottom" Margin="0,0,0,-1" Grid.Row="1" />
                             </Grid>
                         </Border>
 
                         <Border Background="#B2FFFFFF" Grid.Row="1">
                             <toolkit:ToggleSwitch Name="AlarmToggle" Content="Zet Alarm" Checked="AlarmToggle_Checked" Unchecked="AlarmToggle_Unchecked" VerticalAlignment="Top" Foreground="Black" SwitchForeground="Green" Background="Red" />
                         </Border>
-
-                        <phone:LongListSelector Name="listSunday" Margin="0,40,0,0" Grid.Row="2">
-                            <phone:LongListSelector.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid Background="#B2FFFFFF" Margin="0,0,0,10">
-                                        <Image Source="{Binding Image}" Width="100" Height="100" HorizontalAlignment="Left" />
-                                        <TextBlock Text="{Binding Name}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" HorizontalAlignment="Right" FontSize="22" Padding="6" Foreground="Black" VerticalAlignment="Center" />
-                                    </Grid>
-                                </DataTemplate>
-                            </phone:LongListSelector.ItemTemplate>
-                        </phone:LongListSelector>
+                        <sharecontrols:ActivityUserControl x:Name="acitivityUserControl" Grid.Row="2" />
                     </Grid>
+
                 </ScrollViewer>
             </phone:PanoramaItem>
 
