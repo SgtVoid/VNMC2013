@@ -16,7 +16,11 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot">
         <Grid.Background>
-            <ImageBrush Stretch="Fill" ImageSource="/SplashScreenImage.jpg"/>
+            <ImageBrush ImageSource="/Assets/background.png" Stretch="UniformToFill">
+                <ImageBrush.RelativeTransform>
+                    <CompositeTransform CenterY="0.5" CenterX="0.5" TranslateX="-0.18"/>
+                </ImageBrush.RelativeTransform>
+            </ImageBrush>
         </Grid.Background>
         <phone:Pivot Title="VNMC2013 - Roomies">
             <phone:PivotItem Header="All Rooms">
