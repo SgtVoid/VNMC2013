@@ -160,6 +160,7 @@ namespace VNMC2013
                     stream.Close();
 
                     GetRoomies();
+                    foreach (var p in GlobalData.Instance.People) { p.LoadPhoto(); }
                 };
                 service.GetPeopleAsync();
 

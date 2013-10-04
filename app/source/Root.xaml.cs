@@ -30,6 +30,13 @@ namespace VNMC2013
                         Sync();
                     }
                 }
+                else
+                {
+                    if (GlobalData.Instance.Contacts == null)
+                        GlobalData.Instance.OnContactsLoaded += LoadPictures;
+                    else
+                        LoadPictures();
+                }
             }
 
             if (!localSettings.Contains("DisplayName"))
@@ -41,6 +48,11 @@ namespace VNMC2013
                 else
                     Instance_OnContactsLoaded();
             }
+        }
+
+        void LoadPictures()
+        {
+            foreach (var p in GlobalData.Instance.People) { p.LoadPhoto(); }
         }
 
         void Instance_OnContactsLoaded()

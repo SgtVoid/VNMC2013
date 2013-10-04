@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Linq;
@@ -12,7 +13,7 @@ using System.Windows.Resources;
 
 namespace VNMC2013
 {
-    public class Person
+    public class Person : INotifyPropertyChanged
     {
 
         private static Person currentUser;
@@ -50,20 +51,7 @@ namespace VNMC2013
         {
             get
             {
-                if (image != null) return image;
-
-                try
-                {
-                    return image = CreateImageFromStream(
-                        GlobalData.Instance.Contacts.First(
-                            x => string.Equals((x.CompleteName.FirstName + x.CompleteName.MiddleName + x.CompleteName.LastName).Replace(" ", ""), this.DisplayName.Replace(" ", ""), StringComparison.OrdinalIgnoreCase)
-                        ).GetPicture()
-                    );
-                }
-                catch
-                {
-                    return null;
-                }
+                return image != null ? image : null;
             }
         }
 
@@ -77,7 +65,32 @@ namespace VNMC2013
                 return activity = Activity.All.First(x => x.Id == this.PrimaryActivity);
             }
         }
-        
+
+        public async void LoadPhoto()
+        {
+            Stream stream = await Task<Stream>.Factory.StartNew(() =>
+                {
+                    try
+                    {
+                        return GlobalData.Instance.Contacts.First(
+                            x => string.Equals((x.CompleteName.FirstName + x.CompleteName.MiddleName + x.CompleteName.LastName).Replace(" ", ""),
+                                  this.DisplayName.Replace(" ", ""), StringComparison.OrdinalIgnoreCase)
+                        ).GetPicture();
+                    }
+                    catch { return null; }
+                });
+
+            this.image = CreateImageFromStream(stream);
+            RaisePropertyChanged("Image");
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void RaisePropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(name));
+        }
+
         private BitmapImage CreateImageFromStream(Stream stream)
         {
             if (stream != null)
