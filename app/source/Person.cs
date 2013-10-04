@@ -14,12 +14,8 @@ using System.Windows.Resources;
 
 namespace VNMC2013
 {
-<<<<<<< HEAD
     [DataContract]
-    public class Person
-=======
     public class Person : INotifyPropertyChanged
->>>>>>> b354c3dd08d9d0bba66b7b9cb1f2241f8df9a84a
     {
 
         private static Person currentUser;
