@@ -38,7 +38,7 @@ namespace VNMC2013
 
             alarm.Content = "Wake up!!!! It is time for " + Person.CurrentUser.Activity.Name;
             alarm.BeginTime = Person.CurrentUser.Activity.AlarmTime;
-            alarm.ExpirationTime = Person.CurrentUser.Activity.AlarmTime.AddHours(1);
+            alarm.ExpirationTime = Person.CurrentUser.Activity.AlarmTime.AddMinutes(10);
             ScheduledActionService.Add(alarm);
         }
 
