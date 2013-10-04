@@ -1,5 +1,5 @@
 ﻿<phone:PhoneApplicationPage
-    x:Class="VNMC2013.POIList"
+    x:Class="VNMC2013.POIListSearch"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
@@ -18,12 +18,12 @@
         <Grid.Background>
             <ImageBrush ImageSource="/Assets/background.png" Stretch="UniformToFill">
                 <ImageBrush.RelativeTransform>
-                    <CompositeTransform CenterY="0.5" CenterX="0.5" TranslateX="0.6"/>
+                    <CompositeTransform CenterY="0.5" CenterX="0.5" TranslateX="-0.18"/>
                 </ImageBrush.RelativeTransform>
             </ImageBrush>
         </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" MinHeight="184"/>
+            <RowDefinition Height="Auto" MinHeight="77"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <phone:LongListSelector x:Name="lstPOI" Grid.Row="1" Margin="0" SelectionChanged="lstPOI_SelectionChanged">
@@ -35,13 +35,8 @@
                 </DataTemplate>
             </phone:LongListSelector.ItemTemplate>
         </phone:LongListSelector>
+        <TextBox x:Name="txtSearch" Grid.Row="0" HorizontalAlignment="Left" Height="72" TextWrapping="Wrap" VerticalAlignment="Top"  HorizontalContentAlignment="Stretch" Width="480" TextChanged="txtSearch_TextChanged"/>
 
     </Grid>
-
-    <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" >
-            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/feature.search.png" Text="Search" Click="ApplicationBarIconButton_Click"/>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>

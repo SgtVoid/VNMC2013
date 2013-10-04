@@ -15,9 +15,9 @@ using VNMC2013.Data;
 
 namespace VNMC2013
 {
-    public partial class POIList : PhoneApplicationPage
+    public partial class POIListSearch : PhoneApplicationPage
     {
-        public POIList()
+        public POIListSearch()
         {
             InitializeComponent();
             lstPOI.ItemsSource = GlobalData.Instance.PointsOfInterest.ToList();
@@ -26,6 +26,8 @@ namespace VNMC2013
         protected override void OnNavigatedTo(NavigationEventArgs arg)
         {
             lstPOI.SelectedItem = null;
+            txtSearch.Focus();
+       
         }
 
         private void lstPOI_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -38,9 +40,11 @@ namespace VNMC2013
             NavigationService.Navigate(new Uri("/POIDetail.xaml?id="+index, UriKind.Relative));
         }
 
-        private void ApplicationBarIconButton_Click(object sender, EventArgs e)
+        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/POIListSearch.xaml", UriKind.Relative));
+            lstPOI.ItemsSource = (from x in GlobalData.Instance.PointsOfInterest
+                                  where x.Name.ToLower().Contains(txtSearch.Text.ToLower())
+                                  select x).ToList();
         }
 
     }
