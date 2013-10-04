@@ -33,7 +33,7 @@
 
 
           
-            <Grid Background="#B2FFFFFF" Height="129" VerticalAlignment="Bottom" Width="456">
+            <Grid Background="#B2FFFFFF" Height="129" VerticalAlignment="Bottom" Width="456" Margin="0,0,0,10">
                 <TextBlock HorizontalAlignment="Center" Height="119" TextWrapping="Wrap" VerticalAlignment="Top" Width="456" Foreground="Black" Padding="25,0,0,0" FontSize="24">
                     	<Run Text="{Binding AddressLine1}"/>
                     	<LineBreak/>

@@ -103,6 +103,9 @@
     <Compile Include="Contact.xaml.cs">
       <DependentUpon>Contact.xaml</DependentUpon>
     </Compile>
+    <Compile Include="POIListSearch.xaml.cs">
+      <DependentUpon>POIListSearch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Data\POI.cs" />
     <Compile Include="JSON\Activities.cs" />
     <Compile Include="JSON\Peoples.cs" />
@@ -160,6 +163,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="POIListSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="POIDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -206,7 +213,12 @@
     <None Include="Service References\VNMCData\VNMCData2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Assets\AppBar\feature.search.png" />
+    <Resource Include="Assets\POI.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Content Include="Assets\POIs\Burj-Al-Arab.jpg" />
+    <Content Include="Assets\POIs\dubai-zoo.jpg" />
     <Content Include="Assets\portret_default.png" />
     <Content Include="ServiceReferences.ClientConfig" />
     <None Include="Properties\AppManifest.xml" />

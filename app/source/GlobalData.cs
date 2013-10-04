@@ -74,11 +74,17 @@ namespace VNMC2013
         {
             try
             {
+                ///Get POIs
+                XmlSerializer serializer = new XmlSerializer(typeof(POI[]));
+                Stream stream = System.Windows.Application.GetResourceStream(new Uri("VNMC2013;component/Assets/POI.xml", UriKind.Relative)).Stream;
+                _PointsOfInterest = (POI[])serializer.Deserialize(stream);
+
+
                 IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForApplication();
 
                 /// Get Activities
-                XmlSerializer serializer = new XmlSerializer(typeof(Activity[]));
-                FileStream stream = storage.OpenFile("Activities.xml", FileMode.Open);
+                serializer = new XmlSerializer(typeof(Activity[]));
+                stream = storage.OpenFile("Activities.xml", FileMode.Open);
                 _activities = (Activity[])serializer.Deserialize(stream);
 
                 /// Get Rooms
@@ -90,6 +96,8 @@ namespace VNMC2013
                 serializer = new XmlSerializer(typeof(Person[]));
                 stream = storage.OpenFile("People.xml", FileMode.Open);
                 _people = (Person[])serializer.Deserialize(stream);
+
+
 
 
                 _isloaded = true;
@@ -212,6 +220,8 @@ namespace VNMC2013
                                                     FileStream stream2 = storage.OpenFile("Rooms.xml", FileMode.OpenOrCreate);
                                                     ser.Serialize(stream, _rooms);
                                                     stream.Close();
+
+                                                    foreach (var p in GlobalData.Instance.People) { p.LoadPhoto(); }
                                                 }
                                             }
                                         });
@@ -221,7 +231,6 @@ namespace VNMC2013
                         }
                     }
                 });
-
                 _isloaded = true;
                 return true;
             }
@@ -266,78 +275,6 @@ namespace VNMC2013
         {
             get
             {
-                if (_PointsOfInterest == null)
-                {
-                    _PointsOfInterest = new POI[] { 
-                                            new POI() 
-                                            { 
-                                                Name = "Premier Inn Dubai Investments Park",
-                                                AddressLine1 = "Green Community Village",
-                                                AddressLine2 = "Dubai",
-                                                AddressLine3 = "United Arab Emirates",
-                                                ImagePath = "/Assets/POIs/hotel.PNG",
-                                                Website = "",
-                                                GeoLat = 25.008165,
-                                                GeoLong = 55.156748,
-                                                Phone = "+971 4 885 0999"
-
-                                            }, 
-                                            new POI() 
-                                            { 
-                                                Name = "Meydan Beach Club",
-                                                AddressLine1 = "Meydan Beach Club",
-                                                AddressLine2 = "Dubai",
-                                                AddressLine3 = "United Arab Emirates",
-                                                ImagePath = "/Assets/POIs/beachclub.PNG",
-                                                Website = "",
-                                                GeoLat = 25.081153,
-                                                GeoLong = 55.136013,
-                                                Phone = "+971 4 433 3777"
-                                            }, 
-                                            new POI() 
-                                            { 
-                                                Name = "Aquaventure Waterpark",
-                                                AddressLine1 = "Atlantis The Palm",
-                                                AddressLine2 = "Crescent Road",
-                                                AddressLine3 = "Palm Island - Dubai",
-
-                                                ImagePath = "http://www.bestourism.com/img/items/big/104/United-Arab-Emirates_Aquaventure-Dubai_338.jpg67",
-                                                Website = "",
-
-                                                GeoLat = 25.13346,
-                                                GeoLong = 55.120012,
-                                                Phone = "+971 4 426 0000"
-                                            } , 
-                                            new POI() 
-                                            { 
-                                                Name = "Montgomerie Golf Club",
-                                                AddressLine1 = "Emirates Hills 3",
-                                                AddressLine2 = "Dubai",
-                                                AddressLine3 = "United Arab Emirates",
-
-                                                ImagePath = "https://lh4.googleusercontent.com/-CYz-RSoXP_w/UUDk9W9eq8I/AAAAAAAAAA8/UagXiJSEJfk/w816-h612-no/Montgomerie+Golf+Club",
-                                                Website = "http://www.themontgomerie.com",
-
-                                                GeoLat = 25.008165,
-                                                GeoLong = 55.156748,
-                                                Phone = "+971 4 390 5600"
-                                            } , 
-                                            new POI() 
-                                            { 
-                                                Name = "Burj Al Arab",
-                                                AddressLine1 = "Burj Al Arab",
-                                                AddressLine2 = "Dubai",
-                                                AddressLine3 = "United Arab Emirates",
-
-                                                ImagePath = "/Assets/POIs/Burj-Al-Arab.jpg",
-                                                Website = "http://www.burjalarab.com‎",
-
-                                                GeoLat = 25.140963,
-                                                GeoLong = 55.185018,
-                                                Phone = "+971 4 301 7777"
-                                            } 
-                                        };
-                }
                 return _PointsOfInterest;
             }
         }

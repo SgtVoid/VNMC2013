@@ -29,13 +29,19 @@
         <phone:LongListSelector x:Name="lstPOI" Grid.Row="1" Margin="0" SelectionChanged="lstPOI_SelectionChanged">
             <phone:LongListSelector.ItemTemplate>
                 <DataTemplate>
-                    <Grid Background="#B2FFFFFF" Margin="0,0,0,10">
-                        <TextBlock Text="{Binding Name}" FontFamily="{StaticResource PhoneFontFamilySemiBold}"  FontSize="22" Padding="6" Foreground="Black" VerticalAlignment="Center" />
+                    <Grid Background="#B2FFFFFF" Margin="0,0,0,10" >
+                        <TextBlock Text="{Binding Name}" FontFamily="{StaticResource PhoneFontFamilySemiBold}"  FontSize="22" Padding="6,10" Foreground="Black" VerticalAlignment="Center" />
                     </Grid>
                 </DataTemplate>
             </phone:LongListSelector.ItemTemplate>
         </phone:LongListSelector>
 
     </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" >
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/feature.search.png" Text="Search" Click="ApplicationBarIconButton_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>
