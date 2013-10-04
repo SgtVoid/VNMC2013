@@ -1,4 +1,5 @@
 VNMC2013
 ========
 
-awesome
+Windows Phone app voor het Macaw VNMC2013.
+
