@@ -19,7 +19,11 @@ namespace VNMC2013
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.DataContext = Activity.All.FirstOrDefault(x => x.Id == int.Parse(NavigationContext.QueryString["Id"]));
+            Activity selected = Activity.All.FirstOrDefault(x => x.Id == int.Parse(NavigationContext.QueryString["Id"]));
+
+            this.DataContext = selected;
+
+            if (selected != null && selected.People.Length == 0) rowUserControl.Height = new GridLength(300);
         }
     }
 }
