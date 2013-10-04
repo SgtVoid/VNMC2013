@@ -16,12 +16,7 @@ namespace VNMC2013
         {
             InitializeComponent();
 
-            ListRooms.ItemsSource = (from x in Room.All()
-                select new 
-            	{
-                    Image1 = x.People[0] == null ? null : x.People[0].Image,
-            	    Image2 = x.People[1] == null ? null : x.People[1].Image
-                }).ToList();
+            ListRooms.ItemsSource = Room.All;
         }
     }
 }

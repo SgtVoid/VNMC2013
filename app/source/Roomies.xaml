@@ -26,12 +26,12 @@
                             <Grid>
                                 <Image Width="100" Height="100" HorizontalAlignment="Left" Margin="50,0,50,20" >
                                     <Image.Source>
-                                        <Binding Path="Image1" TargetNullValue="/Assets/portret_default.png" />
+                                        <Binding Path="Person1.Image" TargetNullValue="/Assets/portret_default.png" />
                                     </Image.Source>
                                 </Image>
                                 <Image Width="100" Height="100" HorizontalAlignment="Right" Margin="50,0,50,20" >
                                     <Image.Source>
-                                        <Binding Path="Image2" TargetNullValue="/Assets/portret_default.png" />
+                                        <Binding Path="Person2.Image" TargetNullValue="/Assets/portret_default.png" />
                                     </Image.Source>
                                 </Image>
                             </Grid>
