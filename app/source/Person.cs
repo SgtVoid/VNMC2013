@@ -25,7 +25,7 @@ namespace VNMC2013
             {
                 if (currentUser != null) return currentUser;
 
-                return currentUser = Person.All.First(x => x.DisplayName == IsolatedStorageSettings.ApplicationSettings["DisplayName"].ToString());
+                return currentUser = Person.All.First(x => x.AccountName.Equals(IsolatedStorageSettings.ApplicationSettings["DisplayName"].ToString(),StringComparison.OrdinalIgnoreCase));
             }
         }
 

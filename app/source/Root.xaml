@@ -42,9 +42,10 @@
                         <GradientStop Color="#FFB6D1EB"/>
                     </LinearGradientBrush>
                 </StackPanel.Background>
-                <TextBlock TextWrapping="Wrap" Text="Vul je naam in:" RenderTransformOrigin="0.495,0.593" Margin="10,40,176,0" HorizontalAlignment="Center" Width="295"/>
+                <TextBlock TextWrapping="Wrap" Text="Vul je credentials in:" RenderTransformOrigin="0.495,0.593" Margin="10,40,176,0" HorizontalAlignment="Center" Width="295"/>
                 <toolkit:AutoCompleteBox x:Name="DisplayName" VerticalAlignment="Top" HorizontalAlignment="Center" Width="481" BorderThickness="0,3,3,3"/>
-                <Button x:Name="Send" Height="88" Content="Submit" Click="Send_Click" RenderTransformOrigin="0.498,2.216" />
+                <PasswordBox x:Name="Password" VerticalAlignment="Top" HorizontalAlignment="Center" Width="481" BorderThickness="0,3,3,3" />
+                <Button x:Name="Send" Height="88" Content="Sync" Click="Send_Click" RenderTransformOrigin="0.498,2.216" />
             </StackPanel>
         </Popup>
 

@@ -21,14 +21,16 @@ namespace VNMC2013
             InitializeComponent();
             IsolatedStorageSettings localSettings = IsolatedStorageSettings.ApplicationSettings;
 
-            if (!GlobalData.Instance.IsLoaded)
+            if (!GlobalData.Instance.IsLoaded )
             {
                 if (!GlobalData.Instance.Load())
                 {
-                    if (MessageBox.Show("It seems you haven't synced up yet :O, let go and do that") == MessageBoxResult.OK)
-                    {
-                        Sync();
-                    }
+                    GetDisplayName.IsOpen = true;
+
+                    if (GlobalData.Instance.Contacts == null)
+                        GlobalData.Instance.OnContactsLoaded += Instance_OnContactsLoaded;
+                    else
+                        Instance_OnContactsLoaded();
                 }
                 else
                 {
@@ -37,16 +39,6 @@ namespace VNMC2013
                     else
                         LoadPictures();
                 }
-            }
-
-            if (!localSettings.Contains("DisplayName"))
-            {
-                GetDisplayName.IsOpen = true;
-
-                if (GlobalData.Instance.Contacts == null)
-                    GlobalData.Instance.OnContactsLoaded += Instance_OnContactsLoaded;
-                else
-                    Instance_OnContactsLoaded();
             }
         }
 
@@ -81,22 +73,24 @@ namespace VNMC2013
         private void Send_Click(object sender, RoutedEventArgs e)
         {
             IsolatedStorageSettings localSettings = IsolatedStorageSettings.ApplicationSettings;
-            localSettings["DisplayName"] = DisplayName.Text;
+            if (Sync(DisplayName.Text, Password.Password))
+            {
+                localSettings["DisplayName"] = DisplayName.Text;
+            }
             GetDisplayName.IsOpen = false;
         }
 
-        private bool Sync()
+        private bool Sync(string username, string password)
         {
-            return GlobalData.Instance.Sync();
-
+            return GlobalData.Instance.Sync(username, password);
         }
 
         private void ApplicationBarIconButton_Click(object sender, EventArgs e)
         {
-            if (Sync())
-            {
-                MessageBox.Show("Sync Completed!");
-            }
+            IsolatedStorageSettings localSettings = IsolatedStorageSettings.ApplicationSettings;
+
+            GetDisplayName.IsOpen = true;
+            DisplayName.Text = localSettings["DisplayName"].ToString();
         }
     }
 }

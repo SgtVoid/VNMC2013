@@ -97,9 +97,6 @@ namespace VNMC2013
                 stream = storage.OpenFile("People.xml", FileMode.Open);
                 _people = (Person[])serializer.Deserialize(stream);
 
-
-
-
                 _isloaded = true;
                 return true;
             }
@@ -175,6 +172,7 @@ namespace VNMC2013
                                                     select new Person
                                                     {
                                                         Id = usr.Id,
+                                                        AccountName = usr.AccountName,
                                                         FirstName = usr.FirstName,
                                                         LastName = usr.LastName,
                                                         PrimaryActivity = (int)(reg.EersteKeuzeActiviteitOpZondagWijzigenVanJeUiteindelijkeKeuzeIsMogelijkTotBeginOktoberId == null ? -1 : reg.EersteKeuzeActiviteitOpZondagWijzigenVanJeUiteindelijkeKeuzeIsMogelijkTotBeginOktoberId),
@@ -217,9 +215,9 @@ namespace VNMC2013
 
                                                     IsolatedStorageFile storage2 = IsolatedStorageFile.GetUserStoreForApplication();
                                                     XmlSerializer ser2 = new XmlSerializer(typeof(Room[]));
-                                                    FileStream stream2 = storage.OpenFile("Rooms.xml", FileMode.OpenOrCreate);
-                                                    ser.Serialize(stream, _rooms);
-                                                    stream.Close();
+                                                    FileStream stream2 = storage2.OpenFile("Rooms.xml", FileMode.OpenOrCreate);
+                                                    ser2.Serialize(stream2, _rooms);
+                                                    stream2.Close();
 
                                                     foreach (var p in GlobalData.Instance.People) { p.LoadPhoto(); }
                                                 }
