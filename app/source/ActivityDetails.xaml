@@ -28,14 +28,14 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" x:Name="rowUserControl" />
                 </Grid.RowDefinitions>
 
                 <Border Background="#B2FFFFFF" Grid.Row="0">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="31*"/>
-                            <RowDefinition Height="33*"/>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
                         <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Foreground="Black" Padding="5" VerticalAlignment="Top" FontWeight="Bold" FontSize="36" />
                         <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Foreground="Black" Padding="5" VerticalAlignment="Bottom" Margin="0,0,0,-1" Grid.Row="1" />

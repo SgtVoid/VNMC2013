@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media.Imaging;
 using System.Windows.Resources;
 
 namespace VNMC2013
@@ -13,27 +14,30 @@ namespace VNMC2013
     public class Room
     {
         public string Id { get; set; }
-        public Person[] People = new Person[2];
 
-        public int Person1Id
+        public int Person1Id { get; set; }
+
+        public int Person2Id { get; set; }
+
+        public Person Person1
         {
-            set
+            get
             {
-                People[0] = Person.All.FirstOrDefault(x => x.Id == value);
+                return Person.All.FirstOrDefault(x => x.Id == Person1Id);
             }
         }
 
-        public int Person2Id
+        public Person Person2
         {
-            set
+            get
             {
-                People[1] = Person.All.FirstOrDefault(x => x.Id == value);
+                return Person.All.FirstOrDefault(x => x.Id == Person2Id);
             }
         }
 
-        public static Room[] All()
+        public static Room[] All
         {
-            return GlobalData.Instance.Rooms;
+            get { return GlobalData.Instance.Rooms; }
         }
     }
 }
