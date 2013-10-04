@@ -104,6 +104,10 @@
       <DependentUpon>Contact.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\POI.cs" />
+    <Compile Include="JSON\Activities.cs" />
+    <Compile Include="JSON\Peoples.cs" />
+    <Compile Include="JSON\Registration.cs" />
+    <Compile Include="JSON\Roomies.cs" />
     <Compile Include="POIDetail.xaml.cs">
       <DependentUpon>POIDetail.xaml</DependentUpon>
     </Compile>
@@ -270,6 +274,9 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>packages\Newtonsoft.Json.5.0.6\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp.WindowsPhone">
+      <HintPath>packages\RestSharp.104.2.0\lib\sl4-wp71\RestSharp.WindowsPhone.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

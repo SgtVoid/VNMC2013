@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -10,6 +11,7 @@ using System.Windows.Resources;
 
 namespace VNMC2013
 {
+    [DataContract]
     public class Activity
     {
         private static Activity[] all;
@@ -21,8 +23,11 @@ namespace VNMC2013
             }
         }
 
+        [DataMember(Name = "Id")]
         public int Id { get; set; }
+        [DataMember(Name = "Title")]
         public string Name { get; set; }
+        [DataMember(Name = "Description")]
         public string Description { get; set; }
 
         private Person[] people;
