@@ -21,16 +21,11 @@ namespace VNMC2013
             InitializeComponent();
             IsolatedStorageSettings localSettings = IsolatedStorageSettings.ApplicationSettings;
 
-            if (!GlobalData.Instance.IsLoaded )
+            if (!GlobalData.Instance.IsLoaded)
             {
                 if (!GlobalData.Instance.Load())
                 {
                     GetDisplayName.IsOpen = true;
-
-                    if (GlobalData.Instance.Contacts == null)
-                        GlobalData.Instance.OnContactsLoaded += Instance_OnContactsLoaded;
-                    else
-                        Instance_OnContactsLoaded();
                 }
                 else
                 {
@@ -45,11 +40,6 @@ namespace VNMC2013
         void LoadPictures()
         {
             foreach (var p in GlobalData.Instance.People) { p.LoadPhoto(); }
-        }
-
-        void Instance_OnContactsLoaded()
-        {
-            DisplayName.ItemsSource = GlobalData.Instance.Contacts.Select(x => x.DisplayName);
         }
 
         private void Programma_Tap(object sender, System.Windows.Input.GestureEventArgs e)
@@ -72,17 +62,30 @@ namespace VNMC2013
 
         private void Send_Click(object sender, RoutedEventArgs e)
         {
-            IsolatedStorageSettings localSettings = IsolatedStorageSettings.ApplicationSettings;
-            if (Sync("MACAW\\" + DisplayName.Text, Password.Password))
-            {
-                localSettings["DisplayName"] = "MACAW\\" + DisplayName.Text;
-            }
-            GetDisplayName.IsOpen = false;
+            GlobalData.Instance.OnSyncCompleted += SyncCompleted;
+            GlobalData.Instance.OnUpdateProgress += UpdateProgressBar;
+            GlobalData.Instance.OnSyncError += SyncError;
+            GlobalData.Instance.Sync("MACAW\\" + DisplayName.Text, Password.Password);
         }
 
-        private bool Sync(string username, string password)
+        private void SyncCompleted()
         {
-            return GlobalData.Instance.Sync(username, password);
+            IsolatedStorageSettings localSettings = IsolatedStorageSettings.ApplicationSettings;
+
+            localSettings["DisplayName"] = "MACAW\\" + DisplayName.Text;
+            GetDisplayName.IsOpen = false;
+            progressBar.Value = 0;
+            Password.Password = "";
+        }
+
+        private void UpdateProgressBar(int percentage)
+        {
+            progressBar.Value += percentage;
+        }
+
+        private void SyncError()
+        {
+            MessageBox.Show("Je gebruiksnaam of/en wachtwoord zijn verkeerd in gevuld.");
         }
 
         private void ApplicationBarIconButton_Click(object sender, EventArgs e)

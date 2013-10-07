@@ -18,7 +18,6 @@ namespace VNMC2013
         public Roots()
         {
             InitializeComponent();
-
             acitivityUserControl.DataContext = Person.CurrentUser.Activity.People;
 
             if (ScheduledActionService.Find("VNMC2013") == null)

@@ -35,16 +35,17 @@
         <!--TitlePanel contains the name of the application and page title-->
 
         <Popup Name="GetDisplayName" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.ZIndex="1" IsOpen="False" Margin="0,250,0,0" RenderTransformOrigin="1,0">
-            <StackPanel Margin="0,-80,0,0" Width="481" Height="302" RenderTransformOrigin="0.446,-0.011" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <StackPanel Margin="0,-144,0,0" Width="481" Height="302" RenderTransformOrigin="0.446,-0.011" HorizontalAlignment="Center" VerticalAlignment="Top">
                 <StackPanel.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FF0FA4E9" Offset="0.777"/>
                         <GradientStop Color="#FFB6D1EB"/>
                     </LinearGradientBrush>
                 </StackPanel.Background>
-                <TextBlock TextWrapping="Wrap" Text="Vul je credentials in:" RenderTransformOrigin="0.495,0.593" Margin="10,40,176,0" HorizontalAlignment="Center" Width="295"/>
-                <toolkit:AutoCompleteBox x:Name="DisplayName" VerticalAlignment="Top" HorizontalAlignment="Center" Width="481" BorderThickness="0,3,3,3"/>
-                <PasswordBox x:Name="Password" VerticalAlignment="Top" HorizontalAlignment="Center" Width="481" BorderThickness="0,3,3,3" />
+                <TextBlock TextWrapping="Wrap" Text="Vul je Macaw credentials in (gebuikersnaam/wachtwoord):" RenderTransformOrigin="0.495,0.593" Margin="10,15,87,0" HorizontalAlignment="Center" Width="384" />
+                <TextBox x:Name="DisplayName" VerticalAlignment="Top" HorizontalAlignment="Center" Width="481" BorderThickness="0,3,3,3" ToolTipService.ToolTip="Username" />
+                <PasswordBox x:Name="Password" VerticalAlignment="Top" HorizontalAlignment="Center" Width="481" BorderThickness="0,3,3,3" ToolTipService.ToolTip="Password" />
+                <ProgressBar x:Name="progressBar" />
                 <Button x:Name="Send" Height="88" Content="Sync" Click="Send_Click" RenderTransformOrigin="0.498,2.216" />
             </StackPanel>
         </Popup>
