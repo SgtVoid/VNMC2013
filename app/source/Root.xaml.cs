@@ -73,9 +73,9 @@ namespace VNMC2013
         private void Send_Click(object sender, RoutedEventArgs e)
         {
             IsolatedStorageSettings localSettings = IsolatedStorageSettings.ApplicationSettings;
-            if (Sync(DisplayName.Text, Password.Password))
+            if (Sync("MACAW\\" + DisplayName.Text, Password.Password))
             {
-                localSettings["DisplayName"] = DisplayName.Text;
+                localSettings["DisplayName"] = "MACAW\\" + DisplayName.Text;
             }
             GetDisplayName.IsOpen = false;
         }
@@ -90,7 +90,7 @@ namespace VNMC2013
             IsolatedStorageSettings localSettings = IsolatedStorageSettings.ApplicationSettings;
 
             GetDisplayName.IsOpen = true;
-            DisplayName.Text = localSettings["DisplayName"].ToString();
+            DisplayName.Text = localSettings["DisplayName"].ToString().Split('\\').Last();
         }
     }
 }

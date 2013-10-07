@@ -14,7 +14,6 @@ namespace VNMC2013
     [DataContract]
     public class Activity
     {
-        private static Activity[] all;
         public static Activity[] All
         {
             get

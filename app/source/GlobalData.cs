@@ -136,9 +136,11 @@ namespace VNMC2013
 
                             IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForApplication();
                             XmlSerializer ser = new XmlSerializer(typeof(Activity[]));
-                            FileStream stream = storage.OpenFile("Activities.xml", FileMode.OpenOrCreate);
+                            FileStream stream = storage.OpenFile("Activities.xml", FileMode.Create);
+
                             ser.Serialize(stream, res.d.results.ToArray());
                             _activities = res.d.results.ToArray();
+
                             stream.Close();
                         }
                     }
@@ -180,7 +182,7 @@ namespace VNMC2013
 
                                         IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForApplication();
                                         XmlSerializer ser = new XmlSerializer(typeof(Person[]));
-                                        FileStream stream = storage.OpenFile("People.xml", FileMode.OpenOrCreate);
+                                        FileStream stream = storage.OpenFile("People.xml", FileMode.Create);
                                         ser.Serialize(stream, _people);
                                         stream.Close();
 
@@ -215,7 +217,7 @@ namespace VNMC2013
 
                                                     IsolatedStorageFile storage2 = IsolatedStorageFile.GetUserStoreForApplication();
                                                     XmlSerializer ser2 = new XmlSerializer(typeof(Room[]));
-                                                    FileStream stream2 = storage2.OpenFile("Rooms.xml", FileMode.OpenOrCreate);
+                                                    FileStream stream2 = storage2.OpenFile("Rooms.xml", FileMode.Create);
                                                     ser2.Serialize(stream2, _rooms);
                                                     stream2.Close();
 
