@@ -163,13 +163,13 @@ namespace VNMC2013
                 OnUpdateProgress(5);
                 ActivityAsyncHandler(await client.ExecuteTaskAsync(request));
                 OnUpdateProgress(15);
+                 
+                request.Resource = "/UserInformationList";
+                UserInformationAsyncHandler(await client.ExecuteTaskAsync(request));
+                OnUpdateProgress(30);
 
                 request.Resource = "/Registration";
                 PeopleAsyncHandler(await client.ExecuteTaskAsync(request));
-                OnUpdateProgress(30);
-                
-                request.Resource = "/UserInformationList";
-                UserInformationAsyncHandler(await client.ExecuteTaskAsync(request));
                 OnUpdateProgress(30);
 
                 request.Resource = "/Roomies";
@@ -213,7 +213,7 @@ namespace VNMC2013
             }
         }
 
-        private void PeopleAsyncHandler(IRestResponse r)
+        private void UserInformationAsyncHandler(IRestResponse r)
         {
             if (r.ResponseStatus == ResponseStatus.Completed)
             {
@@ -227,7 +227,7 @@ namespace VNMC2013
             }
         }
 
-        private void UserInformationAsyncHandler(IRestResponse s)
+        private void PeopleAsyncHandler(IRestResponse s)
         {
             if (s.ResponseStatus == ResponseStatus.Completed)
             {

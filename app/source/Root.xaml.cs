@@ -62,6 +62,9 @@ namespace VNMC2013
 
         private void Send_Click(object sender, RoutedEventArgs e)
         {
+            IsolatedStorageSettings localSettings = IsolatedStorageSettings.ApplicationSettings;
+            localSettings["DisplayName"] = "MACAW\\" + DisplayName.Text;
+
             DisplayName.IsEnabled = false;
             Password.IsEnabled = false;
             Send.IsEnabled = false;
@@ -74,9 +77,6 @@ namespace VNMC2013
 
         private void SyncCompleted()
         {
-            IsolatedStorageSettings localSettings = IsolatedStorageSettings.ApplicationSettings;
-
-            localSettings["DisplayName"] = "MACAW\\" + DisplayName.Text;
             LoginFields.IsOpen = false;
             progressBar.Value = 0;
             Password.Password = "";
@@ -105,7 +105,8 @@ namespace VNMC2013
             IsolatedStorageSettings localSettings = IsolatedStorageSettings.ApplicationSettings;
 
             LoginFields.IsOpen = true;
-            DisplayName.Text = localSettings["DisplayName"].ToString().Split('\\').Last();
+            if (localSettings.Contains("DisplayName"))
+                DisplayName.Text = localSettings["DisplayName"].ToString().Split('\\').Last();
         }
     }
 }
