@@ -34,7 +34,7 @@
 
         <!--TitlePanel contains the name of the application and page title-->
 
-        <Popup Name="GetDisplayName" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.ZIndex="1" IsOpen="False" Margin="0,250,0,0" RenderTransformOrigin="1,0">
+        <Popup Name="LoginFields" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.ZIndex="1" IsOpen="False" Margin="0,250,0,0" RenderTransformOrigin="1,0">
             <StackPanel Margin="0,-144,0,0" Width="481" Height="302" RenderTransformOrigin="0.446,-0.011" HorizontalAlignment="Center" VerticalAlignment="Top">
                 <StackPanel.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

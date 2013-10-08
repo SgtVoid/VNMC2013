@@ -182,6 +182,7 @@ namespace VNMC2013
                     var serializer = new DataContractJsonSerializer(typeof(VNMC2013.JSON.Activities.RootObject));
                     var res = (VNMC2013.JSON.Activities.RootObject)serializer.ReadObject(ms);
 
+                    if (res == null) { if (OnSyncError != null) { OnSyncError(); } return; }
                     foreach (var a in res.d.results)
                     {
                         a.Description = System.Text.RegularExpressions.Regex.Replace(a.Description, "<[^>]*>", "");
@@ -209,6 +210,8 @@ namespace VNMC2013
                 {
                     var serializer = new DataContractJsonSerializer(typeof(VNMC2013.JSON.Peoples.RootObject));
                     var users = (VNMC2013.JSON.Peoples.RootObject)serializer.ReadObject(ms);
+
+                    if (users == null) { if (OnSyncError != null) { OnSyncError(); } return; }
 
                     _people = users.d.results.ToArray();
 

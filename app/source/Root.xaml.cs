@@ -25,7 +25,7 @@ namespace VNMC2013
             {
                 if (!GlobalData.Instance.Load())
                 {
-                    GetDisplayName.IsOpen = true;
+                    LoginFields.IsOpen = true;
                 }
                 else
                 {
@@ -62,6 +62,10 @@ namespace VNMC2013
 
         private void Send_Click(object sender, RoutedEventArgs e)
         {
+            DisplayName.IsEnabled = false;
+            Password.IsEnabled = false;
+            Send.IsEnabled = false;
+
             GlobalData.Instance.OnSyncCompleted += SyncCompleted;
             GlobalData.Instance.OnUpdateProgress += UpdateProgressBar;
             GlobalData.Instance.OnSyncError += SyncError;
@@ -73,9 +77,12 @@ namespace VNMC2013
             IsolatedStorageSettings localSettings = IsolatedStorageSettings.ApplicationSettings;
 
             localSettings["DisplayName"] = "MACAW\\" + DisplayName.Text;
-            GetDisplayName.IsOpen = false;
+            LoginFields.IsOpen = false;
             progressBar.Value = 0;
             Password.Password = "";
+            DisplayName.IsEnabled = true;
+            Password.IsEnabled = true;
+            Send.IsEnabled = true;
         }
 
         private void UpdateProgressBar(int percentage)
@@ -85,14 +92,19 @@ namespace VNMC2013
 
         private void SyncError()
         {
-            MessageBox.Show("Je gebruiksnaam of/en wachtwoord zijn verkeerd in gevuld.");
+            GlobalData.Instance.OnSyncError -= SyncError;
+            MessageBox.Show("Je gebruiksnaam en/of wachtwoord zijn verkeerd in gevuld.");
+            DisplayName.IsEnabled = true;
+            Password.IsEnabled = true;
+            Send.IsEnabled = true;
+            progressBar.Value = 0;
         }
 
         private void ApplicationBarIconButton_Click(object sender, EventArgs e)
         {
             IsolatedStorageSettings localSettings = IsolatedStorageSettings.ApplicationSettings;
 
-            GetDisplayName.IsOpen = true;
+            LoginFields.IsOpen = true;
             DisplayName.Text = localSettings["DisplayName"].ToString().Split('\\').Last();
         }
     }
