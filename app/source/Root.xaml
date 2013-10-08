@@ -19,29 +19,19 @@
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Margin="-1,0,1,0">
+    <Grid x:Name="LayoutRoot" Margin="0,0,1,0">
         <Grid.Background>
-            <ImageBrush ImageSource="/Assets/background.png" Stretch="UniformToFill">
+            <ImageBrush ImageSource="/Assets/background.png" Stretch="None">
                 <ImageBrush.RelativeTransform>
-                    <CompositeTransform CenterY="0.5" CenterX="0.5" TranslateX="0.6"/>
+                    <CompositeTransform CenterX="0.5" TranslateX="0.6" CenterY="0.5" TranslateY="0.05"/>
                 </ImageBrush.RelativeTransform>
             </ImageBrush>
         </Grid.Background>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" MinHeight="163"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
 
-        <Popup Name="LoginFields" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.ZIndex="1" IsOpen="False" Margin="0,250,0,0" RenderTransformOrigin="1,0">
-            <StackPanel Margin="0,-144,0,0" Width="481" Height="302" RenderTransformOrigin="0.446,-0.011" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <StackPanel.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FF0FA4E9" Offset="0.777"/>
-                        <GradientStop Color="#FFB6D1EB"/>
-                    </LinearGradientBrush>
-                </StackPanel.Background>
+        <Popup Name="LoginFields" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.ZIndex="1" IsOpen="False" Margin="0,250,0,0" RenderTransformOrigin="1,0">
+            <StackPanel Margin="0,0,0,0" Width="481" Height="302" RenderTransformOrigin="0.446,-0.011" HorizontalAlignment="Center" VerticalAlignment="Top" Background="{StaticResource PhoneAccentBrush}">
                 <TextBlock TextWrapping="Wrap" Text="Vul je Macaw credentials in (gebuikersnaam/wachtwoord):" RenderTransformOrigin="0.495,0.593" Margin="10,15,87,0" HorizontalAlignment="Center" Width="384" />
                 <TextBox x:Name="DisplayName" VerticalAlignment="Top" HorizontalAlignment="Center" Width="481" BorderThickness="0,3,3,3" ToolTipService.ToolTip="Username" />
                 <PasswordBox x:Name="Password" VerticalAlignment="Top" HorizontalAlignment="Center" Width="481" BorderThickness="0,3,3,3" ToolTipService.ToolTip="Password" />
@@ -51,25 +41,37 @@
         </Popup>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Margin="12,0" Grid.Row="1">
-            <Grid Margin="10,19,0,19" Tap="Programma_Tap">
-                <Rectangle Fill="{StaticResource PhoneAccentBrush}" HorizontalAlignment="Left" Height="204"   VerticalAlignment="Top" Width="204" />
-                <TextBlock HorizontalAlignment="Left" Padding="10" TextWrapping="Wrap" Text="Mijn Programma" VerticalAlignment="Top" Height="204" Width="204" Foreground="{StaticResource PhoneRadioCheckBoxCheckBrush}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
-            </Grid>
-            <Grid Margin="242,19,0,19" Tap="Roomies_Tap">
-                <Rectangle Fill="{StaticResource PhoneAccentBrush}" HorizontalAlignment="Left" Height="204"   VerticalAlignment="Top" Width="204" />
-                <TextBlock HorizontalAlignment="Left" Padding="10" TextWrapping="Wrap" Text="Roomies" VerticalAlignment="Top" Height="204" Width="204" Foreground="{StaticResource PhoneRadioCheckBoxCheckBrush}" FontFamily="{StaticResource PhoneFontFamilyNormal}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
-            </Grid>
-            <Grid Margin="10,260,0,0" Tap="Poi_Tap">
-                <Rectangle Fill="{StaticResource PhoneAccentBrush}" HorizontalAlignment="Left" Height="204"   VerticalAlignment="Top" Width="204" />
-                <TextBlock HorizontalAlignment="Left" Padding="10" TextWrapping="Wrap" Text="Alle Activiteiten" VerticalAlignment="Top" Height="204" Width="204" Foreground="{StaticResource PhoneRadioCheckBoxCheckBrush}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
-            </Grid>
-            <Grid Margin="242,260,0,0" Tap="POI_Tap">
-                <Rectangle Fill="{StaticResource PhoneAccentBrush}" HorizontalAlignment="Left" Height="204"   VerticalAlignment="Top" Width="204" />
-                <TextBlock HorizontalAlignment="Left" Padding="10" TextWrapping="Wrap" Text="Points Of Interest" VerticalAlignment="Top" Height="204" Width="204" Foreground="{StaticResource PhoneRadioCheckBoxCheckBrush}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
-            </Grid>
+        <ScrollViewer>
+            <Grid x:Name="ListFriday" HorizontalAlignment="Center" Margin="0,270,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="210" />
+                    <ColumnDefinition Width="210" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="200" />
+                </Grid.RowDefinitions>
 
-        </Grid>
+                <Grid Grid.Column="0" Grid.Row="0" Background="{StaticResource PhoneAccentBrush}" Margin="0,0,10,15" Tap="Programma_Tap"/>
+                <Grid Grid.Column="1" Grid.Row="0" Background="{StaticResource PhoneAccentBrush}" Margin="10,0,0,15" Tap="Roomies_Tap" />
+                <Grid Grid.Column="0" Grid.Row="1" Background="{StaticResource PhoneAccentBrush}" Margin="0,0,10,15" Tap="Activities_Tap" />
+                <Grid Grid.Column="1" Grid.Row="1" Background="{StaticResource PhoneAccentBrush}" Margin="10,0,0,15" Tap="POI_Tap" />
+                <Grid Grid.Column="0" Grid.Row="2" Background="{StaticResource PhoneAccentBrush}" Margin="0,0,10,15" Tap="Chat_Tap" />
+
+                <TextBlock Text="Programma" Grid.Row="0" Grid.Column="0" Margin="10,20,0,0" Foreground="White" />
+                <Image Source="/Assets/list_ingredients-64.png" Width="64" VerticalAlignment="Bottom" Margin="-10,0,0,15" Grid.Row="0" Grid.Column="0" />
+
+                <TextBlock Text="Roomies" Grid.Row="0" Grid.Column="1" Margin="20,20,0,0" Foreground="White" />
+                <Image Source="/Assets/roomies.png" Width="128" VerticalAlignment="Bottom" Margin="10,0,0,3" Grid.Row="0" Grid.Column="1" />
+
+                <TextBlock Text="Alle Activiteiten" Grid.Row="1" Grid.Column="0" Padding="10,20,0,0" Foreground="White" />
+                <Image Source="/Assets/running-64.png" Width="64" VerticalAlignment="Bottom" Margin="-10,0,0,15" Grid.Row="1" Grid.Column="0" />
+
+                <TextBlock Text="Points Of Interest" Grid.Row="1" Grid.Column="1" Margin="20,20,0,0" Foreground="White" />
+                <Image Source="/Assets/mosque-64.png" Width="64" VerticalAlignment="Bottom" Margin="10,0,0,15" Grid.Row="1" Grid.Column="1" />
+            </Grid>
+        </ScrollViewer>
     </Grid>
 
 </phone:PhoneApplicationPage>

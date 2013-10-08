@@ -51,13 +51,18 @@ namespace VNMC2013
             NavigationService.Navigate(new Uri("/Roomies.xaml", UriKind.Relative));
         }
 
-        private void Poi_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        private void Activities_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             NavigationService.Navigate(new Uri("/Activities.xaml",UriKind.Relative));
         }
         private void POI_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             NavigationService.Navigate(new Uri("/POIList.xaml", UriKind.Relative));
+        }
+
+        private void Chat_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Chat.xaml", UriKind.Relative));
         }
 
         private void Send_Click(object sender, RoutedEventArgs e)
