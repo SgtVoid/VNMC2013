@@ -219,6 +219,8 @@
     </Resource>
     <Content Include="Assets\POIs\Burj-Al-Arab.jpg" />
     <Content Include="Assets\POIs\dubai-zoo.jpg" />
+    <Content Include="Assets\POIs\Montgomerie Golf Club.jpg" />
+    <Content Include="Assets\POIs\United-Arab-Emirates_Aquaventure-Dubai_338.jpg" />
     <Content Include="Assets\portret_default.png" />
     <Content Include="ServiceReferences.ClientConfig" />
     <None Include="Properties\AppManifest.xml" />
