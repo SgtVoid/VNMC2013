@@ -227,14 +227,14 @@ namespace VNMC2013
             }
         }
 
-        private void PeopleAsyncHandler(IRestResponse s)
+        private void PeopleAsyncHandler(IRestResponse r)
         {
-            if (s.ResponseStatus == ResponseStatus.Completed)
+            if (r.ResponseStatus == ResponseStatus.Completed)
             {
-                using (var mems = new MemoryStream(Encoding.Unicode.GetBytes(s.Content)))
+                using (var ms = new MemoryStream(Encoding.Unicode.GetBytes(r.Content)))
                 {
-                    var serializer2 = new DataContractJsonSerializer(typeof(VNMC2013.JSON.Registration.RootObject));
-                    var registrations = (VNMC2013.JSON.Registration.RootObject)serializer2.ReadObject(mems);
+                    var serializer = new DataContractJsonSerializer(typeof(VNMC2013.JSON.Registration.RootObject));
+                    var registrations = (VNMC2013.JSON.Registration.RootObject)serializer.ReadObject(ms);
 
                     _people = (from reg in registrations.d.results
                                join usr in _people on reg.CreatedById equals usr.Id
@@ -257,14 +257,14 @@ namespace VNMC2013
             }
         }
 
-        private void RoomiesAsyncHandler(IRestResponse t)
+        private void RoomiesAsyncHandler(IRestResponse r)
         {
-            if (t.ResponseStatus == ResponseStatus.Completed)
+            if (r.ResponseStatus == ResponseStatus.Completed)
             {
-                using (var mems2 = new MemoryStream(Encoding.Unicode.GetBytes(t.Content)))
+                using (var ms = new MemoryStream(Encoding.Unicode.GetBytes(r.Content)))
                 {
                     var serializer3 = new DataContractJsonSerializer(typeof(VNMC2013.JSON.Roomies.RootObject));
-                    var roomies = (VNMC2013.JSON.Roomies.RootObject)serializer3.ReadObject(mems2);
+                    var roomies = (VNMC2013.JSON.Roomies.RootObject)serializer3.ReadObject(ms);
 
                     Dictionary<string, Room> Roomieslist = new Dictionary<string, Room>();
 
@@ -285,11 +285,11 @@ namespace VNMC2013
 
                     _rooms = Roomieslist.Values.ToArray();
 
-                    IsolatedStorageFile storage2 = IsolatedStorageFile.GetUserStoreForApplication();
-                    XmlSerializer ser2 = new XmlSerializer(typeof(Room[]));
-                    FileStream stream2 = storage2.OpenFile("Rooms.xml", FileMode.Create);
-                    ser2.Serialize(stream2, _rooms);
-                    stream2.Close();
+                    IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForApplication();
+                    XmlSerializer ser = new XmlSerializer(typeof(Room[]));
+                    FileStream stream = storage.OpenFile("Rooms.xml", FileMode.Create);
+                    ser.Serialize(stream, _rooms);
+                    stream.Close();
                 }
             }
         }
