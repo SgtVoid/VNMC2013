@@ -147,7 +147,7 @@ namespace VNMC2013
 
         private RestClient client;
         private RestRequest request;
-        public void Sync(string Username, string Password)
+        public async void Sync(string Username, string Password)
         {
             try
             {
@@ -158,13 +158,26 @@ namespace VNMC2013
                 };
 
                 request = new RestRequest();
-                request.Resource = "/Activities";
 
-                client.ExecuteAsync(request, ActivityAsyncHandler);
+                request.Resource = "/Activities";
                 OnUpdateProgress(5);
+                ActivityAsyncHandler(await client.ExecuteTaskAsync(request));
+                OnUpdateProgress(15);
+
+                request.Resource = "/Registration";
+                PeopleAsyncHandler(await client.ExecuteTaskAsync(request));
+                OnUpdateProgress(30);
                 
                 request.Resource = "/UserInformationList";
-                client.ExecuteAsync(request, PeopleAsyncHandler);
+                UserInformationAsyncHandler(await client.ExecuteTaskAsync(request));
+                OnUpdateProgress(30);
+
+                request.Resource = "/Roomies";
+                RoomiesAsyncHandler(await client.ExecuteTaskAsync(request));
+
+                OnSyncCompleted();
+
+                 foreach (var p in GlobalData.Instance.People) { p.LoadPhoto(); }
                 _isloaded = true;
             }
             catch
@@ -182,7 +195,7 @@ namespace VNMC2013
                     var serializer = new DataContractJsonSerializer(typeof(VNMC2013.JSON.Activities.RootObject));
                     var res = (VNMC2013.JSON.Activities.RootObject)serializer.ReadObject(ms);
 
-                    if (res == null) { if (OnSyncError != null) { OnSyncError(); } return; }
+                    if (res == null) { throw new Exception(); }
                     foreach (var a in res.d.results)
                     {
                         a.Description = System.Text.RegularExpressions.Regex.Replace(a.Description, "<[^>]*>", "");
@@ -196,8 +209,6 @@ namespace VNMC2013
                     _activities = res.d.results.ToArray();
 
                     stream.Close();
-                    OnUpdateProgress(15);
-                    if (_rooms != null) OnSyncCompleted();
                 }
             }
         }
@@ -211,85 +222,74 @@ namespace VNMC2013
                     var serializer = new DataContractJsonSerializer(typeof(VNMC2013.JSON.Peoples.RootObject));
                     var users = (VNMC2013.JSON.Peoples.RootObject)serializer.ReadObject(ms);
 
-                    if (users == null) { if (OnSyncError != null) { OnSyncError(); } return; }
-
                     _people = users.d.results.ToArray();
+                }
+            }
+        }
 
-                    request.Resource = "/Registration";
-                    client.ExecuteAsync(request, s =>
+        private void UserInformationAsyncHandler(IRestResponse s)
+        {
+            if (s.ResponseStatus == ResponseStatus.Completed)
+            {
+                using (var mems = new MemoryStream(Encoding.Unicode.GetBytes(s.Content)))
+                {
+                    var serializer2 = new DataContractJsonSerializer(typeof(VNMC2013.JSON.Registration.RootObject));
+                    var registrations = (VNMC2013.JSON.Registration.RootObject)serializer2.ReadObject(mems);
+
+                    _people = (from reg in registrations.d.results
+                               join usr in _people on reg.CreatedById equals usr.Id
+                               where reg.IkGaMeeOpHetVNMCValue == "Ja"
+                               select new Person
+                               {
+                                   Id = usr.Id,
+                                   AccountName = usr.AccountName,
+                                   FirstName = usr.FirstName,
+                                   LastName = usr.LastName,
+                                   PrimaryActivity = (int)(reg.EersteKeuzeActiviteitOpZondagWijzigenVanJeUiteindelijkeKeuzeIsMogelijkTotBeginOktoberId == null ? -1 : reg.EersteKeuzeActiviteitOpZondagWijzigenVanJeUiteindelijkeKeuzeIsMogelijkTotBeginOktoberId),
+                               }).ToArray();
+
+                    IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForApplication();
+                    XmlSerializer ser = new XmlSerializer(typeof(Person[]));
+                    FileStream stream = storage.OpenFile("People.xml", FileMode.Create);
+                    ser.Serialize(stream, _people);
+                    stream.Close();
+                }
+            }
+        }
+
+        private void RoomiesAsyncHandler(IRestResponse t)
+        {
+            if (t.ResponseStatus == ResponseStatus.Completed)
+            {
+                using (var mems2 = new MemoryStream(Encoding.Unicode.GetBytes(t.Content)))
+                {
+                    var serializer3 = new DataContractJsonSerializer(typeof(VNMC2013.JSON.Roomies.RootObject));
+                    var roomies = (VNMC2013.JSON.Roomies.RootObject)serializer3.ReadObject(mems2);
+
+                    Dictionary<string, Room> Roomieslist = new Dictionary<string, Room>();
+
+                    foreach (var d in roomies.d.results)
                     {
-                        if (s.ResponseStatus == ResponseStatus.Completed)
+                        if (d.WieId != null)
                         {
-                            using (var mems = new MemoryStream(Encoding.Unicode.GetBytes(s.Content)))
+                            if (!Roomieslist.Keys.Contains(d.Kamer)) //new room
                             {
-                                var serializer2 = new DataContractJsonSerializer(typeof(VNMC2013.JSON.Registration.RootObject));
-                                var registrations = (VNMC2013.JSON.Registration.RootObject)serializer2.ReadObject(mems);
-
-                                OnUpdateProgress(10);
-                                _people = (from reg in registrations.d.results
-                                           join usr in _people on reg.CreatedById equals usr.Id
-                                           where reg.IkGaMeeOpHetVNMCValue == "Ja"
-                                           select new Person
-                                           {
-                                               Id = usr.Id,
-                                               AccountName = usr.AccountName,
-                                               FirstName = usr.FirstName,
-                                               LastName = usr.LastName,
-                                               PrimaryActivity = (int)(reg.EersteKeuzeActiviteitOpZondagWijzigenVanJeUiteindelijkeKeuzeIsMogelijkTotBeginOktoberId == null ? -1 : reg.EersteKeuzeActiviteitOpZondagWijzigenVanJeUiteindelijkeKeuzeIsMogelijkTotBeginOktoberId),
-                                           }).ToArray();
-
-                                IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForApplication();
-                                XmlSerializer ser = new XmlSerializer(typeof(Person[]));
-                                FileStream stream = storage.OpenFile("People.xml", FileMode.Create);
-                                ser.Serialize(stream, _people);
-                                OnUpdateProgress(30);
-                                stream.Close();
-
-                                request.Resource = "/Roomies";
-                                client.ExecuteAsync(request, t =>
-                                {
-        						    if (t.ResponseStatus == ResponseStatus.Completed)
-        						    {
-        						        using (var mems2 = new MemoryStream(Encoding.Unicode.GetBytes(t.Content)))
-        						        {
-        						            var serializer3 = new DataContractJsonSerializer(typeof(VNMC2013.JSON.Roomies.RootObject));
-        						            var roomies = (VNMC2013.JSON.Roomies.RootObject)serializer3.ReadObject(mems2);
-
-        						            Dictionary<string, Room> Roomieslist = new Dictionary<string, Room>();
-
-        						            foreach (var d in roomies.d.results)
-        						            {
-        						                if (d.WieId != null)
-        						                {
-        						                    if (!Roomieslist.Keys.Contains(d.Kamer)) //new room
-        						                    {
-        						                        Roomieslist.Add(d.Kamer, new Room() { Id = d.Kamer, Person1Id = (int)d.WieId });
-        						                        OnUpdateProgress(1);
-        						                    }
-        						                    else //existing room
-        						                    {
-        						                        Roomieslist[d.Kamer].Person2Id = (int)d.WieId;
-        						                    }
-        						                }
-        						            }
-
-        						            _rooms = Roomieslist.Values.ToArray();
-
-        						            IsolatedStorageFile storage2 = IsolatedStorageFile.GetUserStoreForApplication();
-        						            XmlSerializer ser2 = new XmlSerializer(typeof(Room[]));
-        						            FileStream stream2 = storage2.OpenFile("Rooms.xml", FileMode.Create);
-        						            ser2.Serialize(stream2, _rooms);
-        						            stream2.Close();
-
-        						            if (_activities != null) OnSyncCompleted();
-
-        						            foreach (var p in GlobalData.Instance.People) { p.LoadPhoto(); }
-        						        }
-        						    }
-        						});
+                                Roomieslist.Add(d.Kamer, new Room() { Id = d.Kamer, Person1Id = (int)d.WieId });
+                            }
+                            else //existing room
+                            {
+                                Roomieslist[d.Kamer].Person2Id = (int)d.WieId;
                             }
                         }
-                    });
+                    }
+
+                    _rooms = Roomieslist.Values.ToArray();
+
+                    IsolatedStorageFile storage2 = IsolatedStorageFile.GetUserStoreForApplication();
+                    XmlSerializer ser2 = new XmlSerializer(typeof(Room[]));
+                    FileStream stream2 = storage2.OpenFile("Rooms.xml", FileMode.Create);
+                    ser2.Serialize(stream2, _rooms);
+                    stream2.Close();
                 }
             }
         }
