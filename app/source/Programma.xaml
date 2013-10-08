@@ -51,11 +51,11 @@
 
                         <TextBlock Text="12.40" Grid.Row="1" Grid.Column="0" Padding="10,20,0,0" Foreground="White" />
                         <TextBlock Text="Check-in" Grid.Row="1"  Grid.Column="0" Margin="10,50,0,0" Foreground="White" />
+                        <Image Source="/Assets/airplane_takeoff-64.png" Width="64" VerticalAlignment="Bottom" Margin="10,0,0,15" Grid.Row="1" Grid.Column="0" />
 
                         <TextBlock Text="Vertrek - Aankomst" Grid.Row="1" Grid.Column="1" Margin="20,20,0,0" Foreground="White" />
                         <TextBlock Text="14.40 - 00.10  " Grid.Row="1" Grid.Column="1" Margin="20,50,0,0" Foreground="White" />
-                        <Image Source="/Assets/airplane_takeoff-64.png" Width="64" VerticalAlignment="Bottom" Margin="-64,0,0,15" Grid.Row="1" Grid.Column="1" />
-                        <Image Source="/Assets/airplane_landing-64.png" Width="64" VerticalAlignment="Bottom" Margin="64,0,0,15" Grid.Row="1" Grid.Column="1" />
+                        <Image Source="/Assets/airplane_landing-64.png" Width="64" VerticalAlignment="Bottom" Margin="10,0,0,15" Grid.Row="1" Grid.Column="1" />
 
                         <TextBlock Text="Check-in Hotel and welcome party" Grid.Row="2" Grid.Column="0" Margin="10,20,0,0" TextWrapping="Wrap" Foreground="White" />
                     </Grid>
