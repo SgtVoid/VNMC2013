@@ -136,6 +136,9 @@ namespace VNMC2013
                 stream = storage.OpenFile("People.xml", FileMode.Open);
                 _people = (Person[])serializer.Deserialize(stream);
 
+                // Get Messages
+                var t = MessageCollection.Instance;
+
                 _isloaded = true;
                 return true;
             }

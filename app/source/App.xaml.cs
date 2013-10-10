@@ -9,6 +9,8 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using VNMC2013.Resources;
 using Microsoft.Phone.UserData;
+using Microsoft.WindowsAzure.MobileServices;
+using Microsoft.Phone.Notification;
 
 namespace VNMC2013
 {
@@ -19,6 +21,9 @@ namespace VNMC2013
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
         public static PhoneApplicationFrame RootFrame { get; private set; }
+
+        public static MobileServiceClient MobileService = new MobileServiceClient("https://vnmc.azure-mobile.net/", "WbUKyUqdaSMFSCJBhaYKzcWpGWCgZq68");
+        public static HttpNotificationChannel CurrentChannel { get; private set; }
 
         /// <summary>
         /// Constructor for the Application object.
@@ -66,6 +71,8 @@ namespace VNMC2013
             Contacts cons = new Contacts();
             cons.SearchCompleted += cons_SearchCompleted;
             cons.SearchAsync("", FilterKind.None, null);
+
+            AcquirePushChannel();
         }
 
         void cons_SearchCompleted(object sender, ContactsSearchEventArgs e)
@@ -232,6 +239,30 @@ namespace VNMC2013
 
                 throw;
             }
+        }
+
+        private void AcquirePushChannel()
+        {
+            CurrentChannel = HttpNotificationChannel.Find("ChatChannel");
+
+            if (CurrentChannel == null)
+            {
+                CurrentChannel = new HttpNotificationChannel("ChatChannel");
+                CurrentChannel.Open();
+            }
+            CurrentChannel.HttpNotificationReceived += CurrentChannel_PushNotificationReceived;
+            CurrentChannel.ChannelUriUpdated += CurrentChannel_ChannelUriUpdated;
+        }
+
+        private void CurrentChannel_ChannelUriUpdated(object sender, NotificationChannelUriEventArgs e)
+        {
+            Channel channel = new Channel() { Uri = CurrentChannel.ChannelUri.ToString() };
+            App.MobileService.GetTable<Channel>().InsertAsync(channel);
+        }
+
+        private void CurrentChannel_PushNotificationReceived(object sender, HttpNotificationEventArgs e)
+        {
+            MessageCollection.Instance.AddMessageFromStream(e.Notification.Body);
         }
     }
 }

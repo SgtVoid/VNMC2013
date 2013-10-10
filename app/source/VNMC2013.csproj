@@ -100,6 +100,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Channel.cs" />
     <Compile Include="Chat.xaml.cs">
       <DependentUpon>Chat.xaml</DependentUpon>
     </Compile>
@@ -107,6 +108,7 @@
       <DependentUpon>Contact.xaml</DependentUpon>
     </Compile>
     <Compile Include="Message.cs" />
+    <Compile Include="MessageCollection.cs" />
     <Compile Include="POIListSearch.xaml.cs">
       <DependentUpon>POIListSearch.xaml</DependentUpon>
     </Compile>
@@ -235,7 +237,6 @@
     <Content Include="Assets\portret_default.png" />
     <Content Include="Assets\roomies.png" />
     <Content Include="Assets\running-64.png" />
-    <Content Include="running-64.png" />
     <Content Include="ServiceReferences.ClientConfig" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
