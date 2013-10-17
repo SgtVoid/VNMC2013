@@ -114,6 +114,9 @@ namespace VNMC2013
         {
             try
             {
+                // Get Messages
+                var t = MessageCollection.Instance;
+
                 ///Get POIs
                 XmlSerializer serializer = new XmlSerializer(typeof(POI[]));
                 Stream stream = System.Windows.Application.GetResourceStream(new Uri("VNMC2013;component/Assets/POI.xml", UriKind.Relative)).Stream;
@@ -135,9 +138,6 @@ namespace VNMC2013
                 serializer = new XmlSerializer(typeof(Person[]));
                 stream = storage.OpenFile("People.xml", FileMode.Open);
                 _people = (Person[])serializer.Deserialize(stream);
-
-                // Get Messages
-                var t = MessageCollection.Instance;
 
                 _isloaded = true;
                 return true;

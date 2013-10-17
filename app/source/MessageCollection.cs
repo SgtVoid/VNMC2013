@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace VNMC2013
 {
@@ -26,14 +27,28 @@ namespace VNMC2013
 
         public MessageCollection()
         {
+            Messages = new List<Message>();
             LoadMessage();
         }
 
         public void AddMessageFromStream(Stream stream)
         {
-            StreamReader reader = new StreamReader(stream);
-            Messages.Add(new Message() { Content = reader.ReadToEnd() });
-            OnNewMessageEventHandler();
+            string reader = new StreamReader(stream).ReadToEnd();
+            dynamic json = JsonConvert.DeserializeObject(reader);
+
+            DateTime date = new DateTime((int)json["Year"].Value, (int)json["Month"].Value, (int)json["Day"].Value, (int)json["Hour"].Value, (int)json["Minute"].Value, (int)json["Second"].Value, DateTimeKind.Utc);
+            Message message = new Message
+            {
+                From = json["From"].Value,
+                Content = json["Content"].Value,
+                CreatedAt = date.ToLocalTime(),
+                Type = json["Type"].Value == "Text" ? Message.MessageType.Text : Message.MessageType.Photo
+            };
+
+            if (message.Type == Message.MessageType.Photo) message.LoadImage();
+            Messages.Add(message);
+
+            if(OnNewMessageEventHandler != null) OnNewMessageEventHandler();
         }
 
         public void Add(Message message)
@@ -41,9 +56,25 @@ namespace VNMC2013
             App.MobileService.GetTable<Message>().InsertAsync(message);
         }
 
-        private async void LoadMessage()
+        public async void AddPhoto(string From, DateTime CreatedAt, Microsoft.Phone.Tasks.PhotoResult e)
         {
-            Messages = await App.MobileService.GetTable<Message>().ToListAsync();
+            Message message = new Message
+            {
+                From = From,
+                CreatedAt = CreatedAt,
+                Type = Message.MessageType.Photo,
+                Content = await DropBox.Client.UploadFile(e.OriginalFileName, e.ChosenPhoto)
+            };
+            this.Add(message);
+        }
+
+        private async void LoadMessage(int take = 10, int skip = 0)
+        {
+            Messages = await App.MobileService.GetTable<Message>().Skip(skip).Take(take).OrderByDescending(x => x.Id).ToListAsync();
+            Messages.ForEach(x => {
+                if (x.Type == Message.MessageType.Photo) x.LoadImage();
+            });
+            if(OnNewMessageEventHandler != null) OnNewMessageEventHandler();
         }
     }
 }

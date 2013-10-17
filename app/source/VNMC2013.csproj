@@ -104,9 +104,12 @@
     <Compile Include="Chat.xaml.cs">
       <DependentUpon>Chat.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ChatTemplateSelector.cs" />
     <Compile Include="Contact.xaml.cs">
       <DependentUpon>Contact.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataTemplateSelector.cs" />
+    <Compile Include="DropBox\Client.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="MessageCollection.cs" />
     <Compile Include="POIListSearch.xaml.cs">
@@ -227,9 +230,12 @@
     <Resource Include="Assets\POI.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Content Include="Assets\AppBar\stack_of_photos-64.png" />
+    <Content Include="Assets\AppBar\topic-64.png" />
     <Content Include="Assets\comments-64.png" />
     <Content Include="Assets\list_ingredients-64.png" />
     <Content Include="Assets\mosque-64.png" />
+    <Content Include="Assets\my_topic-64.png" />
     <Content Include="Assets\POIs\Burj-Al-Arab.jpg" />
     <Content Include="Assets\POIs\dubai-zoo.jpg" />
     <Content Include="Assets\POIs\Montgomerie Golf Club.jpg" />

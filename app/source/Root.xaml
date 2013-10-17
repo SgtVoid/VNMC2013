@@ -59,19 +59,20 @@
                 <Grid Grid.Column="1" Grid.Row="1" Background="{StaticResource PhoneAccentBrush}" Margin="10,0,0,15" Tap="POI_Tap" />
                 <Grid Grid.Column="0" Grid.Row="2" Background="{StaticResource PhoneAccentBrush}" Margin="0,0,10,15" Tap="Chat_Tap" />
 
-                <TextBlock Text="Programma" Grid.Row="0" Grid.Column="0" Margin="10,20,89,152" Foreground="White" Tap="Programma_Tap" />
-                <Image Source="/Assets/list_ingredients-64.png" Width="64" VerticalAlignment="Bottom" Margin="-10,0,0,15" Grid.Row="0" Grid.Column="0" Tap="Programma_Tap" />
+                <Image Source="/Assets/list_ingredients-64.png" Width="64" VerticalAlignment="Center" Margin="-10,0,0,0" Grid.Row="0" Grid.Column="0" Tap="Programma_Tap" />
+                <TextBlock Text="Programma" Grid.Row="0" Grid.Column="0" Margin="10,0,11,25" Foreground="White" Tap="Programma_Tap" VerticalAlignment="Bottom" />
 
-                <TextBlock Text="Roomies" Grid.Row="0" Grid.Column="1" Margin="20,20,0,0" Foreground="White" Tap="Roomies_Tap" />
-                <Image Source="/Assets/roomies.png" Width="128" VerticalAlignment="Bottom" Margin="10,0,0,3" Grid.Row="0" Grid.Column="1" Tap="Roomies_Tap" />
+                <Image Source="/Assets/roomies.png" Width="128" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Row="0" Grid.Column="1" Tap="Roomies_Tap" />
+                <TextBlock Text="Roomies" Grid.Row="0" Grid.Column="1" Margin="20,0,0,25" Foreground="White" Tap="Roomies_Tap" VerticalAlignment="Bottom" />
 
-                <TextBlock Text="Alle Activiteiten" Grid.Row="1" Grid.Column="0" Padding="10,20,0,0" Foreground="White" Tap="Activities_Tap" />
-                <Image Source="/Assets/running-64.png" Width="64" VerticalAlignment="Bottom" Margin="-10,0,0,15" Grid.Row="1" Grid.Column="0" Tap="Activities_Tap" />
+                <Image Source="/Assets/running-64.png" Width="64" VerticalAlignment="Center" Margin="-10,0,0,0" Grid.Row="1" Grid.Column="0" Tap="Activities_Tap" />
+                <TextBlock Text="Alle Activiteiten" Grid.Row="1" Grid.Column="0" Foreground="White" Tap="Activities_Tap" VerticalAlignment="Bottom" Margin="10,0,11,25" />
 
-                <TextBlock Text="Points Of Interest" Grid.Row="1" Grid.Column="1" Margin="20,20,0,0" Foreground="White" Tap="POI_Tap" />
-                <Image Source="/Assets/mosque-64.png" Width="64" VerticalAlignment="Bottom" Margin="10,0,0,15" Grid.Row="1" Grid.Column="1" Tap="POI_Tap" />
+                <Image Source="/Assets/mosque-64.png" Width="64" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1" Tap="POI_Tap" />
+                <TextBlock Text="Points Of Interest" Grid.Row="1" Grid.Column="1" Margin="20,0,0,25" Foreground="White" Tap="POI_Tap" VerticalAlignment="Bottom" />
 
-                <TextBlock Text="Chat" Grid.Row="2" Grid.Column="0" Margin="10,20,0,0" Foreground="White" Tap="Chat_Tap" />
+                <Image Source="/Assets/comments-64.png" Width="64" VerticalAlignment="Center" Margin="-10,0,0,0" Grid.Row="2" Grid.Column="0" Tap="Chat_Tap" />
+                <TextBlock Text="Chat" Grid.Row="2" Grid.Column="0" Margin="20,0,0,25" Foreground="White" Tap="Chat_Tap" VerticalAlignment="Bottom" />
             </Grid>
         </ScrollViewer>
     </Grid>

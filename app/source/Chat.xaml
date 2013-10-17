@@ -6,12 +6,19 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:VNMC2013"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/topic-64.png" Text="Send" Click="SendButton_Click" IsEnabled="True"/>
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/stack_of_photos-64.png" Text="Upload" Click="UploadButton_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -27,16 +34,29 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-                <ListBox x:Name="MessageList">
+            <ListBox x:Name="MessageList" Margin="0,0,0,70">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Content}" />
+                        <local:ChatTemplateSelector Content="{Binding}">
+                            <local:ChatTemplateSelector.Text>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding PrintContent}" TextWrapping="Wrap" />
+                                </DataTemplate>
+                            </local:ChatTemplateSelector.Text>
+                            <local:ChatTemplateSelector.Photo>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding DateFrom}" />
+                                        <Image Source="{Binding PrintImage}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </local:ChatTemplateSelector.Photo>
+                        </local:ChatTemplateSelector>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
 
-            <TextBox x:Name="messageBox" Height="70" VerticalAlignment="Bottom" Margin="0,0,45,0" />
-            <Button x:Name="sendButton" HorizontalAlignment="Right" Width="70" VerticalAlignment="Bottom" Height="70" Click="sendButton_Click" />
+            <TextBox x:Name="messageBox" Height="70" VerticalAlignment="Bottom" />
         </Grid>
     </Grid>
 
