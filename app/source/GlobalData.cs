@@ -139,8 +139,7 @@ namespace VNMC2013
                 stream = storage.OpenFile("People.xml", FileMode.Open);
                 _people = (Person[])serializer.Deserialize(stream);
 
-                _isloaded = true;
-                return true;
+                return _isloaded = true;
             }
             catch
             {
@@ -148,19 +147,17 @@ namespace VNMC2013
             }
         }
 
-        private RestClient client;
-        private RestRequest request;
         public async void Sync(string Username, string Password)
         {
             try
             {
-                client = new RestClient
+                RestClient client = new RestClient
                 {
                     BaseUrl = "https://insite.macaw.nl/sites/Events/VNMC2013/_vti_bin/listdata.svc",
                     Authenticator = new HttpBasicAuthenticator(Username, Password)
                 };
 
-                request = new RestRequest();
+                RestRequest request = new RestRequest();
 
                 request.Resource = "/Activities";
                 OnUpdateProgress(5);

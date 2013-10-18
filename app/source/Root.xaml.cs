@@ -23,7 +23,7 @@ namespace VNMC2013
 
             if (!GlobalData.Instance.IsLoaded)
             {
-                if (!GlobalData.Instance.Load())
+                if (!GlobalData.Instance.Load() || Person.CurrentUser == null)
                 {
                     LoginFields.IsOpen = true;
                 }
@@ -98,7 +98,7 @@ namespace VNMC2013
         private void SyncError()
         {
             GlobalData.Instance.OnSyncError -= SyncError;
-            MessageBox.Show("Je gebruiksnaam en/of wachtwoord zijn verkeerd in gevuld.");
+            MessageBox.Show("Je gebruikersnaam en/of wachtwoord zijn verkeerd in gevuld.");
             DisplayName.IsEnabled = true;
             Password.IsEnabled = true;
             Send.IsEnabled = true;

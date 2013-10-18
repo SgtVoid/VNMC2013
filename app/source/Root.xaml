@@ -30,12 +30,12 @@
 
         <!--TitlePanel contains the name of the application and page title-->
 
-        <Popup Name="LoginFields" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.ZIndex="1" IsOpen="False" Margin="0,250,0,0" RenderTransformOrigin="1,0">
-            <StackPanel Margin="0,0,0,0" Width="481" Height="302" RenderTransformOrigin="0.446,-0.011" HorizontalAlignment="Center" VerticalAlignment="Top" Background="{StaticResource PhoneAccentBrush}">
-                <TextBlock TextWrapping="Wrap" Text="Vul je Macaw credentials in (gebuikersnaam/wachtwoord):" RenderTransformOrigin="0.495,0.593" Margin="10,15,87,0" HorizontalAlignment="Center" Width="384" />
+        <Popup Name="LoginFields" HorizontalAlignment="Left" Canvas.ZIndex="1" IsOpen="False" RenderTransformOrigin="1,0" VerticalAlignment="Top">
+            <StackPanel Margin="0,0,0,0" Width="481" Height="767" RenderTransformOrigin="0.446,-0.011" HorizontalAlignment="Center" VerticalAlignment="Top" Background="{StaticResource PhoneAccentBrush}" Opacity="0.95">
+                <TextBlock TextWrapping="Wrap" Text="Vul je Macaw credentials in (gebuikersnaam/wachtwoord):" RenderTransformOrigin="0.495,0.593" Margin="10,176,87,0" HorizontalAlignment="Center" Width="384" />
                 <TextBox x:Name="DisplayName" VerticalAlignment="Top" HorizontalAlignment="Center" Width="481" BorderThickness="0,3,3,3" ToolTipService.ToolTip="Username" />
                 <PasswordBox x:Name="Password" VerticalAlignment="Top" HorizontalAlignment="Center" Width="481" BorderThickness="0,3,3,3" ToolTipService.ToolTip="Password" />
-                <ProgressBar x:Name="progressBar" />
+                <ProgressBar x:Name="progressBar" Foreground="White" />
                 <Button x:Name="Send" Height="88" Content="Sync" Click="Send_Click" RenderTransformOrigin="0.498,2.216" />
             </StackPanel>
         </Popup>
