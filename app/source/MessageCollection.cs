@@ -10,8 +10,11 @@ namespace VNMC2013
 {
     public class MessageCollection
     {
-        public delegate void NewMessageEventHandler();
+        public delegate void NewMessageEventHandler(bool FirstOrLast);
         public event NewMessageEventHandler OnNewMessageEventHandler;
+
+        public int TakeMessagesPerCall = 15;
+        public bool AllMessagesLoaded = false;
 
         private static MessageCollection instance;
         public static MessageCollection Instance
@@ -48,7 +51,7 @@ namespace VNMC2013
             if (message.Type == Message.MessageType.Photo) message.LoadImage();
             Messages.Add(message);
 
-            if(OnNewMessageEventHandler != null) OnNewMessageEventHandler();
+            if(OnNewMessageEventHandler != null) OnNewMessageEventHandler(false);
         }
 
         public void Add(Message message)
@@ -68,13 +71,19 @@ namespace VNMC2013
             this.Add(message);
         }
 
-        private async void LoadMessage(int take = 10, int skip = 0)
+        public async void LoadMessage(int skip = 0)
         {
-            Messages = await App.MobileService.GetTable<Message>().Skip(skip).Take(take).OrderByDescending(x => x.Id).ToListAsync();
-            Messages.ForEach(x => {
+            List<Message> newMessages = await App.MobileService.GetTable<Message>().Skip(skip).Take(TakeMessagesPerCall).OrderByDescending(x => x.Id).ToListAsync();
+            if (newMessages.Count == 0 || newMessages.Count < TakeMessagesPerCall)
+            {
+                AllMessagesLoaded = true;
+                if (newMessages.Count == 0) return;
+            }
+            newMessages.ForEach(x => {
                 if (x.Type == Message.MessageType.Photo) x.LoadImage();
             });
-            if(OnNewMessageEventHandler != null) OnNewMessageEventHandler();
+            Messages.InsertRange(0, newMessages.Reverse<Message>());
+            if(OnNewMessageEventHandler != null) OnNewMessageEventHandler(skip != 0);
         }
     }
 }

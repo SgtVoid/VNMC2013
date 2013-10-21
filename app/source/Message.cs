@@ -44,6 +44,7 @@ namespace VNMC2013
         {
             get
             {
+                if (Image == null) return null;
                 BitmapImage img = new BitmapImage();
                 img.SetSource(Image.GetImage());
                 return img;

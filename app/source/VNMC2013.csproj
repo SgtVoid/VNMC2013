@@ -230,6 +230,7 @@
     <Resource Include="Assets\POI.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Content Include="Assets\AppBar\more-64.png" />
     <Content Include="Assets\AppBar\stack_of_photos-64.png" />
     <Content Include="Assets\AppBar\topic-64.png" />
     <Content Include="Assets\comments-64.png" />

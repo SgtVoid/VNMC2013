@@ -17,6 +17,7 @@
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
             <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/topic-64.png" Text="Send" Click="SendButton_Click" IsEnabled="True"/>
             <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/stack_of_photos-64.png" Text="Upload" Click="UploadButton_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/more-64.png" Text="Prev. Mess" Click="MoreMessagesIconButton_Click"/>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 
@@ -34,13 +35,13 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <ListBox x:Name="MessageList" Margin="0,0,0,70">
-                <ListBox.ItemTemplate>
+            <phone:LongListSelector x:Name="MessageList" Margin="0,0,0,70">
+                <phone:LongListSelector.ItemTemplate>
                     <DataTemplate>
-                        <local:ChatTemplateSelector Content="{Binding}">
+                        <local:ChatTemplateSelector Content="{Binding}" HorizontalContentAlignment="Left">
                             <local:ChatTemplateSelector.Text>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding PrintContent}" TextWrapping="Wrap" />
+                                    <TextBlock Text="{Binding PrintContent}" TextWrapping="Wrap" Margin="0,15" />
                                 </DataTemplate>
                             </local:ChatTemplateSelector.Text>
                             <local:ChatTemplateSelector.Photo>
@@ -53,8 +54,8 @@
                             </local:ChatTemplateSelector.Photo>
                         </local:ChatTemplateSelector>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                </phone:LongListSelector.ItemTemplate>
+            </phone:LongListSelector>
 
             <TextBox x:Name="messageBox" Height="70" VerticalAlignment="Bottom" />
         </Grid>
