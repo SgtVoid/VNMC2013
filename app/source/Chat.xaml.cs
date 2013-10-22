@@ -22,10 +22,23 @@ namespace VNMC2013
         {
             page = 1;
             InitializeComponent();
+            this.Loaded += Chat_Loaded;
 
             MessageCollection.Instance.OnNewMessageEventHandler += AddMessage;
             this.MessageList.ItemsSource = MessageCollection.Instance.Messages;
             this.MessageList.Loaded += MessageList_Loaded;
+        }
+
+        private static void SetProgressIndicator(bool isVisible)
+        {
+            SystemTray.ProgressIndicator.IsIndeterminate = isVisible;
+            SystemTray.ProgressIndicator.IsVisible = isVisible;
+        }
+
+        private void Chat_Loaded(object sender, RoutedEventArgs e)
+        {
+            SystemTray.ProgressIndicator = new ProgressIndicator();
+            if (this.MessageList.ItemsSource.Count == 0) SetProgressIndicator(true);
         }
 
         private void MessageList_Loaded(object sender, RoutedEventArgs e)
@@ -57,8 +70,11 @@ namespace VNMC2013
                 MessageList.ItemsSource = null;
                 MessageList.ItemsSource = MessageCollection.Instance.Messages;
                 MessageList.Focus();
+
                 int index = FirstOrLast ? 0 : MessageList.ItemsSource.Count - 1;
                 MessageList.ScrollTo(MessageList.ItemsSource[index]);
+
+                SetProgressIndicator(false);
             });
         }
 
@@ -76,6 +92,9 @@ namespace VNMC2013
 
         private void MoreMessagesIconButton_Click(object sender, EventArgs e)
         {
+            if (MessageCollection.Instance.AllMessagesLoaded) return;
+
+            SetProgressIndicator(true);
             MessageCollection.Instance.LoadMessage(++page * MessageCollection.Instance.TakeMessagesPerCall);
         }
     }
