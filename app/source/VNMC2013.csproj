@@ -143,6 +143,9 @@
     <Compile Include="Roomies.xaml.cs">
       <DependentUpon>Roomies.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RoomiesSearch.xaml.cs">
+      <DependentUpon>RoomiesSearch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Root.xaml.cs">
       <DependentUpon>Root.xaml</DependentUpon>
     </Compile>
@@ -193,6 +196,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Roomies.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RoomiesSearch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

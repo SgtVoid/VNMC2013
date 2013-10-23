@@ -18,5 +18,10 @@ namespace VNMC2013
 
             ListRooms.ItemsSource = Room.All;
         }
+
+        private void ApplicationBarIconButton_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/RoomiesSearch.xaml", UriKind.Relative));
+        }
     }
 }

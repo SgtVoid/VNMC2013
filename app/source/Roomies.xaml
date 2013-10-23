@@ -44,6 +44,13 @@
                 </phone:LongListSelector>
             </phone:PivotItem>
         </phone:Pivot>
-    </Grid>
+    </Grid>
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" >
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/feature.search.png" Text="Search" Click="ApplicationBarIconButton_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+
 
 </phone:PhoneApplicationPage>
