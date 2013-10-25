@@ -250,6 +250,9 @@ namespace VNMC2013
                 CurrentChannel = new HttpNotificationChannel("ChatChannel");
                 CurrentChannel.Open();
             }
+            if (!CurrentChannel.IsShellTileBound) CurrentChannel.BindToShellTile();
+            if (!CurrentChannel.IsShellToastBound) CurrentChannel.BindToShellToast();
+
             CurrentChannel.HttpNotificationReceived += CurrentChannel_PushNotificationReceived;
             CurrentChannel.ChannelUriUpdated += CurrentChannel_ChannelUriUpdated;
         }

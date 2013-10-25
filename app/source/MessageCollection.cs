@@ -39,6 +39,8 @@ namespace VNMC2013
             string reader = new StreamReader(stream).ReadToEnd();
             dynamic json = JsonConvert.DeserializeObject(reader);
 
+            if (json["From"].Value == Person.CurrentUser.DisplayName) return;
+
             DateTime date = new DateTime((int)json["Year"].Value, (int)json["Month"].Value, (int)json["Day"].Value, (int)json["Hour"].Value, (int)json["Minute"].Value, (int)json["Second"].Value, DateTimeKind.Utc);
             Message message = new Message
             {
@@ -48,7 +50,7 @@ namespace VNMC2013
                 Type = json["Type"].Value == "Text" ? Message.MessageType.Text : Message.MessageType.Photo
             };
 
-            if (message.Type == Message.MessageType.Photo) message.LoadImage();
+            message.LoadImage();
             Messages.Add(message);
 
             if(OnNewMessageEventHandler != null) OnNewMessageEventHandler(false);
@@ -56,6 +58,8 @@ namespace VNMC2013
 
         public void Add(Message message)
         {
+            message.LoadImage();
+            Messages.Add(message);
             App.MobileService.GetTable<Message>().InsertAsync(message);
         }
 
@@ -74,14 +78,11 @@ namespace VNMC2013
         public async void LoadMessage(int skip = 0)
         {
             List<Message> newMessages = await App.MobileService.GetTable<Message>().Skip(skip).Take(TakeMessagesPerCall).OrderByDescending(x => x.Id).ToListAsync();
-            if (newMessages.Count == 0 || newMessages.Count < TakeMessagesPerCall)
-            {
-                AllMessagesLoaded = true;
-                if (newMessages.Count == 0) return;
-            }
-            newMessages.ForEach(x => {
-                if (x.Type == Message.MessageType.Photo) x.LoadImage();
-            });
+
+            AllMessagesLoaded = newMessages.Count < TakeMessagesPerCall;
+            if (newMessages.Count == 0) return;
+
+            newMessages.ForEach(x => x.LoadImage());
             Messages.InsertRange(0, newMessages.Reverse<Message>());
             if(OnNewMessageEventHandler != null) OnNewMessageEventHandler(skip != 0);
         }

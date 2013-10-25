@@ -23,11 +23,12 @@ namespace VNMC2013
 
         public async void LoadImage()
         {
+            if (this.Type != Message.MessageType.Photo) return;
+
             MediaLibrary library = new MediaLibrary();
             Image = library.SavedPictures.FirstOrDefault(x => x.Name == this.Content);
 
-            if (Image == null)
-                Image = await DropBox.Client.GetFile(this.Content);
+            if (Image == null) Image = await DropBox.Client.GetFile(this.Content);
         }
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
