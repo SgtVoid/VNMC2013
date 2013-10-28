@@ -30,7 +30,7 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="Chatting with Macaw" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="48"/>
+            <TextBlock Text="VNMChat" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="48"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
@@ -41,13 +41,15 @@
                         <local:ChatTemplateSelector Content="{Binding}" HorizontalContentAlignment="Left">
                             <local:ChatTemplateSelector.Text>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding PrintContent}" TextWrapping="Wrap" Margin="0,15" />
+                                    <Border Background="#FF2E4299" CornerRadius="20" Margin="0,15" Padding="10,5">
+                                        <TextBlock Text="{Binding PrintContent}" TextWrapping="Wrap" />
+                                    </Border>
                                 </DataTemplate>
                             </local:ChatTemplateSelector.Text>
                             <local:ChatTemplateSelector.Photo>
                                 <DataTemplate>
                                     <StackPanel>
-                                        <TextBlock Text="{Binding DateFrom}" />
+                                        <TextBlock Text="{Binding DateFrom}" Foreground="White" />
                                         <Image Source="{Binding PrintImage}" />
                                     </StackPanel>
                                 </DataTemplate>

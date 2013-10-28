@@ -41,8 +41,8 @@
         </Popup>
 
         <!--ContentPanel - place additional content here-->
-        <ScrollViewer>
-            <Grid x:Name="ListFriday" HorizontalAlignment="Center" Margin="0,270,0,0">
+        <ScrollViewer Margin="0,240,0,0">
+            <Grid x:Name="ListFriday" HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="210" />
                     <ColumnDefinition Width="210" />

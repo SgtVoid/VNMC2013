@@ -61,6 +61,7 @@ namespace VNMC2013
             message.LoadImage();
             Messages.Add(message);
             App.MobileService.GetTable<Message>().InsertAsync(message);
+            if(OnNewMessageEventHandler != null) OnNewMessageEventHandler(false);
         }
 
         public async void AddPhoto(string From, DateTime CreatedAt, Microsoft.Phone.Tasks.PhotoResult e)

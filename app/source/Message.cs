@@ -36,7 +36,7 @@ namespace VNMC2013
         {
             get
             {
-                return string.Format("{0} {1}: {2}", CreatedAt.ToString("d/M hh:mm"), From, Content);
+                return string.Format("{0} {1}: {2}", CreatedAt.ToString("d/M HH:mm"), From, Content);
             }
         }
 
@@ -57,7 +57,7 @@ namespace VNMC2013
         {
             get
             {
-                return string.Format("{0} {1}: ", CreatedAt.ToString("d/M hh:mm"), From);
+                return string.Format("{0} {1}: ", CreatedAt.ToString("d/M HH:mm"), From);
             }
         }
 

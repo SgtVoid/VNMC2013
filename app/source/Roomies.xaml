@@ -27,17 +27,21 @@
                 <phone:LongListSelector Name="ListRooms">
                     <phone:LongListSelector.ItemTemplate>
                         <DataTemplate>
-                            <Grid>
-                                <Image Width="100" Height="100" HorizontalAlignment="Left" Margin="50,0,50,20" >
+                            <Grid Background="#B2FFFFFF" Margin="20,0,20,20">
+                                <Image Width="100" Height="100" HorizontalAlignment="Left">
                                     <Image.Source>
                                         <Binding Path="Person1.Image" TargetNullValue="/Assets/portret_default.png" />
                                     </Image.Source>
                                 </Image>
-                                <Image Width="100" Height="100" HorizontalAlignment="Right" Margin="50,0,50,20" >
+
+                                <Image Width="100" Height="100" HorizontalAlignment="Right">
                                     <Image.Source>
                                         <Binding Path="Person2.Image" TargetNullValue="/Assets/portret_default.png" />
                                     </Image.Source>
                                 </Image>
+
+                                <TextBlock Text="{Binding Person1.DisplayName}" HorizontalAlignment="Center" TextTrimming="WordEllipsis" Foreground="Black" />
+                                <TextBlock Text="{Binding Person2.DisplayName}" HorizontalAlignment="Center" VerticalAlignment="Bottom"  TextTrimming="WordEllipsis" Foreground="Black" />
                             </Grid>
                         </DataTemplate>
                     </phone:LongListSelector.ItemTemplate>
