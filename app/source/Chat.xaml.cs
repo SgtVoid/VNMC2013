@@ -50,7 +50,9 @@ namespace VNMC2013
         private void SendButton_Click(object sender, EventArgs e)
         {
             MessageList.Focus();
-            MessageList.ScrollTo(MessageList.ItemsSource[MessageList.ItemsSource.Count - 1]);
+            if (MessageList.ItemsSource.Count != 0)
+                MessageList.ScrollTo(MessageList.ItemsSource[MessageList.ItemsSource.Count - 1]);
+
             if (string.IsNullOrEmpty(messageBox.Text)) return;
 
             MessageCollection.Instance.Add(new Message()
