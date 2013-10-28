@@ -41,7 +41,7 @@ namespace VNMC2013.DropBox
             IRestResponse response = await restClient.ExecuteTaskAsync(request);
 
             MediaLibrary library = new MediaLibrary();
-            return library.SavePicture(filename, response.RawBytes);
+            return library.SavePicture(Path.GetFileNameWithoutExtension(filename), response.RawBytes);
         }
 
         private static byte[] ReadFully(Stream input)
